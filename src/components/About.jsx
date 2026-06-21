@@ -1,4 +1,4 @@
-import { Divider } from "@mui/material";
+import { Chip, Divider } from "@mui/material";
 import { User } from "lucide-react";
 import styles from "../styles/about.module.css";
 
@@ -23,6 +23,8 @@ function About() {
                         and a unique perspective to your projects, I’m ready to collaborate and help bring your vision
                         to life. Let's explore how I can contribute to your next exciting project.
                     </p>
+                    <h2>I am a </h2>
+                    <Chip label="Front-end Developer"></Chip>
                 </div>
             </div>
         </>

@@ -1,23 +1,22 @@
+import { useTheme } from "@mui/material";
 import { ChevronDown } from "lucide-react";
 import { motion } from "motion/react";
 import styles from "../styles/main.module.css";
 
 function Main() {
+    const theme = useTheme();
+    const whiteColor = "#fff";
+    const darkColor = theme.palette.background.default;
+    console.log(darkColor);
     return (
         <>
             <div className={styles.main}>
                 <motion.div
-                    initial={{ "--color-1": "#fff", "--color-2": "#fff" }}
+                    initial={{ "--color-1": whiteColor, "--color-2": whiteColor }}
                     animate={{
-                        "--color-1": ["#fff", "#fff", "#fff", "#000", "#000", "#fff", "#fff"],
-                        "--color-2": ["#000", "#000", "#fff", "#fff", "#fff", "#fff", "#000"],
-                        transition: {
-                            // times: [0, 0.25, 0.375, 0.5, 0.75, 0.875, 1],
-                            ease: "easeIn",
-                            duration: 10,
-                            repeatType: "loop",
-                            repeat: Infinity,
-                        },
+                        "--color-1": [whiteColor, whiteColor, whiteColor, darkColor, darkColor, whiteColor, whiteColor],
+                        "--color-2": [darkColor, darkColor, whiteColor, whiteColor, whiteColor, whiteColor, darkColor],
+                        transition: { ease: "easeIn", duration: 10, repeatType: "loop", repeat: Infinity },
                     }}
                     className={styles.box}
                 >

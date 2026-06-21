@@ -29,7 +29,7 @@
     letter-spacing: 0.18px;
     color-scheme: light dark;
     color: var(--text);
-    background-color: var(--bg);
+    /* background-color: var(--bg); */
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -42,13 +42,13 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --text: #9ca3af;
+        --text: rgb(156, 163, 175);
         --text-h: #f3f4f6;
         --border: #2e303a;
 
-        --accent-dark-3xl: hsl(218, 100%, 2%);
-        --accent-dark-2xl: hsl(218, 100%, 2.2%);
-        --accent-dark-xl: hsl(218, 100%, 3%);
+        --accent-dark-3xl: #00040a;
+        --accent-dark-2xl: #00040b;
+        --accent-dark-xl: #00060f;
         --accent-dark-l: #000a18;
         --accent-dark: #000d20;
         --accent: #001029;
@@ -60,7 +60,7 @@
 
         --text-description: gray;
 
-        --bg: var(--accent-dark-2xl);
+        /* --bg: var(--accent-dark-2xl); */
 
         --shadow: rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
     }

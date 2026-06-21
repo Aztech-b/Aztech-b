@@ -15,7 +15,9 @@
     border: 6px solid transparent;
     border-radius: 20px;
 
-    background-image: linear-gradient(var(--bg), var(--bg)), linear-gradient(to right, var(--color-1), var(--color-2));
+    background-image:
+        linear-gradient(var(--mui-palette-background-default), var(--mui-palette-background-default)),
+        linear-gradient(to right, var(--color-1), var(--color-2));
     background-origin: border-box;
     background-clip: padding-box, border-box;
 }
