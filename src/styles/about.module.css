@@ -1,0 +1,16 @@
+.info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 60px;
+}
+
+.profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+p > span {
+    width: 40px;
+    display: inline-block;
+}

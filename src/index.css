@@ -13,6 +13,8 @@
     --accent-light-2xl: #ccd2dc;
     --accent-light-3xl: #e6e9ee;
 
+    --text-description: darkgray;
+
     --bg: var(--accent-light-3xl);
 
     --shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
@@ -21,11 +23,13 @@
     --heading: system-ui, "Segoe UI", Roboto, sans-serif;
     --mono: ui-monospace, Consolas, monospace;
 
+    --max-content-width: 1200px;
+
     font: 18px/145% var(--sans);
     letter-spacing: 0.18px;
     color-scheme: light dark;
     color: var(--text);
-    background: var(--bg);
+    background-color: var(--bg);
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -54,6 +58,8 @@
         --accent-light-2xl: #001d49;
         --accent-light-3xl: #002051;
 
+        --text-description: gray;
+
         --bg: var(--accent-dark-2xl);
 
         --shadow: rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
@@ -69,6 +75,12 @@ body {
 body {
     min-width: 100vw;
     min-height: 100vh;
+}
+
+#root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 h1,
@@ -96,6 +108,7 @@ h2 {
         font-size: 20px;
     }
 }
-p {
-    margin: 0;
+
+main {
+    max-width: var(--max-content-width);
 }

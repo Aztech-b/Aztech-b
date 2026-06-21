@@ -1,9 +1,13 @@
+import About from "./components/About";
 import Main from "./components/Main";
 
 function App() {
     return (
         <>
-            <Main></Main>
+            <main>
+                <Main></Main>
+                <About></About>
+            </main>
         </>
     );
 }
