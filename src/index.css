@@ -42,8 +42,9 @@
         --text-h: #f3f4f6;
         --border: #2e303a;
 
-        --accent-dark-2xl: #000308;
-        --accent-dark-xl: #000610;
+        --accent-dark-3xl: hsl(218, 100%, 2%);
+        --accent-dark-2xl: hsl(218, 100%, 2.2%);
+        --accent-dark-xl: hsl(218, 100%, 3%);
         --accent-dark-l: #000a18;
         --accent-dark: #000d20;
         --accent: #001029;
@@ -63,6 +64,11 @@
 html,
 body {
     margin: 0;
+}
+
+body {
+    min-width: 100vw;
+    min-height: 100vh;
 }
 
 h1,

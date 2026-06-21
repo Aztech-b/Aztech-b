@@ -1,0 +1,28 @@
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    flex-direction: column;
+}
+
+.name {
+    padding: 40px 40px 48px 38px;
+    font-size: 3rem;
+    box-sizing: content-box;
+    text-align: center;
+    position: relative;
+    border: 6px solid transparent;
+    border-radius: 20px;
+
+    background-image: linear-gradient(var(--bg), var(--bg)), linear-gradient(to right, var(--color-1), var(--color-2));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
