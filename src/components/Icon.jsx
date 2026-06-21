@@ -1,11 +1,12 @@
+import { motion } from "motion/react";
 import styles from "../styles/icon.module.css";
 
 function Icon({ icon, label }) {
     return (
-        <div className={styles.icon}>
+        <motion.div whileHover={{ scale: 1.1 }} className={styles.icon}>
             {icon}
             {label}
-        </div>
+        </motion.div>
     );
 }
 
