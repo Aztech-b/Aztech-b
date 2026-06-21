@@ -15,6 +15,7 @@ const theme = createTheme({
     },
     typography: { fontSize: 14 },
     cssVariables: true,
+    components: { MuiDivider: { styleOverrides: { root: { "&::before, &::after": { borderWidth: 4 } } } } },
 });
 
 createRoot(document.getElementById("root")).render(

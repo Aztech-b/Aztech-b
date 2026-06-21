@@ -10,11 +10,7 @@ function About() {
                     <User size={"50%"} />
                 </div>
                 <div>
-                    <Divider
-                        variant="middle"
-                        sx={{ "&::before, &::after": { borderColor: "var(--text-description)", borderWidth: 4 } }}
-                        textAlign="left"
-                    >
+                    <Divider variant="middle" textAlign="left">
                         <h2>About</h2>
                     </Divider>
                     <p>

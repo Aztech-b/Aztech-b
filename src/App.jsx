@@ -1,5 +1,6 @@
 import About from "./components/About";
 import Main from "./components/Main";
+import ToolsAndSkills from "./components/ToolsAndSkills";
 
 function App() {
     return (
@@ -7,6 +8,7 @@ function App() {
             <main>
                 <Main></Main>
                 <About></About>
+                <ToolsAndSkills></ToolsAndSkills>
             </main>
         </>
     );
