@@ -7,7 +7,6 @@ function Main() {
     const theme = useTheme();
     const whiteColor = "#fff";
     const darkColor = theme.palette.background.default;
-    console.log(darkColor);
     return (
         <>
             <div className={styles.main}>
