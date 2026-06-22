@@ -3,6 +3,7 @@ import { KZ, RU, US } from "country-flag-icons/react/1x1";
 import SkillCard from "./SkillCard";
 import {
     Aseprite,
+    Cloudflare,
     CSS,
     ExpressJS,
     FramerMotion,
@@ -29,7 +30,7 @@ const defaultSize = 36;
 const data = [
     { items: [HTML, JS, CSS, TailwindCSS, React, MantineUI, FramerMotion], label: "Front-end" },
     { items: [NodeJS, ExpressJS, JS, Prisma, PostgreSQL, SocketIO], label: "Back-end" },
-    { items: [git, GitHub, Webpack, Supabase, Railway, Vercel], label: "Miscellaneous" },
+    { items: [git, GitHub, Webpack, Supabase, Railway, Vercel, Cloudflare], label: "Miscellaneous" },
     { items: [Unity, Aseprite], label: "Game Development" },
 ];
 

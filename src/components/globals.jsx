@@ -1,5 +1,6 @@
 import {
     SiAseprite,
+    SiCloudflare,
     SiCss,
     SiExpress,
     SiFramer,
@@ -51,3 +52,4 @@ export const Telegram = {
     label: "Telegram",
     link: "https://t.me/s0mniaa",
 };
+export const Cloudflare = { icon: <SiCloudflare />, label: "Cloudflare" };
