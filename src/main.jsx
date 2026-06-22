@@ -15,7 +15,11 @@ const theme = createTheme({
     },
     typography: { fontSize: 14 },
     cssVariables: true,
-    components: { MuiDivider: { styleOverrides: { root: { "&::before, &::after": { borderWidth: 4 } } } } },
+    components: {
+        MuiDivider: {
+            styleOverrides: { root: { "&::before, &::after": { borderWidth: 4 }, marginTop: 64, marginBottom: 32 } },
+        },
+    },
     shape: { borderRadius: 8 },
 });
 

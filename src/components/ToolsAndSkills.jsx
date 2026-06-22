@@ -1,53 +1,33 @@
-import {
-    SiCss,
-    SiExpress,
-    SiFramer,
-    SiGit,
-    SiGithub,
-    SiHtml5,
-    SiJavascript,
-    SiMantine,
-    SiNodedotjs,
-    SiPostgresql,
-    SiPrisma,
-    SiRailway,
-    SiReact,
-    SiSocketdotio,
-    SiSupabase,
-    SiVercel,
-    SiWebpack,
-} from "@icons-pack/react-simple-icons";
 import { Avatar, Box, Card, CardContent, Divider } from "@mui/material";
 import { KZ, RU, US } from "country-flag-icons/react/3x2";
 import SkillCard from "./SkillCard";
+import {
+    CSS,
+    ExpressJS,
+    FramerMotion,
+    git,
+    GitHub,
+    HTML,
+    JS,
+    MantineUI,
+    NodeJS,
+    PostgreSQL,
+    Prisma,
+    Railway,
+    React,
+    SocketIO,
+    Supabase,
+    TailwindCSS,
+    Vercel,
+    Webpack,
+} from "./globals";
 
 const defaultSize = 36;
-const frontendItems = [
-    { icon: <SiHtml5 size={defaultSize} />, label: "HTML" },
-    { icon: <SiCss size={defaultSize} />, label: "CSS" },
-    { icon: <SiJavascript size={defaultSize} />, label: "JavaScript" },
-    { icon: <SiReact size={defaultSize} />, label: "React" },
-    { icon: <SiMantine size={defaultSize} />, label: "MantineUI" },
-    { icon: <SiFramer size={defaultSize} />, label: "Framer Motion" },
-];
+const frontendItems = [HTML, CSS, JS, React, TailwindCSS, MantineUI, FramerMotion];
 
-const backendItems = [
-    { icon: <SiNodedotjs size={defaultSize} />, label: "NodeJS" },
-    { icon: <SiExpress size={defaultSize} />, label: "Express" },
-    { icon: <SiJavascript size={defaultSize} />, label: "JavaScript" },
-    { icon: <SiPostgresql size={defaultSize} />, label: "PostgreSQL" },
-    { icon: <SiPrisma size={defaultSize} />, label: "Prisma" },
-    { icon: <SiSocketdotio size={defaultSize} />, label: "Socket.IO" },
-];
+const backendItems = [NodeJS, ExpressJS, JS, PostgreSQL, Prisma, SocketIO];
 
-const MiscellaneousItems = [
-    { icon: <SiGit size={defaultSize} />, label: "git" },
-    { icon: <SiGithub size={defaultSize} />, label: "Github" },
-    { icon: <SiWebpack size={defaultSize} />, label: "Webpack" },
-    { icon: <SiSupabase size={defaultSize} />, label: "Supabase" },
-    { icon: <SiRailway size={defaultSize} />, label: "Railway" },
-    { icon: <SiVercel size={defaultSize} />, label: "Vercel" },
-];
+const MiscellaneousItems = [git, GitHub, Webpack, Supabase, Railway, Vercel];
 
 const languages = [
     { icon: <US style={{ scale: 1.5 }}></US>, label: "I speak English" },

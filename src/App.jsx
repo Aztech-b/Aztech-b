@@ -1,4 +1,5 @@
 import About from "./components/About";
+import FeaturedProjects from "./components/FeaturedProjects";
 import Main from "./components/Main";
 import ToolsAndSkills from "./components/ToolsAndSkills";
 
@@ -9,6 +10,7 @@ function App() {
                 <Main></Main>
                 <About></About>
                 <ToolsAndSkills></ToolsAndSkills>
+                <FeaturedProjects></FeaturedProjects>
             </main>
         </>
     );

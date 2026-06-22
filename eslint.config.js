@@ -29,6 +29,7 @@ export default [
             "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
             // Activate the compiler rule to watch your code components
             "react-compiler/react-compiler": "error",
+            "no-restricted-imports": ["error", { patterns: [{ regex: "^@mui/[^/]+$" }] }],
         },
         settings: {
             react: { version: "detect" }, // Automatically detects your React version
