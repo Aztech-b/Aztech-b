@@ -1,5 +1,6 @@
 import Divider from "@mui/material/Divider";
-import messagingAppScreenshot from "../assets/image.png";
+import carbonXScreenshot from "../assets/CarbonX.png";
+import messagingAppScreenshot from "../assets/messagingApp.png";
 import Project from "./Project";
 import { Aseprite, FramerMotion, MantineUI, PostgreSQL, React, SocketIO, Unity } from "./globals";
 
@@ -13,7 +14,7 @@ const projectsData = [
     },
     {
         title: "CarbonX",
-        screenshot: messagingAppScreenshot,
+        screenshot: carbonXScreenshot,
         chips: [Unity, Aseprite],
         description: "Game about saving the nature and Carbon Dioxide emission issues in the world",
     },

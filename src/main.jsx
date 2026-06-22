@@ -17,7 +17,20 @@ const theme = createTheme({
     cssVariables: true,
     components: {
         MuiDivider: {
-            styleOverrides: { root: { "&::before, &::after": { borderWidth: 4 }, marginTop: 64, marginBottom: 32 } },
+            styleOverrides: {
+                root: {
+                    marginTop: 64,
+                    marginBottom: 32,
+
+                    "&.MuiDivider-withChildren": {
+                        borderStyle: "none",
+                        "&::before, &::after": { borderTop: "4px solid" },
+                    },
+
+                    "&:not(.MuiDivider-withChildren)": { borderWidth: 0, borderBottom: "4px solid" },
+                },
+            },
+            defaultProps: { variant: "middle" },
         },
     },
     shape: { borderRadius: 8 },
