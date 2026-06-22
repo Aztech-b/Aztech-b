@@ -21,7 +21,7 @@ function About() {
                     </p>
 
                     <div className={styles.skills}>
-                        <h2>I am a </h2>
+                        <h2 className="mt-4 mb-2">I am a </h2>
                         <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2, justifyContent: "center" }}>
                             <Chip label="Full-stack Developer"></Chip>
                             <Chip label="Front-end JavaScript Developer"></Chip>
