@@ -17,7 +17,8 @@ import {
     SiVercel,
     SiWebpack,
 } from "@icons-pack/react-simple-icons";
-import { Box, Divider } from "@mui/material";
+import { Avatar, Box, Card, CardContent, Divider } from "@mui/material";
+import { KZ, RU, US } from "country-flag-icons/react/3x2";
 import SkillCard from "./SkillCard";
 
 const defaultSize = 36;
@@ -52,8 +53,8 @@ function ToolsAndSkills() {
     const defaultSize = 36;
     return (
         <>
-            <div className="main">
-                <Divider textAlign="left">
+            <div className={main}>
+                <Divider sx={{ marginBottom: 4, marginTop: 8 }} textAlign="left">
                     <h2>Tools & Skills</h2>
                 </Divider>
                 <Box
@@ -69,6 +70,26 @@ function ToolsAndSkills() {
                     <SkillCard label={"Back-end"} items={backendItems}></SkillCard>
                     <SkillCard label={"Miscellaneous"} items={MiscellaneousItems}></SkillCard>
                 </Box>
+                <Card sx={{ display: "flex", marginTop: 4, justifyContent: "center", width: "max-content" }}>
+                    <CardContent sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                        I speak English
+                        <Avatar sx={{ width: 24, height: 24 }}>
+                            <US style={{ scale: 1.5 }}></US>
+                        </Avatar>
+                    </CardContent>
+                    <CardContent sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                        I speak Russian
+                        <Avatar sx={{ width: 24, height: 24 }}>
+                            <RU style={{ scale: 1.5 }}></RU>
+                        </Avatar>{" "}
+                    </CardContent>
+                    <CardContent sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                        I speak Kazakh
+                        <Avatar sx={{ width: 24, height: 24 }}>
+                            <KZ style={{ scale: 1.5 }}></KZ>
+                        </Avatar>
+                    </CardContent>
+                </Card>
             </div>
         </>
     );
