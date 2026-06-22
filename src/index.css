@@ -118,3 +118,7 @@ main {
 .description {
     color: var(--text-description);
 }
+
+.defaultText {
+    color: var(--text);
+}

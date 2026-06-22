@@ -16,6 +16,7 @@ import {
     SiSocketdotio,
     SiSupabase,
     SiTailwindcss,
+    SiTelegram,
     SiUnity,
     SiVercel,
     SiWebpack,
@@ -33,7 +34,11 @@ export const ExpressJS = { icon: <SiExpress />, label: "ExpressJS" };
 export const PostgreSQL = { icon: <SiPostgresql />, label: "PostgreSQL" };
 export const Prisma = { icon: <SiPrisma />, label: "Prisma" };
 export const git = { icon: <SiGit />, label: "git" };
-export const GitHub = { icon: <SiGithub />, label: "GitHub" };
+export const GitHub = {
+    icon: <SiGithub style={{ height: "100%", width: "auto" }} />,
+    label: "GitHub",
+    link: "https://github.com/Aztech-b/",
+};
 export const Webpack = { icon: <SiWebpack />, label: "Webpack" };
 export const Supabase = { icon: <SiSupabase />, label: "Supabase" };
 export const Railway = { icon: <SiRailway />, label: "Railway" };
@@ -41,3 +46,8 @@ export const Vercel = { icon: <SiVercel />, label: "Vercel" };
 export const Unity = { icon: <SiUnity />, label: "Unity" };
 export const Aseprite = { icon: <SiAseprite />, label: "Aseprite" };
 export const TailwindCSS = { icon: <SiTailwindcss />, label: "TailwindCSS" };
+export const Telegram = {
+    icon: <SiTelegram style={{ height: "100%", width: "auto" }} />,
+    label: "Telegram",
+    link: "https://t.me/s0mniaa",
+};
