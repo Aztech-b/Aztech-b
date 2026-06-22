@@ -1,7 +1,8 @@
 import { Avatar, Box, Card, CardContent, Divider } from "@mui/material";
-import { KZ, RU, US } from "country-flag-icons/react/3x2";
+import { KZ, RU, US } from "country-flag-icons/react/1x1";
 import SkillCard from "./SkillCard";
 import {
+    Aseprite,
     CSS,
     ExpressJS,
     FramerMotion,
@@ -18,21 +19,24 @@ import {
     SocketIO,
     Supabase,
     TailwindCSS,
+    Unity,
     Vercel,
     Webpack,
 } from "./globals";
 
 const defaultSize = 36;
-const frontendItems = [HTML, CSS, JS, React, TailwindCSS, MantineUI, FramerMotion];
 
-const backendItems = [NodeJS, ExpressJS, JS, PostgreSQL, Prisma, SocketIO];
-
-const MiscellaneousItems = [git, GitHub, Webpack, Supabase, Railway, Vercel];
+const data = [
+    { items: [HTML, JS, CSS, TailwindCSS, React, MantineUI, FramerMotion], label: "Front-end" },
+    { items: [NodeJS, ExpressJS, JS, Prisma, PostgreSQL, SocketIO], label: "Back-end" },
+    { items: [git, GitHub, Webpack, Supabase, Railway, Vercel], label: "Miscellaneous" },
+    { items: [Unity, Aseprite], label: "Game Development" },
+];
 
 const languages = [
-    { icon: <US style={{ scale: 1.5 }}></US>, label: "I speak English" },
-    { icon: <RU style={{ scale: 1.5 }}></RU>, label: "Я говорю по Русский" },
-    { icon: <KZ style={{ scale: 1.5 }}></KZ>, label: "Мен Қазақша сөйлеймін" },
+    { icon: <US></US>, label: "I speak English" },
+    { icon: <RU></RU>, label: "Я говорю по Русский" },
+    { icon: <KZ></KZ>, label: "Мен Қазақша сөйлеймін" },
 ];
 
 function ToolsAndSkills() {
@@ -46,15 +50,17 @@ function ToolsAndSkills() {
                 <Box
                     sx={{
                         display: "grid",
-                        gridTemplateColumns: "repeat(3, 1fr)",
+                        gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
                         justifyContent: "center",
-                        alignItems: "center",
+                        alignItems: "start",
                         justifyItems: "center",
+                        width: "100%",
+                        gap: 4,
                     }}
                 >
-                    <SkillCard label={"Front-end"} items={frontendItems}></SkillCard>
-                    <SkillCard label={"Back-end"} items={backendItems}></SkillCard>
-                    <SkillCard label={"Miscellaneous"} items={MiscellaneousItems}></SkillCard>
+                    {data.map((data, index) => (
+                        <SkillCard label={data.label} items={data.items} key={index}></SkillCard>
+                    ))}
                 </Box>
                 <div style={{ display: "flex", justifyContent: "center" }}>
                     <Card sx={{ display: "flex", marginTop: 4, justifyContent: "center", width: "max-content" }}>

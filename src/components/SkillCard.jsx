@@ -4,7 +4,7 @@ import Icon from "./Icon";
 function SkillCard({ label, items }) {
     const defaultSize = 36;
     return (
-        <div style={{ display: "flex", alignItems: "center", flexDirection: "column", maxWidth: 300 }}>
+        <div style={{ display: "flex", alignItems: "center", flexDirection: "column" }}>
             <h2 className="mb-2">{label}</h2>
             <Box sx={{ display: "flex" }}>
                 <Card>
