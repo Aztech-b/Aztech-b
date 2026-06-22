@@ -49,11 +49,17 @@ const MiscellaneousItems = [
     { icon: <SiVercel size={defaultSize} />, label: "Vercel" },
 ];
 
+const languages = [
+    { icon: <US style={{ scale: 1.5 }}></US>, label: "I speak English" },
+    { icon: <RU style={{ scale: 1.5 }}></RU>, label: "Я говорю по Русский" },
+    { icon: <KZ style={{ scale: 1.5 }}></KZ>, label: "Мен Қазақша сөйлеймін" },
+];
+
 function ToolsAndSkills() {
     const defaultSize = 36;
     return (
         <>
-            <div className={main}>
+            <div className={"main"}>
                 <Divider sx={{ marginBottom: 4, marginTop: 8 }} textAlign="left">
                     <h2>Tools & Skills</h2>
                 </Divider>
@@ -70,26 +76,18 @@ function ToolsAndSkills() {
                     <SkillCard label={"Back-end"} items={backendItems}></SkillCard>
                     <SkillCard label={"Miscellaneous"} items={MiscellaneousItems}></SkillCard>
                 </Box>
-                <Card sx={{ display: "flex", marginTop: 4, justifyContent: "center", width: "max-content" }}>
-                    <CardContent sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                        I speak English
-                        <Avatar sx={{ width: 24, height: 24 }}>
-                            <US style={{ scale: 1.5 }}></US>
-                        </Avatar>
-                    </CardContent>
-                    <CardContent sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                        I speak Russian
-                        <Avatar sx={{ width: 24, height: 24 }}>
-                            <RU style={{ scale: 1.5 }}></RU>
-                        </Avatar>{" "}
-                    </CardContent>
-                    <CardContent sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                        I speak Kazakh
-                        <Avatar sx={{ width: 24, height: 24 }}>
-                            <KZ style={{ scale: 1.5 }}></KZ>
-                        </Avatar>
-                    </CardContent>
-                </Card>
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                    <Card sx={{ display: "flex", marginTop: 4, justifyContent: "center", width: "max-content" }}>
+                        {languages.map((language, index) => {
+                            return (
+                                <CardContent key={index} sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                                    {language.label}
+                                    <Avatar sx={{ width: 24, height: 24 }}>{language.icon}</Avatar>
+                                </CardContent>
+                            );
+                        })}
+                    </Card>
+                </div>
             </div>
         </>
     );
