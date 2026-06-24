@@ -14,12 +14,7 @@ export default [
             globals: globals.browser,
             parserOptions: { ecmaVersion: "latest", ecmaFeatures: { jsx: true }, sourceType: "module" },
         },
-        plugins: {
-            react,
-            "react-hooks": reactHooks,
-            "react-refresh": reactRefresh,
-            "react-compiler": reactCompiler, // Register the compiler plugin
-        },
+        plugins: { react, "react-hooks": reactHooks, "react-refresh": reactRefresh, "react-compiler": reactCompiler },
         rules: {
             ...js.configs.recommended.rules,
             ...react.configs.recommended.rules,
@@ -27,12 +22,9 @@ export default [
             ...reactHooks.configs.recommended.rules,
             "react/jwt-key": "error",
             "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
-            // Activate the compiler rule to watch your code components
             "react-compiler/react-compiler": "error",
             "no-restricted-imports": ["error", { patterns: [{ regex: "^@mui/[^/]+$" }] }],
         },
-        settings: {
-            react: { version: "detect" }, // Automatically detects your React version
-        },
+        settings: { react: { version: "detect" } },
     },
 ];
