@@ -1,9 +1,8 @@
-import Divider from "@mui/material/Divider";
-
+import { Divider } from "@/components/ui/Divider";
 function Footer() {
     return (
         <>
-            <Divider sx={{ mb: 10 }}></Divider>
+            <Divider className="mb-20"></Divider>
             <p className="description text-center text-[1rem] mb-5">100% human made, No AI</p>
         </>
     );
