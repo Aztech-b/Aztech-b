@@ -45,7 +45,7 @@ function Project({ data, alignInfo }) {
                     ))}
                 </div>
                 <p className="description mt-3">{data.description}</p>
-                <div className="grid grid-cols-[repeat(auto-fit,minmax(50px, 1fr))] gap-4 mt-12">
+                <div className="grid grid-cols-[repeat(auto-fit,minmax(50px,1fr))] gap-4 mt-12">
                     {!data.links ? (
                         <h2 className="text-center">Coming Soon...</h2>
                     ) : (
