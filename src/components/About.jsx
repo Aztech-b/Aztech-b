@@ -1,4 +1,5 @@
-import { Box, Chip, Divider } from "@mui/material";
+import { Badge } from "@/components/ui/badge";
+import { Divider } from "@/components/ui/Divider";
 import { User } from "lucide-react";
 import styles from "../styles/about.module.css";
 
@@ -22,12 +23,12 @@ function About() {
 
                     <div className={styles.skills}>
                         <h2 className="mt-4 mb-2">I am a </h2>
-                        <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2, justifyContent: "center" }}>
-                            <Chip label="Full-stack Developer"></Chip>
-                            <Chip label="Front-end JavaScript Developer"></Chip>
-                            <Chip label="Back-end NodeJS Developer"></Chip>
-                            <Chip label="Unity Game Developer"></Chip>
-                        </Box>
+                        <div className="flex flex-wrap gap-3 justify-center">
+                            <Badge variant="secondary">Full-stack Developer</Badge>
+                            <Badge variant="secondary">Front-end JavaScript Developer</Badge>
+                            <Badge variant="secondary">Back-end NodeJS Developer</Badge>
+                            <Badge variant="secondary">Unity Game Developer</Badge>
+                        </div>
                     </div>
                 </div>
             </div>
