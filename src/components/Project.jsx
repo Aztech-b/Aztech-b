@@ -1,6 +1,6 @@
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Chip from "@mui/material/Chip";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 /**
  * @typedef {Object} props
@@ -25,51 +25,40 @@ function Project({ data, alignInfo }) {
         alignInfo = "right";
     }
     return (
-        <Box sx={{ display: "grid", gap: 12, gridTemplateColumns: "1fr 1fr", marginTop: 8, marginBottom: 12 }}>
+        <div
+            className="grid gap-24 grid-cols-2 mt-16 mb-24"
+            sx={{ display: "grid", gap: 12, gridTemplateColumns: "1fr 1fr", marginTop: 8, marginBottom: 12 }}
+        >
             <img
                 className={alignInfo === "left" ? "order-2" : "order-1"}
                 src={data.screenshot}
                 alt={`screenshot of project ${data.title}`}
             />
-            <Box sx={{ order: alignInfo === "right" ? 2 : 1 }}>
+            <div className={cn(alignInfo === "right" ? "order-2" : "order-1")}>
                 <h1 className="text-center mb-0">{data.title}</h1>
-                <Box
-                    sx={{ display: "flex", flexWrap: "wrap", gap: 2, alignContent: "center", justifyContent: "center" }}
-                >
+                <div className="flex flex-wrap gap-4 align-middle justify-center">
                     {data.chips.map((chip, index) => (
-                        <Chip
-                            sx={{ "& > svg": { padding: 0.4 } }}
-                            size="small"
-                            key={index}
-                            icon={chip.icon}
-                            label={chip.label}
-                        />
+                        <Badge key={index}>
+                            {chip.icon}
+                            {chip.label}
+                        </Badge>
                     ))}
-                </Box>
+                </div>
                 <p className="description mt-3">{data.description}</p>
-                <Box
-                    sx={{
-                        display: "grid",
-                        gridTemplateColumns: "repeat(auto-fit, minmax(50px, 1fr))",
-                        gap: 2,
-                        marginTop: 6,
-                    }}
-                >
+                <div className="grid grid-cols-[repeat(auto-fit,minmax(50px, 1fr))] gap-4 mt-12">
                     {!data.links ? (
                         <h2 className="text-center">Coming Soon...</h2>
                     ) : (
                         <>
-                            <Button variant="outlined" href={data.links.code}>
+                            <Button variant="outline" href={data.links.code}>
                                 GitHub
                             </Button>
-                            <Button variant="contained" href={data.links.live}>
-                                See It Live
-                            </Button>
+                            <Button href={data.links.live}>See It Live</Button>
                         </>
                     )}
-                </Box>
-            </Box>
-        </Box>
+                </div>
+            </div>
+        </div>
     );
 }
 

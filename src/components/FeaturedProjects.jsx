@@ -1,6 +1,6 @@
-import { Divider } from "@/components/ui/Divider";
 import carbonXScreenshot from "../assets/CarbonX.png";
 import messagingAppScreenshot from "../assets/messagingApp.png";
+import { Divider } from "./Divider";
 import Project from "./Project";
 import { Aseprite, FramerMotion, MantineUI, PostgreSQL, React, SocketIO, Unity } from "./globals";
 

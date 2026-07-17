@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
-import { Divider } from "@/components/ui/Divider";
 import { User } from "lucide-react";
 import styles from "../styles/about.module.css";
+import { Divider } from "./Divider";
 
 function About() {
     return (
