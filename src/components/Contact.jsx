@@ -1,5 +1,4 @@
-import Box from "@mui/material/Box";
-import Divider from "@mui/material/Divider";
+import { Divider } from "@/components/ui/Divider";
 import { GitHub, Telegram } from "./globals";
 
 function Contact() {
@@ -16,14 +15,14 @@ function Contact() {
             </p>
             <p className="tracking-[0.75rem] text-center text-2xl text-gray-400 mb-10 mt-10">OR</p>
             <p className="description text-2xl text-center"> Reach me through social media:</p>
-            <Box sx={{ display: "flex", justifyContent: "center", gap: 4, height: 48, mt: 2, mb: 20 }}>
+            <div className="flex justify-center gap-8 h-12 mt-4 mb-40">
                 <a className={`h-full w-auto shrink-0`} href={Telegram.link}>
                     {Telegram.icon}
                 </a>
                 <a className={`h-full w-auto shrink-0`} href={GitHub.link}>
                     {GitHub.icon}
                 </a>
-            </Box>
+            </div>
         </>
     );
 }
