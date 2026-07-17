@@ -1,4 +1,4 @@
-import Divider from "@mui/material/Divider";
+import { Divider } from "@/components/ui/Divider";
 import carbonXScreenshot from "../assets/CarbonX.png";
 import messagingAppScreenshot from "../assets/messagingApp.png";
 import Project from "./Project";
