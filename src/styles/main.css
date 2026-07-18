@@ -1,6 +1,9 @@
 :root {
     --max-content-width: 1200px;
     --text-description: gray;
+    --navbar-max-width: 800px;
+    --navbar-height: 54px;
+    --my-accent: #63e;
 }
 
 #root,
@@ -65,4 +68,18 @@ h2 {
 
 .defaultText {
     color: var(--text);
+}
+
+.navBar {
+    position: fixed;
+    top: 20px;
+    z-index: 10;
+    max-width: var(--navbar-max-width);
+    height: var(--navbar-height);
+    width: 90%;
+    --muted: rgb(from var(--my-accent) r g b / 0.5);
+    border: 1px var(--muted) solid;
+    background-color: rgb(from var(--background) r g b / 0.5);
+    border-radius: 100vw;
+    backdrop-filter: blur(12px);
 }

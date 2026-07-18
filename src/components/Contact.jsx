@@ -3,7 +3,7 @@ import { GitHub, Telegram } from "./globals";
 
 function Contact() {
     return (
-        <div className="content">
+        <div className="content" id="contact">
             <Divider>
                 <h2>Contact</h2>
             </Divider>

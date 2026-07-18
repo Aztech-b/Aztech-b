@@ -3,12 +3,14 @@ import Contact from "./components/Contact";
 import FeaturedProjects from "./components/FeaturedProjects";
 import Footer from "./components/Footer";
 import Main from "./components/Main";
+import NavBar from "./components/NavBar";
 import ToolsAndSkills from "./components/ToolsAndSkills";
 
 function App() {
     return (
         <>
             <main>
+                <NavBar></NavBar>
                 <Main></Main>
                 <About></About>
                 <ToolsAndSkills></ToolsAndSkills>
