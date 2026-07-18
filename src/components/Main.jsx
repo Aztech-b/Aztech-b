@@ -4,7 +4,7 @@ import styles from "../styles/main.module.css";
 
 function Main() {
     const whiteColor = "#fff";
-    const darkColor = "#000";
+    const darkColor = "rgba(0,0,0,0)";
     return (
         <div className="relative backgroundContainer">
             <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_75%,var(--background)_40%,#63e_100%)]"></div>
