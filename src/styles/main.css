@@ -2,12 +2,6 @@
     --max-content-width: 1200px;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 #root,
 html,
 body {
@@ -19,10 +13,17 @@ body {
     min-height: 100vh;
 }
 
-#root {
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.backgroundContainer {
+    width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 h1,
@@ -50,8 +51,10 @@ h2 {
     }
 }
 
-main {
+.content {
     max-width: var(--max-content-width);
+    width: 100%;
+    margin: 0;
 }
 
 .description {
