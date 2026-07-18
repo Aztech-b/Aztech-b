@@ -3,7 +3,7 @@ import { GitHub, Telegram } from "./globals";
 
 function Contact() {
     return (
-        <>
+        <div className="content">
             <Divider>
                 <h2>Contact</h2>
             </Divider>
@@ -23,7 +23,7 @@ function Contact() {
                     {GitHub.icon}
                 </a>
             </div>
-        </>
+        </div>
     );
 }
 

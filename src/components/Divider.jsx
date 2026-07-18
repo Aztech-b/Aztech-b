@@ -17,7 +17,13 @@ export function Divider({ className, children, textAlign = "middle" }) {
     const hasChildren = children ? true : false;
     return (
         <>
-            <div className={cn(textAlignStyle({ textAlign, hasChildren: hasChildren ? "yes" : "no" }), className)}>
+            <div
+                className={cn(
+                    textAlignStyle({ textAlign, hasChildren: hasChildren ? "yes" : "no" }),
+                    className,
+                    "px-2",
+                )}
+            >
                 {hasChildren ? (
                     <>
                         <Separator className="h-1! bg-white"></Separator>

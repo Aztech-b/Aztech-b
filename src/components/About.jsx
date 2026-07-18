@@ -6,7 +6,7 @@ import { Divider } from "./Divider";
 function About() {
     return (
         <>
-            <div className={styles.info}>
+            <div className={`${styles.info} content`}>
                 <div className={styles.profile}>
                     <User size={"50%"} />
                 </div>
