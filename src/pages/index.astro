@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import Main from "../components/Main";
 import NavBar from "../components/NavBar";
 import ToolsAndSkills from "../components/ToolsAndSkills.astro";
+import { Toaster } from "../components/ui/sonner";
 import "../styles/global.css";
 import "../styles/main.css";
 ---
@@ -36,6 +37,7 @@ import "../styles/main.css";
                 <FeaturedProjects></FeaturedProjects>
                 <Contact></Contact>
                 <Footer></Footer>
+                <Toaster client:load></Toaster>
             </main>
     </div>
 </body>

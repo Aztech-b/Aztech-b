@@ -7,6 +7,7 @@ import {
 } from "@/src/ui/navigation-menu";
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useState } from "react";
+import { toast } from "sonner";
 
 function NavBar() {
 	const { scrollY } = useScroll();
@@ -37,8 +38,14 @@ function NavBar() {
 						</NavigationMenuLink>
 					</NavigationMenuItem>
 					<NavigationMenuItem>
-						<NavigationMenuLink className={navigationMenuTriggerStyle()} href="#">
-							My Poems
+						<NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+							<button
+								onClick={() =>
+									toast("Coming Soon...", { description: "Already working on it", position: "top-center" })
+								}
+							>
+								My Poems
+							</button>
 						</NavigationMenuLink>
 					</NavigationMenuItem>
 				</NavigationMenuList>
