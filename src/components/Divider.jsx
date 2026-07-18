@@ -1,5 +1,5 @@
-import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
+import { Separator } from "@/src/ui/separator";
 import { cva } from "class-variance-authority";
 
 const textAlignStyle = cva("w-full", {

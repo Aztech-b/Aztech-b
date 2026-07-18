@@ -1,9 +1,11 @@
 {
     "author": "Azkhan Bakdaulet",
     "dependencies": {
+        "@astrojs/react": "^6.0.1",
         "@fontsource-variable/geist": "^5.2.9",
         "@icons-pack/react-simple-icons": "^13.13.0",
         "@tailwindcss/vite": "^4.3.3",
+        "astro": "^7.1.1",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
         "country-flag-icons": "^1.6.20",
@@ -37,10 +39,10 @@
     "name": "personalwebsite",
     "private": true,
     "scripts": {
-        "build": "vite build",
-        "dev": "vite",
+        "build": "astro build",
+        "dev": "astro dev",
         "lint": "eslint .",
-        "preview": "vite preview"
+        "preview": "astro preview"
     },
     "type": "module",
     "version": "0.0.0"

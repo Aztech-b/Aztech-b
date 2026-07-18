@@ -1,10 +1,10 @@
-import About from "./components/About";
-import Contact from "./components/Contact";
-import FeaturedProjects from "./components/FeaturedProjects";
-import Footer from "./components/Footer";
-import Main from "./components/Main";
-import NavBar from "./components/NavBar";
-import ToolsAndSkills from "./components/ToolsAndSkills";
+import About from "./About";
+import Contact from "./Contact";
+import FeaturedProjects from "./FeaturedProjects";
+import Footer from "./Footer";
+import Main from "./Main";
+import NavBar from "./NavBar";
+import ToolsAndSkills from "./ToolsAndSkills";
 
 function App() {
     return (

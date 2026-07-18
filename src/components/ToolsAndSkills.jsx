@@ -1,5 +1,5 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Card, CardContent } from "@/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/src/ui/avatar";
+import { Card, CardContent } from "@/src/ui/card";
 import { KZ, RU, US } from "country-flag-icons/react/1x1";
 import { Divider } from "./Divider";
 import SkillCard from "./SkillCard";

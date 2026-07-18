@@ -1,4 +1,4 @@
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "@/src/ui/badge";
 import { User } from "lucide-react";
 import styles from "../styles/about.module.css";
 import { Divider } from "./Divider";

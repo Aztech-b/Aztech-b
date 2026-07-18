@@ -4,7 +4,7 @@ import {
     NavigationMenuLink,
     NavigationMenuList,
     navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
+} from "@/src/ui/navigation-menu";
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useState } from "react";
 

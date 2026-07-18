@@ -1,6 +1,6 @@
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Badge } from "@/src/ui/badge";
+import { Button } from "@/src/ui/button";
 
 /**
  * @typedef {Object} props
@@ -21,6 +21,7 @@ import { cn } from "@/lib/utils";
  * @param {props} data
  */
 function Project({ data, alignInfo }) {
+    console.log(data.screenshot);
     if (alignInfo === null) {
         alignInfo = "right";
     }
@@ -28,7 +29,7 @@ function Project({ data, alignInfo }) {
         <div className="grid gap-24 grid-cols-2 mt-16 mb-24">
             <div className={cn(alignInfo === "left" ? "order-2" : "order-1", "relative")}>
                 <div className={"absolute inset-0 bg-linear-to-b from-transparent to-black/70"}></div>
-                <img src={data.screenshot} alt={`screenshot of project ${data.title}`} />
+                <img src={data.screenshot.src} alt={`screenshot of project ${data.title}`} />
             </div>
             <div className={cn(alignInfo === "right" ? "order-2" : "order-1")}>
                 <h1 className="text-center mb-0">{data.title}</h1>
