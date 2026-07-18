@@ -23,7 +23,7 @@ const projectsData = [
 function FeaturedProjects() {
     return (
         <>
-            <Divider>Featured Projects</Divider>
+            <Divider className={"mt-20"}>Featured Projects</Divider>
             {projectsData.map((project, index) => (
                 <Project key={index} alignInfo={((index + 1) & 1) === 0 ? "right" : "left"} data={project}></Project>
             ))}
