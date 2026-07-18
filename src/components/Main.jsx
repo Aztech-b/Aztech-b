@@ -1,30 +1,34 @@
 import { ChevronDown } from "lucide-react";
-import { motion } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import styles from "../styles/main.module.css";
 import DecryptedText from "./DecryptedText";
 import SoftAurora from "./SoftAurora";
 
 function Main() {
+	const { scrollY } = useScroll();
+	const bgY = useTransform(scrollY, [0, 1000], [0, 300], { clamp: true });
 	const whiteColor = "#fff";
 	const darkColor = "rgba(0,0,0,0)";
 	return (
 		<div className="relative backgroundContainer">
-			<SoftAurora
-				speed={0.6}
-				scale={1.5}
-				brightness={1}
-				color1="#6633ee"
-				color2="#e100ff"
-				noiseFrequency={2.5}
-				noiseAmplitude={1}
-				bandHeight={0.5}
-				bandSpread={1}
-				octaveDecay={0.1}
-				layerOffset={0}
-				colorSpeed={1}
-				enableMouseInteraction
-				mouseInfluence={0.25}
-			/>
+			<motion.div className="absolute inset-0 -z-10 items-center" style={{ y: bgY }}>
+				<SoftAurora
+					speed={0.6}
+					scale={1.5}
+					brightness={1}
+					color1="#6633ee"
+					color2="#e100ff"
+					noiseFrequency={2.5}
+					noiseAmplitude={1}
+					bandHeight={0.5}
+					bandSpread={1}
+					octaveDecay={0.1}
+					layerOffset={0}
+					colorSpeed={1}
+					enableMouseInteraction
+					mouseInfluence={0.25}
+				/>
+			</motion.div>
 			<div className={`content`}>
 				<div className={styles.main}>
 					<motion.div

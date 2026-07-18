@@ -268,5 +268,5 @@ export default function SoftAurora({
 		mouseInfluence,
 	]);
 
-	return <div ref={containerRef} className="w-full h-full absolute inset-0 -z-10 items-center" />;
+	return <div ref={containerRef} className="w-full h-full" />;
 }
