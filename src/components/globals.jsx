@@ -1,5 +1,6 @@
 import {
 	SiAseprite,
+	SiAstro,
 	SiCloudflare,
 	SiCss,
 	SiExpress,
@@ -20,6 +21,7 @@ import {
 	SiTelegram,
 	SiUnity,
 	SiVercel,
+	SiVite,
 	SiWebpack,
 } from "@icons-pack/react-simple-icons";
 
@@ -53,3 +55,5 @@ export const Telegram = {
 	link: "https://t.me/s0mniaa",
 };
 export const Cloudflare = { icon: <SiCloudflare />, label: "Cloudflare" };
+export const Astro = { icon: <SiAstro />, label: "Astro" };
+export const Vite = { icon: <SiVite />, label: "Vite" };

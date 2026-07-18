@@ -18,7 +18,9 @@
 		"rules": {
 			"preset": "recommended",
 			"correctness": {
-				"noUndeclaredVariables": "error"
+				"noUndeclaredVariables": "error",
+				"noUnusedVariables": "off",
+				"noUnusedImports": "off"
 			},
 			"suspicious": {
 				"noArrayIndexKey": "off"
@@ -31,6 +33,9 @@
 		}
 	},
 	"css": {
+		"parser": {
+			"tailwindDirectives": true
+		},
 		"formatter": {
 			"enabled": false
 		},

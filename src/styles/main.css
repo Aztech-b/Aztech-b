@@ -86,3 +86,8 @@ h2 {
 	align-items: center;
 	justify-content: center;
 }
+
+#about, 
+#contact {
+    scroll-margin-top: 120px;
+}

@@ -1,9 +1,13 @@
 import { motion } from "motion/react";
-import styles from "../styles/icon.module.css";
 
 function Icon({ icon, label }) {
 	return (
-		<motion.div whileHover={{ scale: 1.1 }} className={styles.icon}>
+		<motion.div
+			whileHover={{ scale: 1.1 }}
+			className={
+				"flex justify-center items-center flex-col gap-1.5 hover:scale-[1.2] transition-all duration-75 ease-linear"
+			}
+		>
 			{icon}
 			{label}
 		</motion.div>

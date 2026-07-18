@@ -5,7 +5,7 @@ import FeaturedProjects from "../components/FeaturedProjects";
 import Footer from "../components/Footer";
 import Main from "../components/Main";
 import NavBar from "../components/NavBar";
-import ToolsAndSkills from "../components/ToolsAndSkills";
+import ToolsAndSkills from "../components/ToolsAndSkills.astro";
 import "../styles/global.css";
 import "../styles/main.css";
 ---
@@ -22,7 +22,7 @@ import "../styles/main.css";
         <meta charset="UTF-8" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>My Personal Website</title>
+        <title>My Personal Website</title> 
     </head>
 </head>
 <body>
@@ -30,7 +30,7 @@ import "../styles/main.css";
     <div id="root">
         <main>
                 <NavBar client:load></NavBar>
-                  <Main client:visible></Main>
+                <Main client:visible></Main>
                 <About></About>
                 <ToolsAndSkills></ToolsAndSkills>
                 <FeaturedProjects></FeaturedProjects>
