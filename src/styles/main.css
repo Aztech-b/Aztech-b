@@ -82,4 +82,7 @@ h2 {
     background-color: rgb(from var(--background) r g b / 0.5);
     border-radius: 100vw;
     backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
