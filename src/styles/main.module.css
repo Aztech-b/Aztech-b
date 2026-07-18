@@ -6,7 +6,7 @@
 
 .name {
 	padding: 40px 40px 48px 38px;
-	font-size: 5rem;
+	font-size: clamp(0.5rem, 10vw, 6rem);
 	box-sizing: content-box;
 	text-align: center;
 	position: relative;

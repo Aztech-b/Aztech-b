@@ -53,20 +53,7 @@ function Main() {
 			)}
 			<div className={`content`}>
 				<div className={styles.main}>
-					<motion.div
-						initial={{ "--color-1": whiteColor, "--color-2": whiteColor }}
-						animate={{
-							"--color-1": [whiteColor, whiteColor, whiteColor, darkColor, darkColor, whiteColor, whiteColor],
-							"--color-2": [darkColor, darkColor, whiteColor, whiteColor, whiteColor, whiteColor, darkColor],
-							transition: {
-								ease: "easeIn",
-								duration: 10,
-								repeatType: "loop",
-								repeat: Infinity,
-							},
-						}}
-						className={styles.box}
-					>
+					<div className={styles.box}>
 						<div className={styles.name}>
 							<DecryptedText
 								text="Bakdaulet"
@@ -77,7 +64,7 @@ function Main() {
 								parentClassName={styles.text}
 							/>
 						</div>
-					</motion.div>
+					</div>
 					<ChevronDown size={60}></ChevronDown>
 				</div>
 			</div>

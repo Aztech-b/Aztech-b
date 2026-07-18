@@ -27,13 +27,13 @@ function Project({ data, alignInfo }) {
 	}
 	return (
 		<>
-			<div className="grid grid-cols-[repeat(auto-fill,minmax(350px,1fr))]  gap-x-24 mt-16 mb-24">
-				<div className={"relative flex-1 h-max"}>
+			<div className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))]  gap-x-24 mt-16 mb-24">
+				<div className={"relative h-max"}>
 					<div className={"absolute inset-0 bg-linear-to-b from-transparent to-black/70"}></div>
 					<img src={data.screenshot.src} alt={`screenshot of project ${data.title}`} />
 				</div>
 				<div className={"flex-1"}>
-					<h1 className="text-center mb-0">{data.title}</h1>
+					<h1 className="text-center mb-0 text-[clamp(1rem,10vw,4rem)]">{data.title}</h1>
 					<div className="flex flex-wrap gap-4 align-middle justify-center">
 						{data.chips.map((chip, index) => (
 							<Badge key={index}>
@@ -43,7 +43,7 @@ function Project({ data, alignInfo }) {
 						))}
 					</div>
 					<p className="description mt-3">{data.description}</p>
-					<div className="grid grid-cols-[repeat(auto-fit,minmax(50px,1fr))] gap-4 mt-12">
+					<div className="grid grid-cols-[repeat(auto-fit,minmax(40px,1fr))] gap-4 mt-12">
 						{!data.links ? (
 							<h2 className="text-center">Coming Soon...</h2>
 						) : (

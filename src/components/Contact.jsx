@@ -9,7 +9,7 @@ function Contact() {
 			</Divider>
 			<p className="description text-2xl text-center mt-40">
 				My email:{" "}
-				<a className="block text-5xl text-[#9ca3af]" href="mailto:bakdaulet.azkhan@proton.me">
+				<a className="block text-[#9ca3af] text-[clamp(0.4rem,6vw,3rem)]" href="mailto:bakdaulet.azkhan@proton.me">
 					bakdaulet.azkhan@proton.me
 				</a>
 			</p>
