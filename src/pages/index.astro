@@ -1,11 +1,18 @@
 ---
-import App from "../components/App";
+import About from "../components/About";
+import Contact from "../components/Contact";
+import FeaturedProjects from "../components/FeaturedProjects";
+import Footer from "../components/Footer";
+import Main from "../components/Main";
+import NavBar from "../components/NavBar";
+import ToolsAndSkills from "../components/ToolsAndSkills";
 import "../styles/global.css";
 import "../styles/main.css";
 ---
 <html lang="en" class="dark">
 <head>
     <head>
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -13,7 +20,7 @@ import "../styles/main.css";
             href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
         />
         <meta charset="UTF-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>My Personal Website</title>
     </head>
@@ -21,7 +28,15 @@ import "../styles/main.css";
 <body>
     
     <div id="root">
-        <App></App>
+        <main>
+                <NavBar client:load></NavBar>
+                  <Main client:visible></Main>
+                <About></About>
+                <ToolsAndSkills></ToolsAndSkills>
+                <FeaturedProjects></FeaturedProjects>
+                <Contact></Contact>
+                <Footer></Footer>
+            </main>
     </div>
 </body>
 </html>

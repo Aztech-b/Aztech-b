@@ -1,29 +1,30 @@
 .box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 90vh;
-    flex-direction: column;
+	display: flex;
+	height: 90vh;
+	flex-direction: column;
 }
 
 .name {
-    padding: 40px 40px 48px 38px;
-    font-size: 3rem;
-    box-sizing: content-box;
-    text-align: center;
-    position: relative;
-    border: 6px solid transparent;
-    border-radius: 20px;
-
-    background-image:
-        linear-gradient(var(--background), var(--background)), linear-gradient(to right, var(--color-1), var(--color-2));
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
+	padding: 40px 40px 48px 38px;
+	font-size: 5rem;
+	box-sizing: content-box;
+	text-align: center;
+	position: relative;
+	border: 6px solid transparent;
+	border-radius: 20px;
+	margin-top: 250px;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
 .main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+	display: flex;
+	align-items: center;
+	justify-content: center; 
+	flex-direction: column;
+}
+
+.text {
+    cursor: pointer;
 }

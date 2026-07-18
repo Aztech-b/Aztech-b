@@ -1,24 +1,24 @@
 .info {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-top: 60px;
-    margin-bottom: 60px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	margin-top: 60px;
+	margin-bottom: 60px;
 }
 
 .profile {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .info p > span {
-    width: 40px;
-    display: inline-block;
+	width: 40px;
+	display: inline-block;
 }
 
 .skills {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }

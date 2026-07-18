@@ -1,0 +1,14 @@
+{
+    "tabWidth": 4,
+    "printWidth": 140,
+    "objectWrap": "collapse",
+    "plugins": ["prettier-plugin-astro"],
+    "overrides": [
+        {
+            "files": "*.astro",
+            "options": {
+                "parser": "astro"
+            }
+        }
+    ]
+}

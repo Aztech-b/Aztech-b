@@ -1,26 +1,26 @@
 import {
-    SiAseprite,
-    SiCloudflare,
-    SiCss,
-    SiExpress,
-    SiFramer,
-    SiGit,
-    SiGithub,
-    SiHtml5,
-    SiJavascript,
-    SiMantine,
-    SiNodedotjs,
-    SiPostgresql,
-    SiPrisma,
-    SiRailway,
-    SiReact,
-    SiSocketdotio,
-    SiSupabase,
-    SiTailwindcss,
-    SiTelegram,
-    SiUnity,
-    SiVercel,
-    SiWebpack,
+	SiAseprite,
+	SiCloudflare,
+	SiCss,
+	SiExpress,
+	SiFramer,
+	SiGit,
+	SiGithub,
+	SiHtml5,
+	SiJavascript,
+	SiMantine,
+	SiNodedotjs,
+	SiPostgresql,
+	SiPrisma,
+	SiRailway,
+	SiReact,
+	SiSocketdotio,
+	SiSupabase,
+	SiTailwindcss,
+	SiTelegram,
+	SiUnity,
+	SiVercel,
+	SiWebpack,
 } from "@icons-pack/react-simple-icons";
 
 export const HTML = { icon: <SiHtml5 />, label: "HTML" };
@@ -36,9 +36,9 @@ export const PostgreSQL = { icon: <SiPostgresql />, label: "PostgreSQL" };
 export const Prisma = { icon: <SiPrisma />, label: "Prisma" };
 export const git = { icon: <SiGit />, label: "git" };
 export const GitHub = {
-    icon: <SiGithub style={{ height: "100%", width: "auto" }} />,
-    label: "GitHub",
-    link: "https://github.com/Aztech-b/",
+	icon: <SiGithub style={{ height: "100%", width: "auto" }} />,
+	label: "GitHub",
+	link: "https://github.com/Aztech-b/",
 };
 export const Webpack = { icon: <SiWebpack />, label: "Webpack" };
 export const Supabase = { icon: <SiSupabase />, label: "Supabase" };
@@ -48,8 +48,8 @@ export const Unity = { icon: <SiUnity />, label: "Unity" };
 export const Aseprite = { icon: <SiAseprite />, label: "Aseprite" };
 export const TailwindCSS = { icon: <SiTailwindcss />, label: "TailwindCSS" };
 export const Telegram = {
-    icon: <SiTelegram style={{ height: "100%", width: "auto" }} />,
-    label: "Telegram",
-    link: "https://t.me/s0mniaa",
+	icon: <SiTelegram style={{ height: "100%", width: "auto" }} />,
+	label: "Telegram",
+	link: "https://t.me/s0mniaa",
 };
 export const Cloudflare = { icon: <SiCloudflare />, label: "Cloudflare" };
