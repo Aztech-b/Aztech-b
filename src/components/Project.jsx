@@ -25,15 +25,11 @@ function Project({ data, alignInfo }) {
         alignInfo = "right";
     }
     return (
-        <div
-            className="grid gap-24 grid-cols-2 mt-16 mb-24"
-            sx={{ display: "grid", gap: 12, gridTemplateColumns: "1fr 1fr", marginTop: 8, marginBottom: 12 }}
-        >
-            <img
-                className={alignInfo === "left" ? "order-2" : "order-1"}
-                src={data.screenshot}
-                alt={`screenshot of project ${data.title}`}
-            />
+        <div className="grid gap-24 grid-cols-2 mt-16 mb-24">
+            <div className={cn(alignInfo === "left" ? "order-2" : "order-1", "relative")}>
+                <div className={"absolute inset-0 bg-linear-to-b from-transparent to-black/70"}></div>
+                <img src={data.screenshot} alt={`screenshot of project ${data.title}`} />
+            </div>
             <div className={cn(alignInfo === "right" ? "order-2" : "order-1")}>
                 <h1 className="text-center mb-0">{data.title}</h1>
                 <div className="flex flex-wrap gap-4 align-middle justify-center">
