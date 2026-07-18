@@ -1,12 +1,10 @@
-import { useTheme } from "@mui/material";
 import { ChevronDown } from "lucide-react";
 import { motion } from "motion/react";
 import styles from "../styles/main.module.css";
 
 function Main() {
-    const theme = useTheme();
     const whiteColor = "#fff";
-    const darkColor = theme.palette.background.default;
+    const darkColor = "#000";
     return (
         <>
             <div className={styles.main}>

@@ -1,5 +1,7 @@
-import { Avatar, Box, Card, CardContent, Divider } from "@mui/material";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Card, CardContent } from "@/components/ui/card";
 import { KZ, RU, US } from "country-flag-icons/react/1x1";
+import { Divider } from "./Divider";
 import SkillCard from "./SkillCard";
 import {
     Aseprite,
@@ -45,31 +47,24 @@ function ToolsAndSkills() {
     return (
         <>
             <div className={"main"}>
-                <Divider sx={{ marginBottom: 4, marginTop: 8 }} textAlign="left">
+                <Divider className={"mb-8 mt-16"} textAlign="left">
                     <h2>Tools & Skills</h2>
                 </Divider>
-                <Box
-                    sx={{
-                        display: "grid",
-                        gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-                        justifyContent: "center",
-                        alignItems: "start",
-                        justifyItems: "center",
-                        width: "100%",
-                        gap: 4,
-                    }}
-                >
+                <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] justify-center align-baseline justify-items-center w-full gap-8">
                     {data.map((data, index) => (
                         <SkillCard label={data.label} items={data.items} key={index}></SkillCard>
                     ))}
-                </Box>
+                </div>
                 <div style={{ display: "flex", justifyContent: "center" }}>
-                    <Card sx={{ display: "flex", marginTop: 4, justifyContent: "center", width: "max-content" }}>
+                    <Card className={"flex mt-8 justify-center w-max  flex-row"}>
                         {languages.map((language, index) => {
                             return (
-                                <CardContent key={index} sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                                <CardContent className={"flex items-center gap-2"} key={index}>
                                     {language.label}
-                                    <Avatar sx={{ width: 24, height: 24 }}>{language.icon}</Avatar>
+                                    <Avatar className={"w-5 h-5 overflow-hidden"}>
+                                        <AvatarImage src={language.icon}></AvatarImage>
+                                        <AvatarFallback>{language.icon}</AvatarFallback>
+                                    </Avatar>
                                 </CardContent>
                             );
                         })}

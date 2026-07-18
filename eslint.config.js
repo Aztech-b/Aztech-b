@@ -23,7 +23,6 @@ export default [
             "react/jwt-key": "error",
             "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
             "react-compiler/react-compiler": "error",
-            "no-restricted-imports": ["error", { patterns: [{ regex: "^@mui/[^/]+$" }] }],
         },
         settings: { react: { version: "detect" } },
     },
