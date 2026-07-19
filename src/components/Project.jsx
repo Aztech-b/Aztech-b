@@ -1,6 +1,6 @@
-import { Badge } from "@/src/ui/badge";
-import { Button } from "@/src/ui/button";
-import { Separator } from "../ui/separator";
+import { Badge } from "@/src/components/ui/badge";
+import { Button } from "@/src/components/ui/button";
+import { Separator } from "./ui/separator";
 
 /**
  * @typedef {Object} props

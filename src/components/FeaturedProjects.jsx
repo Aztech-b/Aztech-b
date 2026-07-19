@@ -1,5 +1,5 @@
-import carbonXScreenshot from "../assets/CarbonX.png";
-import messagingAppScreenshot from "../assets/messagingApp.png";
+import carbonXScreenshot from "../assets/CarbonX.webp";
+import messagingAppScreenshot from "../assets/messagingApp.webp";
 import { Divider } from "./Divider";
 import Project from "./Project";
 import { Aseprite, FramerMotion, MantineUI, PostgreSQL, React, SocketIO, Unity } from "./globals";

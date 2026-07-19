@@ -1,5 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/src/ui/avatar";
-import { Card, CardContent } from "@/src/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/src/components/ui/avatar";
 import { KZ, RU, US } from "country-flag-icons/react/1x1";
 import { Divider } from "./Divider";
 import SkillCard from "./SkillCard";
@@ -28,6 +27,7 @@ import {
 	Vite,
 	Webpack,
 } from "./globals";
+import { Card, CardContent } from "./ui/card";
 
 const defaultSize = 36;
 
