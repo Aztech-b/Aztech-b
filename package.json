@@ -1,42 +1,45 @@
 {
-    "author": "Azkhan Bakdaulet",
-    "dependencies": {
-        "@emotion/react": "^11.14.0",
-        "@emotion/styled": "^11.14.1",
-        "@icons-pack/react-simple-icons": "^13.13.0",
-        "@mui/material": "^9.1.1",
-        "@tailwindcss/vite": "^4.3.1",
-        "country-flag-icons": "^1.6.18",
-        "lucide-react": "^1.3.0",
-        "motion": "^12.40.0",
-        "react": "^19.2.6",
-        "react-dom": "^19.2.6",
-        "tailwindcss": "^4.3.1"
-    },
-    "devDependencies": {
-        "@babel/core": "^7.29.0",
-        "@eslint/js": "^10.0.1",
-        "@rolldown/plugin-babel": "^0.2.3",
-        "@types/react": "^19.2.14",
-        "@types/react-dom": "^19.2.3",
-        "@vitejs/plugin-react": "^6.0.1",
-        "babel-plugin-react-compiler": "^1.0.0",
-        "eslint": "^10.3.0",
-        "eslint-plugin-react-compiler": "^19.1.0-rc.2",
-        "eslint-plugin-react-hooks": "^7.1.1",
-        "eslint-plugin-react-refresh": "^0.5.2",
-        "globals": "^17.6.0",
-        "vite": "^8.0.12"
-    },
-    "homepage": "https://personal-website.bakdaulet-azkhan.workers.dev/",
-    "name": "personalwebsite",
-    "private": true,
-    "scripts": {
-        "build": "vite build",
-        "dev": "vite",
-        "lint": "eslint .",
-        "preview": "vite preview"
-    },
-    "type": "module",
-    "version": "0.0.0"
+  "author": "Azkhan Bakdaulet",
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@icons-pack/react-simple-icons": "^13.13.0",
+    "@mui/material": "^9.1.1",
+    "@tailwindcss/vite": "^4.3.1",
+    "country-flag-icons": "^1.6.18",
+    "lucide-react": "^1.3.0",
+    "motion": "^12.40.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "tailwindcss": "^4.3.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "@cloudflare/vite-plugin": "^1.42.2",
+    "@eslint/js": "^10.0.1",
+    "@rolldown/plugin-babel": "^0.2.3",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "babel-plugin-react-compiler": "^1.0.0",
+    "eslint": "^10.3.0",
+    "eslint-plugin-react-compiler": "^19.1.0-rc.2",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.6.0",
+    "vite": "^8.0.12",
+    "wrangler": "^4.104.0"
+  },
+  "homepage": "https://personal-website.bakdaulet-azkhan.workers.dev/",
+  "name": "personalwebsite",
+  "private": true,
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "lint": "eslint .",
+    "preview": "npm run build && wrangler dev",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "type": "module",
+  "version": "0.0.0"
 }
