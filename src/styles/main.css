@@ -3,7 +3,6 @@
     --text-description: gray;
     --navbar-max-width: 800px;
     --navbar-height: 54px;
-    --my-accent: #6633ee;
 }
 
 #root,
@@ -12,7 +11,9 @@ body {
     margin: 0;
 }
 
-body {
+body,
+#root,
+main {
     min-width: 100vw;
     min-height: 100vh;
 }
@@ -52,10 +53,12 @@ h2 {
     cursor: pointer;
 }
 
+.heroHeading {
+    font-size: 5rem;
+    font-size: clamp(1rem, 8vw, 6rem);
+}
+
 h1 {
-    /* font-size: 56px; */
-    letter-spacing: -1.68px;
-    /* margin: 32px 0; */
     @media (max-width: var(--max-content-width)) {
         font-size: 36px;
         margin: 20px 0;
