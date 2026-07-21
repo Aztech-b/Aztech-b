@@ -1,0 +1,34 @@
+---
+
+import fs from 'node:fs';
+import path from 'node:path';
+
+// 1. Define the directory path (e.g., inside 'src/content/my-texts')
+const dirPath = path.join(process.cwd(), 'src/assets/poems');
+
+// 2. Read all filenames in the folder
+const filenames = fs.readdirSync(dirPath);
+
+// 3. Filter for .txt files and read their raw content
+const filesData = filenames
+  .map((filename) => {
+    const filePath = path.join(dirPath, filename);
+    
+    // 'utf-8' ensures it reads as a plain string, keeping all newlines (\n) intact
+    const content = fs.readFileSync(filePath, 'utf-8');
+
+    return {
+      filename,
+      content,
+    };
+});
+---
+  <h1>Text Files</h1>
+
+  {filesData.map((file) => (
+    <article class="file-card">
+      <h2>{file.filename}</h2>
+      
+      <pre style="white-space: pre-wrap; font-family: inherit;">{file.content}</pre>
+    </article>
+  ))}

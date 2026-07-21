@@ -1,28 +1,14 @@
 .box {
-	display: flex;
-	height: 90vh;
-	flex-direction: column;
-}
-
-.name {
-	padding: 40px 40px 48px 38px;
-	font-size: clamp(0.5rem, 10vw, 6rem);
-	box-sizing: content-box;
-	text-align: center;
-	position: relative;
-	border: 6px solid transparent;
-	border-radius: 20px;
-	margin-top: 250px;
-    font-family: "Spline Sans Mono", monospace;
-    font-optical-sizing: auto;
-    font-style: normal;
+    display: flex;
+    height: 90vh;
+    flex-direction: column;
 }
 
 .main {
-	display: flex;
-	align-items: center;
-	justify-content: center; 
-	flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .text {

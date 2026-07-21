@@ -1,23 +1,19 @@
-import About from "./About";
-import Contact from "./Contact";
-import FeaturedProjects from "./FeaturedProjects";
+import { Outlet } from "react-router";
+import { Toaster } from "sonner";
 import Footer from "./Footer";
-import Main from "./Main";
 import NavBar from "./NavBar";
-import ToolsAndSkills from "./ToolsAndSkills";
+import ScrollToHash from "./ScrollToHash";
 
 function App() {
-	return (
-		<main>
-			<NavBar></NavBar>
-			<Main></Main>
-			<About></About>
-			<ToolsAndSkills></ToolsAndSkills>
-			<FeaturedProjects></FeaturedProjects>
-			<Contact></Contact>
-			<Footer></Footer>
-		</main>
-	);
+    return (
+        <main>
+            <ScrollToHash></ScrollToHash>
+            <NavBar></NavBar>
+            <Outlet></Outlet>
+            <Footer></Footer>
+            <Toaster></Toaster>
+        </main>
+    );
 }
 
 export default App;
