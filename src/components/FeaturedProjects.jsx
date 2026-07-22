@@ -1,5 +1,5 @@
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import carbonXScreenshot from "../assets/CarbonX.webp";
 import messagingAppScreenshot from "../assets/messagingApp.webp";
 import { Divider } from "./Divider";
@@ -46,6 +46,40 @@ const projectsData = [
             "Just a simple messaging app with basic functionality(it is probably not working because of the free plan limitations in PaaS)",
         links: { code: "https://github.com/Aztech-b/MessagingApp", live: "https://messaging-app-opal-one.vercel.app/" },
     },
+    {
+        title: "CarbonX",
+        screenshot: carbonXScreenshot,
+        chips: [Unity, Aseprite],
+        description: "Game about saving the nature and Carbon Dioxide emission issues in the world",
+    },
+    {
+        title: "Messaging App",
+        screenshot: messagingAppScreenshot,
+        chips: [React, MantineUI, FramerMotion, PostgreSQL, SocketIO],
+        description:
+            "Just a simple messaging app with basic functionality(it is probably not working because of the free plan limitations in PaaS)",
+        links: { code: "https://github.com/Aztech-b/MessagingApp", live: "https://messaging-app-opal-one.vercel.app/" },
+    },
+    {
+        title: "CarbonX",
+        screenshot: carbonXScreenshot,
+        chips: [Unity, Aseprite],
+        description: "Game about saving the nature and Carbon Dioxide emission issues in the world",
+    },
+    {
+        title: "Messaging App",
+        screenshot: messagingAppScreenshot,
+        chips: [React, MantineUI, FramerMotion, PostgreSQL, SocketIO],
+        description:
+            "Just a simple messaging app with basic functionality(it is probably not working because of the free plan limitations in PaaS)",
+        links: { code: "https://github.com/Aztech-b/MessagingApp", live: "https://messaging-app-opal-one.vercel.app/" },
+    },
+    {
+        title: "CarbonX",
+        screenshot: carbonXScreenshot,
+        chips: [Unity, Aseprite],
+        description: "Game about saving the nature and Carbon Dioxide emission issues in the world",
+    },
 ];
 
 /**
@@ -70,6 +104,12 @@ function FeaturedProjects() {
     // 240 is top-60 of tailwind
     const { scrollYProgress } = useScroll({ target: container, offset: ["start 240px", "end 500px"] });
 
+    const [singleProjectHeight, setSingleProjectHeight] = useState(null);
+    useEffect(() => {
+        setSingleProjectHeight(container.current ? container.current.offsetHeight / projectsData.length : null);
+        console.log(container.current ? container.current.offsetHeight / projectsData.length : null);
+    }, []);
+
     useMotionValueEvent(scrollYProgress, "change", (latest) => {
         const clampedProgress = Math.min(Math.max(latest, 0), 0.999);
         // At latest = 1.0 (100% scroll): 1.0 * projectsData.length would produce
@@ -79,7 +119,6 @@ function FeaturedProjects() {
 
         if (projectsData[index] && data !== projectsData[index]) {
             setData(projectsData[index]);
-            console.log("data changed to index:", index);
         }
     });
 
@@ -119,7 +158,6 @@ function FeaturedProjects() {
                                     </div>
                                 </CardContent>
                                 <CardFooter className="grid grid-cols-[repeat(auto-fit,minmax(min-content,1fr))] gap-4">
-                                    {/* <div className="grid grid-cols-[repeat(auto-fit,minmax(40px,1fr))] gap-4 mt-12"> */}
                                     {!data.links ? (
                                         <h2 className="text-center">Coming Soon...</h2>
                                     ) : (
@@ -135,11 +173,14 @@ function FeaturedProjects() {
                             </motion.div>
                         </AnimatePresence>
                     </MotionCard>
-                    <div className="w-3 h-full relative">
+                    <div className="w-3 h-full relative border-2 border-border">
                         <motion.div
                             style={{ scaleY: scrollYProgress, height: "370px", originY: 0 }}
-                            className="sticky self-stretch top-60 min-h-full max-h-full w-full bg-amber-400"
+                            className="sticky self-stretch top-60 min-h-full max-h-full w-full bg-my-accent"
                         ></motion.div>
+                        {projectsData.map((data, index) => (
+                            <Mark key={index} distanceFromTop={`${(index / projectsData.length) * 100}%`}></Mark>
+                        ))}
                     </div>
                 </div>
 
@@ -150,6 +191,16 @@ function FeaturedProjects() {
                 </div>
             </div>
         </div>
+    );
+}
+
+function Mark({ distanceFromTop }) {
+    return (
+        <div
+            // className="absolute z-10 h-1 bg-[mix-colors(in_oklab,var(--my-accent),white)"
+            className="absolute z-10 h-1 bg-white -left-1 -right-1"
+            style={{ top: distanceFromTop }}
+        ></div>
     );
 }
 
