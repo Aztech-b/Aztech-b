@@ -59,10 +59,8 @@ h2 {
 }
 
 h1 {
-    @media (max-width: var(--max-content-width)) {
-        font-size: 36px;
-        margin: 20px 0;
-    }
+    font-size: 36px;
+    margin: 20px 0;
 }
 h2 {
     font-size: 24px;

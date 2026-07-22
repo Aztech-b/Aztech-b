@@ -24,62 +24,6 @@ const projectsData = [
         chips: [Unity, Aseprite],
         description: "Game about saving the nature and Carbon Dioxide emission issues in the world",
     },
-    {
-        title: "Messaging App",
-        screenshot: messagingAppScreenshot,
-        chips: [React, MantineUI, FramerMotion, PostgreSQL, SocketIO],
-        description:
-            "Just a simple messaging app with basic functionality(it is probably not working because of the free plan limitations in PaaS)",
-        links: { code: "https://github.com/Aztech-b/MessagingApp", live: "https://messaging-app-opal-one.vercel.app/" },
-    },
-    {
-        title: "CarbonX",
-        screenshot: carbonXScreenshot,
-        chips: [Unity, Aseprite],
-        description: "Game about saving the nature and Carbon Dioxide emission issues in the world",
-    },
-    {
-        title: "Messaging App",
-        screenshot: messagingAppScreenshot,
-        chips: [React, MantineUI, FramerMotion, PostgreSQL, SocketIO],
-        description:
-            "Just a simple messaging app with basic functionality(it is probably not working because of the free plan limitations in PaaS)",
-        links: { code: "https://github.com/Aztech-b/MessagingApp", live: "https://messaging-app-opal-one.vercel.app/" },
-    },
-    {
-        title: "CarbonX",
-        screenshot: carbonXScreenshot,
-        chips: [Unity, Aseprite],
-        description: "Game about saving the nature and Carbon Dioxide emission issues in the world",
-    },
-    {
-        title: "Messaging App",
-        screenshot: messagingAppScreenshot,
-        chips: [React, MantineUI, FramerMotion, PostgreSQL, SocketIO],
-        description:
-            "Just a simple messaging app with basic functionality(it is probably not working because of the free plan limitations in PaaS)",
-        links: { code: "https://github.com/Aztech-b/MessagingApp", live: "https://messaging-app-opal-one.vercel.app/" },
-    },
-    {
-        title: "CarbonX",
-        screenshot: carbonXScreenshot,
-        chips: [Unity, Aseprite],
-        description: "Game about saving the nature and Carbon Dioxide emission issues in the world",
-    },
-    {
-        title: "Messaging App",
-        screenshot: messagingAppScreenshot,
-        chips: [React, MantineUI, FramerMotion, PostgreSQL, SocketIO],
-        description:
-            "Just a simple messaging app with basic functionality(it is probably not working because of the free plan limitations in PaaS)",
-        links: { code: "https://github.com/Aztech-b/MessagingApp", live: "https://messaging-app-opal-one.vercel.app/" },
-    },
-    {
-        title: "CarbonX",
-        screenshot: carbonXScreenshot,
-        chips: [Unity, Aseprite],
-        description: "Game about saving the nature and Carbon Dioxide emission issues in the world",
-    },
 ];
 
 /**
@@ -100,6 +44,7 @@ function FeaturedProjects() {
      * @type {[data]} data
      */
     const [data, setData] = useState(projectsData[0]);
+    const [activeIndex, setActiveIndex] = useState();
     const container = useRef(null);
     // 240 is top-60 of tailwind
     const { scrollYProgress } = useScroll({ target: container, offset: ["start 240px", "end 500px"] });
@@ -113,6 +58,7 @@ function FeaturedProjects() {
 
         if (projectsData[index] && data !== projectsData[index]) {
             setData(projectsData[index]);
+            setActiveIndex(index);
         }
     });
 
@@ -162,7 +108,6 @@ function FeaturedProjects() {
                                             <Button href={data.links.live}>See It Live</Button>
                                         </>
                                     )}
-                                    {/* </div> */}
                                 </CardFooter>
                             </motion.div>
                         </AnimatePresence>
@@ -173,7 +118,11 @@ function FeaturedProjects() {
                             className="sticky self-stretch top-60 min-h-full max-h-full w-full bg-my-accent"
                         ></motion.div>
                         {projectsData.map((data, index) => (
-                            <Mark key={index} distanceFromTop={`${(index / projectsData.length) * 100}%`}></Mark>
+                            <Mark
+                                key={index}
+                                distanceFromTop={`${(index / projectsData.length) * 100}%`}
+                                isActive={index === activeIndex}
+                            ></Mark>
                         ))}
                     </div>
                 </div>
@@ -188,12 +137,14 @@ function FeaturedProjects() {
     );
 }
 
-function Mark({ distanceFromTop }) {
+function Mark({ distanceFromTop, isActive }) {
     return (
-        <div
+        <motion.div
+            animate={{ scaleX: isActive ? 1.5 : 1, scaleY: isActive ? 1.8 : 1 }}
+            transition={{ duration: 0.15, ease: [0.4, 0, 0.2, 1] }}
             className="absolute z-10 h-1 bg-[color-mix(in_oklab,var(--my-accent)_50%,white_50%)] -left-1 -right-1"
             style={{ top: distanceFromTop }}
-        ></div>
+        ></motion.div>
     );
 }
 
