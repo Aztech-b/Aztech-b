@@ -1,5 +1,5 @@
-import { AnimatePresence, motion, useScroll } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
+import { useRef, useState } from "react";
 import carbonXScreenshot from "../assets/CarbonX.webp";
 import messagingAppScreenshot from "../assets/messagingApp.webp";
 import { Divider } from "./Divider";
@@ -69,34 +69,17 @@ function FeaturedProjects() {
     const container = useRef(null);
     // 240 is top-60 of tailwind
     const { scrollYProgress } = useScroll({ target: container, offset: ["start 240px", "end 500px"] });
-    // end end -- end start
-    // start end -- end start
+    const percentage = 1 / projectsData.length;
 
-    useEffect(() => {
-        const containerHeight = container ? container.current.offsetHeight : null;
-        console.log(containerHeight);
-        console.log(containerHeight / projectsData.length);
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        const allCards = Array.from(document.querySelectorAll(".projectCard"));
-                        const cardIndex = allCards.indexOf(entry.target);
+    useMotionValueEvent(scrollYProgress, "change", (latest) => {
+        for (let i = 0; i < projectsData.length; i++) {
+            if (data !== projectsData[i] && latest >= percentage * i && latest <= percentage * (i + 1)) {
+                setData(projectsData[i]);
+                console.log("data changed");
+            }
+        }
+    });
 
-                        if (cardIndex !== -1) {
-                            setData(projectsData[cardIndex]);
-                        }
-                    }
-                });
-            },
-            { rootMargin: "-50% 0px -50% 0px" },
-        );
-        const projectCards = document.querySelectorAll(".projectCard");
-        projectCards.forEach((projectCard) => observer.observe(projectCard));
-        return () => {
-            observer.disconnect();
-        };
-    }, []);
     return (
         <div className="content">
             <Divider className={"mt-20"}>Featured Projects</Divider>
