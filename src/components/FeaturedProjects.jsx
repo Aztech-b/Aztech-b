@@ -1,5 +1,5 @@
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import carbonXScreenshot from "../assets/CarbonX.webp";
 import messagingAppScreenshot from "../assets/messagingApp.webp";
 import { Divider } from "./Divider";
@@ -104,12 +104,6 @@ function FeaturedProjects() {
     // 240 is top-60 of tailwind
     const { scrollYProgress } = useScroll({ target: container, offset: ["start 240px", "end 500px"] });
 
-    const [singleProjectHeight, setSingleProjectHeight] = useState(null);
-    useEffect(() => {
-        setSingleProjectHeight(container.current ? container.current.offsetHeight / projectsData.length : null);
-        console.log(container.current ? container.current.offsetHeight / projectsData.length : null);
-    }, []);
-
     useMotionValueEvent(scrollYProgress, "change", (latest) => {
         const clampedProgress = Math.min(Math.max(latest, 0), 0.999);
         // At latest = 1.0 (100% scroll): 1.0 * projectsData.length would produce
@@ -197,8 +191,7 @@ function FeaturedProjects() {
 function Mark({ distanceFromTop }) {
     return (
         <div
-            // className="absolute z-10 h-1 bg-[mix-colors(in_oklab,var(--my-accent),white)"
-            className="absolute z-10 h-1 bg-white -left-1 -right-1"
+            className="absolute z-10 h-1 bg-[color-mix(in_oklab,var(--my-accent)_50%,white_50%)] -left-1 -right-1"
             style={{ top: distanceFromTop }}
         ></div>
     );
