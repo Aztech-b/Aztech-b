@@ -69,14 +69,17 @@ function FeaturedProjects() {
     const container = useRef(null);
     // 240 is top-60 of tailwind
     const { scrollYProgress } = useScroll({ target: container, offset: ["start 240px", "end 500px"] });
-    const percentage = 1 / projectsData.length;
 
     useMotionValueEvent(scrollYProgress, "change", (latest) => {
-        for (let i = 0; i < projectsData.length; i++) {
-            if (data !== projectsData[i] && latest >= percentage * i && latest <= percentage * (i + 1)) {
-                setData(projectsData[i]);
-                console.log("data changed");
-            }
+        const clampedProgress = Math.min(Math.max(latest, 0), 0.999);
+        // At latest = 1.0 (100% scroll): 1.0 * projectsData.length would produce
+        // index 2 for a length-2 array, which is out of bounds.
+        // Clamping latest to 0.999 keeps the max index at 1.
+        const index = Math.floor(clampedProgress * projectsData.length);
+
+        if (projectsData[index] && data !== projectsData[index]) {
+            setData(projectsData[index]);
+            console.log("data changed to index:", index);
         }
     });
 
@@ -134,7 +137,7 @@ function FeaturedProjects() {
                     </MotionCard>
                     <div className="w-3 h-full relative">
                         <motion.div
-                            style={{ scaleY: scrollYProgress, height: "300px", originY: 0 }}
+                            style={{ scaleY: scrollYProgress, height: "370px", originY: 0 }}
                             className="sticky self-stretch top-60 min-h-full max-h-full w-full bg-amber-400"
                         ></motion.div>
                     </div>
