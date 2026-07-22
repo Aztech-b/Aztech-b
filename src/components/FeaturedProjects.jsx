@@ -72,13 +72,12 @@ function FeaturedProjects() {
                         transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.35 }}
                         className={"overflow-hidden flex-1 h-max self-center"}
                     >
-                        <AnimatePresence mode="popLayout">
+                        <AnimatePresence mode="wait">
                             <motion.div
                                 key={data.title}
-                                layout="position"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -10 }}
                                 transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
                             >
                                 <CardHeader>
