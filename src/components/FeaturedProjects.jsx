@@ -1,5 +1,5 @@
-import { AnimatePresence, motion } from "motion/react";
-import { useEffect, useState } from "react";
+import { AnimatePresence, motion, useScroll } from "motion/react";
+import { useEffect, useRef, useState } from "react";
 import carbonXScreenshot from "../assets/CarbonX.webp";
 import messagingAppScreenshot from "../assets/messagingApp.webp";
 import { Divider } from "./Divider";
@@ -44,6 +44,11 @@ function FeaturedProjects() {
      * @type {[data]} data
      */
     const [data, setData] = useState(projectsData[0]);
+    const container = useRef(null);
+    // 240 is top-60 of tailwind
+    const { scrollYProgress } = useScroll({ target: container, offset: ["start 240px", "end 500px"] });
+    // end end -- end start
+    // start end -- end start
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -70,7 +75,7 @@ function FeaturedProjects() {
     return (
         <div className="content">
             <Divider className={"mt-20"}>Featured Projects</Divider>
-            <div className="p-9 flex items-start gap-9">
+            <div className="p-9 flex items-start gap-9" ref={container}>
                 <MotionCard
                     layout
                     transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.35 }}
@@ -123,6 +128,20 @@ function FeaturedProjects() {
                         <Project key={index} data={project}></Project>
                     ))}
                 </div>
+                <motion.div
+                    style={{
+                        scaleY: scrollYProgress,
+                        position: "fixed",
+                        top: 0,
+                        right: 0,
+                        bottom: 0,
+                        width: 10,
+                        originY: 0,
+                    }}
+                    className="h-full bg-amber-400"
+                >
+                    {scrollYProgress}
+                </motion.div>
             </div>
         </div>
     );
