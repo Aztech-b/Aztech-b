@@ -24,6 +24,28 @@ const projectsData = [
         chips: [Unity, Aseprite],
         description: "Game about saving the nature and Carbon Dioxide emission issues in the world",
     },
+    {
+        title: "Messaging App",
+        screenshot: messagingAppScreenshot,
+        chips: [React, MantineUI, FramerMotion, PostgreSQL, SocketIO],
+        description:
+            "Just a simple messaging app with basic functionality(it is probably not working because of the free plan limitations in PaaS)",
+        links: { code: "https://github.com/Aztech-b/MessagingApp", live: "https://messaging-app-opal-one.vercel.app/" },
+    },
+    {
+        title: "CarbonX",
+        screenshot: carbonXScreenshot,
+        chips: [Unity, Aseprite],
+        description: "Game about saving the nature and Carbon Dioxide emission issues in the world",
+    },
+    {
+        title: "Messaging App",
+        screenshot: messagingAppScreenshot,
+        chips: [React, MantineUI, FramerMotion, PostgreSQL, SocketIO],
+        description:
+            "Just a simple messaging app with basic functionality(it is probably not working because of the free plan limitations in PaaS)",
+        links: { code: "https://github.com/Aztech-b/MessagingApp", live: "https://messaging-app-opal-one.vercel.app/" },
+    },
 ];
 
 /**
@@ -51,6 +73,9 @@ function FeaturedProjects() {
     // start end -- end start
 
     useEffect(() => {
+        const containerHeight = container ? container.current.offsetHeight : null;
+        console.log(containerHeight);
+        console.log(containerHeight / projectsData.length);
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
