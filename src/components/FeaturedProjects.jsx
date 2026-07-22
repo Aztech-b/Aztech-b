@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import carbonXScreenshot from "../assets/CarbonX.webp";
 import messagingAppScreenshot from "../assets/messagingApp.webp";
@@ -6,6 +7,7 @@ import Project from "./Project";
 import { Aseprite, FramerMotion, MantineUI, PostgreSQL, React, SocketIO, Unity } from "./globals";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
 
 const projectsData = [
     {
@@ -36,11 +38,13 @@ const projectsData = [
  * @property {{code: String, live: String}} links
  * @property {{icon: SVGSVGElement, label: String}[]} chips
  */
+const MotionCard = motion.create(Card);
 function FeaturedProjects() {
     /**
      * @type {[data]} data
      */
     const [data, setData] = useState(projectsData[0]);
+
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
@@ -62,35 +66,58 @@ function FeaturedProjects() {
         return () => {
             observer.disconnect();
         };
-    });
+    }, []);
     return (
         <div className="content">
             <Divider className={"mt-20"}>Featured Projects</Divider>
-            <div className="p-9 flex items-start">
-                <div className="sticky top-60 w-[150%]">
-                    <h1 className="text-center mb-0 text-[clamp(1rem,9vw,4rem)]">{data.title}</h1>
-                    <div className="flex flex-wrap gap-4 align-middle justify-center">
-                        {data.chips.map((chip, index) => (
-                            <Badge key={index}>
-                                {chip.icon}
-                                {chip.label}
-                            </Badge>
-                        ))}
-                    </div>
-                    <p>{data.description}</p>
-                    <div className="grid grid-cols-[repeat(auto-fit,minmax(40px,1fr))] gap-4 mt-12">
-                        {!data.links ? (
-                            <h2 className="text-center">Coming Soon...</h2>
-                        ) : (
-                            <>
-                                <Button variant="outline" href={data.links.code}>
-                                    GitHub
-                                </Button>
-                                <Button href={data.links.live}>See It Live</Button>
-                            </>
-                        )}
-                    </div>
-                </div>
+            <div className="p-9 flex items-start gap-9">
+                <MotionCard
+                    layout
+                    transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.35 }}
+                    className={"sticky top-60 w-[130%] overflow-hidden"}
+                >
+                    <AnimatePresence mode="popLayout">
+                        <motion.div
+                            key={data.title}
+                            layout="position"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
+                        >
+                            <CardHeader>
+                                <CardTitle className="text-center mb-0 text-[clamp(1rem,4vw,3.5rem)]">
+                                    {data.title}
+                                </CardTitle>
+                                <CardDescription>{data.description}</CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <div className="flex flex-wrap gap-4 align-middle justify-center my-5">
+                                    {data.chips.map((chip, index) => (
+                                        <Badge key={index}>
+                                            {chip.icon}
+                                            {chip.label}
+                                        </Badge>
+                                    ))}
+                                </div>
+                            </CardContent>
+                            <CardFooter className="grid grid-cols-[repeat(auto-fit,minmax(min-content,1fr))] gap-4">
+                                {/* <div className="grid grid-cols-[repeat(auto-fit,minmax(40px,1fr))] gap-4 mt-12"> */}
+                                {!data.links ? (
+                                    <h2 className="text-center">Coming Soon...</h2>
+                                ) : (
+                                    <>
+                                        <Button variant="outline" href={data.links.code}>
+                                            GitHub
+                                        </Button>
+                                        <Button href={data.links.live}>See It Live</Button>
+                                    </>
+                                )}
+                                {/* </div> */}
+                            </CardFooter>
+                        </motion.div>
+                    </AnimatePresence>
+                </MotionCard>
                 <div className="flex flex-col gap-20 projectsContainer">
                     {projectsData.map((project, index) => (
                         <Project key={index} data={project}></Project>
