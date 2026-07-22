@@ -44,12 +44,16 @@ function FeaturedProjects() {
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
-                for (let i = 0; i < entries.length; i++) {
-                    const entry = entries[i];
-                    setData(projectsData[i]);
-                    console.log("entry " + i);
-                    console.log(projectsData[i]);
-                }
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const allCards = Array.from(document.querySelectorAll(".projectCard"));
+                        const cardIndex = allCards.indexOf(entry.target);
+
+                        if (cardIndex !== -1) {
+                            setData(projectsData[cardIndex]);
+                        }
+                    }
+                });
             },
             { rootMargin: "-50% 0px -50% 0px" },
         );
@@ -87,7 +91,7 @@ function FeaturedProjects() {
                         )}
                     </div>
                 </div>
-                <div className="flex flex-col gap-20">
+                <div className="flex flex-col gap-20 projectsContainer">
                     {projectsData.map((project, index) => (
                         <Project key={index} data={project}></Project>
                     ))}
