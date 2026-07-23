@@ -2,15 +2,15 @@
     /* p-9 flex items-start gap-4 */
     padding: 2.25rem;
     display: flex;
+    height: 300vh;
     align-items: start;
     gap: 1rem;
 }
 
 .card {
     /* sticky top-60 w-[130%] h-full flex gap-5 */
-    position: sticky;
     top: 15rem;
-    width: 130%;
+    flex: 2;
     display: flex;
     gap: 1.25rem;
 }
@@ -75,4 +75,18 @@
     background-color: color-mix(in oklab, var(--my-accent) 50%, white 50%);
     left: -0.25rem;
     right: -0.25rem;
+}
+
+@media (max-width: 768px) {
+    .mainContainer {
+        display: block;
+    }
+
+    .card {
+        top: 5rem;
+    }
+
+    .scrollBarContainer {
+        display: none;
+    }
 }

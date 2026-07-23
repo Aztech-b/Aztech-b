@@ -1,10 +1,9 @@
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import carbonXScreenshot from "../assets/CarbonX.webp";
 import messagingAppScreenshot from "../assets/messagingApp.webp";
 import styles from "../styles/featuredProjects.module.css";
 import { Divider } from "./Divider";
-import Project from "./Project";
 import { Aseprite, FramerMotion, MantineUI, PostgreSQL, React, SocketIO, Unity } from "./globals";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
@@ -63,72 +62,88 @@ function FeaturedProjects() {
         }
     });
 
+    useEffect(() => {
+        projectsData.forEach((project) => {
+            const img = new Image();
+            img.src = project.screenshot;
+        });
+    }, []);
+
     return (
         <div className="content">
             <Divider className={"mt-20"}>Featured Projects</Divider>
             <div className={styles.mainContainer} ref={container}>
-                <div className={styles.card}>
-                    <MotionCard
-                        layout
-                        transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.35 }}
-                        className={styles.motionCard}
-                    >
-                        <AnimatePresence mode="wait">
+                <div className="sticky top-60 flex items-start">
+                    <div className={styles.card}>
+                        <MotionCard
+                            layout
+                            transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.2 }}
+                            className={styles.motionCard}
+                        >
+                            <AnimatePresence mode="wait" initial={false}>
+                                <motion.div
+                                    key={data.title}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -10 }}
+                                    transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
+                                >
+                                    <CardHeader>
+                                        <CardTitle className={styles.cardTitle}>{data.title}</CardTitle>
+                                        <CardDescription>{data.description}</CardDescription>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <div className={styles.cardContent}>
+                                            {data.chips.map((chip, index) => (
+                                                <Badge key={index}>
+                                                    {chip.icon}
+                                                    {chip.label}
+                                                </Badge>
+                                            ))}
+                                        </div>
+                                    </CardContent>
+                                    <CardFooter className={styles.cardFooter}>
+                                        {!data.links ? (
+                                            <h2 className="text-center">Coming Soon...</h2>
+                                        ) : (
+                                            <>
+                                                <Button variant="outline" href={data.links.code}>
+                                                    GitHub
+                                                </Button>
+                                                <Button href={data.links.live}>See It Live</Button>
+                                            </>
+                                        )}
+                                    </CardFooter>
+                                </motion.div>
+                            </AnimatePresence>
+                        </MotionCard>
+                        <div className={styles.scrollBarContainer}>
                             <motion.div
-                                key={data.title}
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -10 }}
-                                transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
-                            >
-                                <CardHeader>
-                                    <CardTitle className={styles.cardTitle}>{data.title}</CardTitle>
-                                    <CardDescription>{data.description}</CardDescription>
-                                </CardHeader>
-                                <CardContent>
-                                    <div className={styles.cardContent}>
-                                        {data.chips.map((chip, index) => (
-                                            <Badge key={index}>
-                                                {chip.icon}
-                                                {chip.label}
-                                            </Badge>
-                                        ))}
-                                    </div>
-                                </CardContent>
-                                <CardFooter className={styles.CardFooter}>
-                                    {!data.links ? (
-                                        <h2 className="text-center">Coming Soon...</h2>
-                                    ) : (
-                                        <>
-                                            <Button variant="outline" href={data.links.code}>
-                                                GitHub
-                                            </Button>
-                                            <Button href={data.links.live}>See It Live</Button>
-                                        </>
-                                    )}
-                                </CardFooter>
-                            </motion.div>
-                        </AnimatePresence>
-                    </MotionCard>
-                    <div className={styles.scrollBarContainer}>
-                        <motion.div
-                            style={{ scaleY: scrollYProgress, originY: 0 }}
-                            className={styles.scrollBar}
-                        ></motion.div>
-                        {projectsData.map((data, index) => (
-                            <Mark
-                                key={index}
-                                distanceFromTop={`${(index / projectsData.length) * 100}%`}
-                                isActive={index === activeIndex}
-                            ></Mark>
-                        ))}
+                                style={{ scaleY: scrollYProgress, originY: 0 }}
+                                className={styles.scrollBar}
+                            ></motion.div>
+                            {projectsData.map((data, index) => (
+                                <Mark
+                                    key={index}
+                                    distanceFromTop={`${(index / projectsData.length) * 100}%`}
+                                    isActive={index === activeIndex}
+                                ></Mark>
+                            ))}
+                        </div>
                     </div>
-                </div>
 
-                <div className="flex flex-col gap-20 projectsContainer">
-                    {projectsData.map((project, index) => (
-                        <Project key={index} data={project}></Project>
-                    ))}
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={data.title}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
+                            className="p-3 flex-3 w-full h-auto"
+                        >
+                            <img src={data.screenshot} alt="" />
+                        </motion.div>
+                    </AnimatePresence>
                 </div>
             </div>
         </div>
@@ -139,7 +154,7 @@ function Mark({ distanceFromTop, isActive }) {
     return (
         <motion.div
             animate={{ scaleX: isActive ? 1.5 : 1, scaleY: isActive ? 1.8 : 1 }}
-            transition={{ duration: 0.15, ease: [0.4, 0, 0.2, 1] }}
+            transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
             className={styles.mark}
             style={{ top: distanceFromTop }}
         ></motion.div>
