@@ -18,7 +18,6 @@ main {
     min-height: 100vh;
 }
 
-.main,
 main {
     display: flex;
     align-items: center;
