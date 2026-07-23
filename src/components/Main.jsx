@@ -1,5 +1,6 @@
 import { ChevronDown } from "lucide-react";
 import { motion, useScroll, useTransform } from "motion/react";
+import { useMemo } from "react";
 import styles from "../styles/main.module.css";
 import DecryptedText from "./DecryptedText";
 import SoftAurora from "./SoftAurora";
@@ -7,7 +8,7 @@ import SoftAurora from "./SoftAurora";
 function Main() {
     const { scrollY } = useScroll();
     const bgY = useTransform(scrollY, [0, 1000], [0, 300], { clamp: true });
-    const isWebGLon = () => {
+    const isWebGLon = useMemo(() => {
         try {
             const canvas = document.createElement("canvas");
             canvas.id = "webglTestCanvas";
@@ -18,14 +19,15 @@ function Main() {
         } catch (e) {
             return false;
         } finally {
-            try {
-                document.removeChild(document.querySelector("#webglTestCanvas"));
-            } catch {}
+            const canvas = document.querySelector("#webglTestCanvas");
+            if (canvas) {
+                document.removeChild(canvas);
+            }
         }
-    };
+    }, []);
     return (
         <div className="relative backgroundContainer">
-            {isWebGLon() ? (
+            {isWebGLon ? (
                 <motion.div className="absolute inset-0 -z-10 items-center" style={{ y: bgY }}>
                     <SoftAurora
                         speed={0.6}
@@ -46,7 +48,8 @@ function Main() {
                 </motion.div>
             ) : (
                 <div
-                    className={`absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_75%,var(--background)_40%,#63e_100%)]`}
+                    className={`absolute inset-0 -z-10 h-full w-full items-center px-5 py-24
+                         [background:radial-gradient(125%_125%_at_50%_75%,var(--background)_40%,#63e_100%)]`}
                 ></div>
             )}
             <div className={`content`}>
@@ -57,9 +60,8 @@ function Main() {
                                 text="Bakdaulet"
                                 speed={60}
                                 maxIterations={20}
-                                animateOn="click"
+                                animateOn="view"
                                 clickMode="toggle"
-                                sequential
                                 parentClassName="heading"
                             />
                         </div>
