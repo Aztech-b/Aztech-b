@@ -1,5 +1,5 @@
 import { createContext, Suspense, useContext, useRef, useState } from "react";
-import { useOutlet } from "react-router";
+import { useLocation, useOutlet } from "react-router";
 import Curtain from "./Curtain";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
@@ -11,26 +11,22 @@ export const useTransitionContext = () => useContext(TransitionContextProvider);
 function App() {
     const outlet = useOutlet();
     const [isTransitioning, setIsTransitioning] = useState(false);
-    let _onEnterAnimationEnd = useRef(() => {});
-    const onEnterAnimationEnd = (callback) => {
-        _onEnterAnimationEnd.current = callback;
-    };
+    const address = useRef("");
+    const setAddress = (value) => (address.current = value);
+    const location = useLocation();
 
+    // can merge is isTransitioning and address into one variable
     return (
         <main>
-            <TransitionContextProvider value={{ isTransitioning, setIsTransitioning, onEnterAnimationEnd }}>
+            <TransitionContextProvider value={{ isTransitioning, setIsTransitioning, setAddress }}>
                 <ScrollToHash></ScrollToHash>
                 <NavBar></NavBar>
 
-                {isTransitioning ? (
+                {isTransitioning && location.pathname !== address ? (
                     <Curtain
-                        onEnterAnimationEnd={() => {
-                            _onEnterAnimationEnd.current();
-                            console.log("onAnimationEnterEnd");
-                        }}
+                        to={address}
                         onExitAnimationEnd={() => {
                             setIsTransitioning(false);
-                            console.log("onExitAnimationEnd");
                         }}
                     ></Curtain>
                 ) : null}

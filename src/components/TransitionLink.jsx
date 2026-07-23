@@ -1,9 +1,7 @@
-import { useNavigate } from "react-router";
 import { useTransitionContext } from "./App";
 
 function TransitionLink({ to, children }) {
-    const { setIsTransitioning, onEnterAnimationEnd } = useTransitionContext();
-    const navigate = useNavigate();
+    const { setIsTransitioning, setAddress } = useTransitionContext();
 
     return (
         <a
@@ -11,9 +9,7 @@ function TransitionLink({ to, children }) {
             onClick={(e) => {
                 e.preventDefault();
                 setIsTransitioning(true);
-                onEnterAnimationEnd(() => {
-                    navigate(to);
-                });
+                setAddress(to);
             }}
         >
             {children}

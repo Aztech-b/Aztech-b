@@ -4,11 +4,9 @@ import { RouterProvider, createBrowserRouter } from "react-router";
 import App from "./components/App";
 import Index from "./pages/Index";
 // import MyPoems from "./pages/MyPoems";
-import { lazy } from "react";
+import MyPoems from "./pages/MyPoems";
 import "./styles/global.css";
 import "./styles/main.css";
-
-const MyPoems = lazy(() => import("./pages/MyPoems"));
 
 const router = createBrowserRouter([
     {
@@ -16,7 +14,14 @@ const router = createBrowserRouter([
         element: <App />,
         children: [
             { index: true, element: <Index /> },
-            { path: "/my-poems", element: <MyPoems /> },
+            {
+                path: "/my-poems",
+                element: <MyPoems></MyPoems>,
+                // lazy: async () => {
+                //     const MyPoems = await import("./pages/MyPoems");
+                //     return { Component: MyPoems.default };
+                // },
+            },
         ],
     },
 ]);

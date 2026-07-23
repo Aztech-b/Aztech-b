@@ -1,18 +1,42 @@
 import { AnimatePresence, motion, useAnimation } from "motion/react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate, useNavigation } from "react-router";
 
-function Curtain({ onEnterAnimationEnd = () => {}, onExitAnimationEnd = () => {} }) {
+function Curtain({
+    onEnterAnimationEnd = () => {},
+    onExitAnimationEnd = () => {},
+    onEnterAnimationStart = () => {},
+    onExitAnimationStart = () => {},
+    to,
+}) {
     const controls = useAnimation();
+    const navigation = useNavigation();
+    const navigate = useNavigate();
+
+    /** @type {[transitionState: "none" | "enter" | "idle" | "exit", setTransitionState: CallableFunction]} */
+    const [transitionState, setTransitionState] = useState();
 
     useEffect(() => {
-        async function transition() {
+        (async () => {
+            setTransitionState("enter");
+            onEnterAnimationStart();
             await controls.start({ scaleX: 1, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } });
             onEnterAnimationEnd();
-            await controls.start({ scaleX: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } });
-            onExitAnimationEnd();
+            setTransitionState("idle");
+            navigate(to.current);
+        })();
+    }, []);
+
+    useEffect(() => {
+        if (navigation.state === "idle" && transitionState === "idle") {
+            (async () => {
+                await controls.start({ scaleX: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } });
+                onExitAnimationEnd();
+                setTransitionState("none");
+            })();
         }
-        transition();
-    }, [controls, onEnterAnimationEnd, onExitAnimationEnd]);
+    }, [controls, navigation.state, transitionState]);
+
     return (
         <>
             <AnimatePresence mode="wait">

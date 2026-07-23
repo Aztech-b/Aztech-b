@@ -45,7 +45,7 @@ function NavBar() {
                     <NavigationMenuItem>
                         <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
                             {/* <Link to="/my-poems">My Poems</Link> */}
-                            <TransitionLink to={"/my-poems"}>My Poems</TransitionLink>
+                            <TransitionLink to="/my-poems">My Poems</TransitionLink>
                         </NavigationMenuLink>
                     </NavigationMenuItem>
                 </NavigationMenuList>
