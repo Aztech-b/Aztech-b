@@ -55,16 +55,14 @@ function Main() {
             <div className={`content`}>
                 <div className={styles.main}>
                     <div className={styles.box}>
-                        <div className={styles.name}>
-                            <DecryptedText
-                                text="Bakdaulet"
-                                speed={60}
-                                maxIterations={20}
-                                animateOn="view"
-                                clickMode="toggle"
-                                parentClassName="heading"
-                            />
-                        </div>
+                        <DecryptedText
+                            text="Bakdaulet"
+                            speed={60}
+                            maxIterations={20}
+                            animateOn="view"
+                            clickMode="toggle"
+                            parentClassName="heading"
+                        />
                     </div>
                     <ChevronDown size={60}></ChevronDown>
                 </div>
