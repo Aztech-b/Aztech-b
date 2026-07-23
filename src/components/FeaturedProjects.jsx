@@ -2,6 +2,7 @@ import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/
 import { useRef, useState } from "react";
 import carbonXScreenshot from "../assets/CarbonX.webp";
 import messagingAppScreenshot from "../assets/messagingApp.webp";
+import styles from "../styles/featuredProjects.module.css";
 import { Divider } from "./Divider";
 import Project from "./Project";
 import { Aseprite, FramerMotion, MantineUI, PostgreSQL, React, SocketIO, Unity } from "./globals";
@@ -65,12 +66,12 @@ function FeaturedProjects() {
     return (
         <div className="content">
             <Divider className={"mt-20"}>Featured Projects</Divider>
-            <div className="p-9 flex items-start gap-4" ref={container}>
-                <div className={"sticky top-60 w-[130%] h-full flex gap-5"}>
+            <div className={styles.mainContainer} ref={container}>
+                <div className={styles.card}>
                     <MotionCard
                         layout
                         transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.35 }}
-                        className={"overflow-hidden flex-1 h-max self-center"}
+                        className={styles.motionCard}
                     >
                         <AnimatePresence mode="wait">
                             <motion.div
@@ -81,13 +82,11 @@ function FeaturedProjects() {
                                 transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
                             >
                                 <CardHeader>
-                                    <CardTitle className="text-center mb-0 text-[clamp(1rem,4vw,3.5rem)]">
-                                        {data.title}
-                                    </CardTitle>
+                                    <CardTitle className={styles.cardTitle}>{data.title}</CardTitle>
                                     <CardDescription>{data.description}</CardDescription>
                                 </CardHeader>
                                 <CardContent>
-                                    <div className="flex flex-wrap gap-4 align-middle justify-center my-5">
+                                    <div className={styles.cardContent}>
                                         {data.chips.map((chip, index) => (
                                             <Badge key={index}>
                                                 {chip.icon}
@@ -96,7 +95,7 @@ function FeaturedProjects() {
                                         ))}
                                     </div>
                                 </CardContent>
-                                <CardFooter className="grid grid-cols-[repeat(auto-fit,minmax(min-content,1fr))] gap-4">
+                                <CardFooter className={styles.CardFooter}>
                                     {!data.links ? (
                                         <h2 className="text-center">Coming Soon...</h2>
                                     ) : (
@@ -111,10 +110,10 @@ function FeaturedProjects() {
                             </motion.div>
                         </AnimatePresence>
                     </MotionCard>
-                    <div className="w-3 h-full relative border-2 border-border">
+                    <div className={styles.scrollBarContainer}>
                         <motion.div
-                            style={{ scaleY: scrollYProgress, height: "370px", originY: 0 }}
-                            className="sticky self-stretch top-60 min-h-full max-h-full w-full bg-my-accent"
+                            style={{ scaleY: scrollYProgress, originY: 0 }}
+                            className={styles.scrollBar}
                         ></motion.div>
                         {projectsData.map((data, index) => (
                             <Mark
@@ -141,7 +140,7 @@ function Mark({ distanceFromTop, isActive }) {
         <motion.div
             animate={{ scaleX: isActive ? 1.5 : 1, scaleY: isActive ? 1.8 : 1 }}
             transition={{ duration: 0.15, ease: [0.4, 0, 0.2, 1] }}
-            className="absolute z-10 h-1 bg-[color-mix(in_oklab,var(--my-accent)_50%,white_50%)] -left-1 -right-1"
+            className={styles.mark}
             style={{ top: distanceFromTop }}
         ></motion.div>
     );
