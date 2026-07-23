@@ -4,7 +4,6 @@ import { RouterProvider, createBrowserRouter } from "react-router";
 import App from "./components/App";
 import Index from "./pages/Index";
 // import MyPoems from "./pages/MyPoems";
-import MyPoems from "./pages/MyPoems";
 import "./styles/global.css";
 import "./styles/main.css";
 
@@ -16,11 +15,10 @@ const router = createBrowserRouter([
             { index: true, element: <Index /> },
             {
                 path: "/my-poems",
-                element: <MyPoems></MyPoems>,
-                // lazy: async () => {
-                //     const MyPoems = await import("./pages/MyPoems");
-                //     return { Component: MyPoems.default };
-                // },
+                lazy: async () => {
+                    const MyPoems = await import("./pages/MyPoems");
+                    return { Component: MyPoems.default };
+                },
             },
         ],
     },

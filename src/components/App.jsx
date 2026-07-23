@@ -14,7 +14,6 @@ function App() {
     const [targetLocation, setTargetLocation] = useState(null);
     const location = useLocation();
 
-    // can merge is isTransitioning and address into one variable
     return (
         <main>
             <TransitionContextProvider value={{ setTargetLocation }}>
