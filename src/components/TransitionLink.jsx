@@ -1,15 +1,14 @@
 import { useTransitionContext } from "./App";
 
 function TransitionLink({ to, children }) {
-    const { setIsTransitioning, setAddress } = useTransitionContext();
+    const { setTargetLocation } = useTransitionContext();
 
     return (
         <a
             href={to}
             onClick={(e) => {
                 e.preventDefault();
-                setIsTransitioning(true);
-                setAddress(to);
+                setTargetLocation(to);
             }}
         >
             {children}
