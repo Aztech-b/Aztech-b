@@ -12,7 +12,14 @@ const router = createBrowserRouter([
         path: "/",
         element: <App />,
         children: [
-            { index: true, element: <Index /> },
+            {
+                index: true,
+                element: <Index />,
+                lazy: async () => {
+                    const Index = await import("./pages/Index");
+                    return { Component: Index.default };
+                },
+            },
             {
                 path: "/my-poems",
                 lazy: async () => {
