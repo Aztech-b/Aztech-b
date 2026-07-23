@@ -26,25 +26,21 @@ function NavBar() {
                 <NavigationMenuList>
                     <NavigationMenuItem>
                         <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                            {/* <Link to={"/"}>Home</Link> */}
-                            <TransitionLink to={"/"}>Home</TransitionLink>
+                            <TransitionLink to="/">Home</TransitionLink>
                         </NavigationMenuLink>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
                         <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                            {/* <Link to={"/#contact"}>Contact</Link> */}
-                            <TransitionLink to={"/"}>Contact</TransitionLink>
+                            <TransitionLink to="/">Contact</TransitionLink>
                         </NavigationMenuLink>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
                         <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                            {/* <Link to={"/#about"}>About</Link> */}
-                            <TransitionLink to={"/"}>About</TransitionLink>
+                            <TransitionLink to="/">About</TransitionLink>
                         </NavigationMenuLink>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
                         <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                            {/* <Link to="/my-poems">My Poems</Link> */}
                             <TransitionLink to="/my-poems">My Poems</TransitionLink>
                         </NavigationMenuLink>
                     </NavigationMenuItem>

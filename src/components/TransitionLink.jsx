@@ -1,10 +1,11 @@
 import { useTransitionContext } from "./App";
 
-function TransitionLink({ to, children }) {
+function TransitionLink({ to, children, ...props }) {
     const { setTargetLocation } = useTransitionContext();
 
     return (
         <a
+            {...props}
             href={to}
             onClick={(e) => {
                 e.preventDefault();
