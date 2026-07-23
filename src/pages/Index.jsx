@@ -1,5 +1,6 @@
 import About from "../components/About";
 import Contact from "../components/Contact";
+import Curtain from "../components/Curtain";
 import FeaturedProjects from "../components/FeaturedProjects";
 import Main from "../components/Main";
 import ToolsAndSkills from "../components/ToolsAndSkills";
@@ -16,4 +17,4 @@ function Index() {
     );
 }
 
-export default Index;
+export default Curtain(Index);

@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import Curtain from "../components/Curtain";
 import { ListItem, ListItems, ListProvider } from "../components/kibo-ui/list";
 import Hero from "../components/poems/Hero";
 
@@ -29,4 +30,4 @@ function MyPoems() {
     );
 }
 
-export default MyPoems;
+export default Curtain(MyPoems);
