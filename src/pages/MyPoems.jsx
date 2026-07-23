@@ -1,5 +1,4 @@
 import { Link } from "react-router";
-import Curtain from "../components/Curtain";
 import { ListItem, ListItems, ListProvider } from "../components/kibo-ui/list";
 import Hero from "../components/poems/Hero";
 
@@ -18,8 +17,8 @@ function MyPoems() {
                 </div>
                 <ListProvider>
                     <ListItems>
-                        {allPoems.map((poem) => (
-                            <Link to="#" key={poem._filepath} className={"cursor-pointer"}>
+                        {allPoems.map((poem, index) => (
+                            <Link to="#" key={index} className={"cursor-pointer"}>
                                 <ListItem className={"cursor-pointer"}>{poem.title}</ListItem>
                             </Link>
                         ))}
@@ -30,4 +29,4 @@ function MyPoems() {
     );
 }
 
-export default Curtain(MyPoems);
+export default MyPoems;
