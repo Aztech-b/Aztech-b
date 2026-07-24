@@ -18,7 +18,7 @@ function MyPoemsIndex() {
                     >
                         <ListItem>
                             <ListTitle
-                                className={`poem-title text-2xl/[1] border-2 border-red-500`}
+                                className={`poem-title text-2xl/[1]`}
                                 style={{
                                     viewTransitionName: `poem-title-${poem.id}`,
                                     viewTransitionClass: "poem-title-transition",
