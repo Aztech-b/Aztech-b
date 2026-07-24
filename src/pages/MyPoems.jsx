@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { ListItem, ListItems, ListProvider } from "../components/kibo-ui/list";
+import { List, ListContent, ListItem, ListTitle } from "../components/list";
 import Hero from "../components/poems/Hero";
 
 const jsonModules = import.meta.glob("../assets/poems/*.json", { eager: true });
@@ -15,15 +15,20 @@ function MyPoems() {
                 <div className="flex justify-center items-center h-[50vh]">
                     <h1 className="heroHeading">Poems written by me</h1>
                 </div>
-                <ListProvider>
-                    <ListItems>
-                        {allPoems.map((poem, index) => (
-                            <Link to="#" key={index} className={"cursor-pointer"}>
-                                <ListItem className={"cursor-pointer"}>{poem.title}</ListItem>
-                            </Link>
-                        ))}
-                    </ListItems>
-                </ListProvider>
+                <List className="grid grid-flow-col gap-4 items-baseline">
+                    {allPoems.map((poem, index) => (
+                        <Link key={index} to="#" className={"cursor-pointer"}>
+                            <ListItem>
+                                <ListTitle>{poem.title}</ListTitle>
+                                {poem.preview ? (
+                                    <ListContent>
+                                        <pre>{poem.preview}</pre>
+                                    </ListContent>
+                                ) : null}
+                            </ListItem>
+                        </Link>
+                    ))}
+                </List>
             </div>
         </div>
     );
