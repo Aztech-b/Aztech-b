@@ -7,7 +7,12 @@ const MotionListTitle = motion.create(ListTitle);
 
 function MyPoemsIndex() {
     return (
-        <div className="content">
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            className="content"
+        >
             <div className="flex justify-center items-center h-[50vh]">
                 <h1 className="heroHeading">Poems written by me</h1>
             </div>
@@ -27,7 +32,7 @@ function MyPoemsIndex() {
                     </Link>
                 ))}
             </List>
-        </div>
+        </motion.div>
     );
 }
 
