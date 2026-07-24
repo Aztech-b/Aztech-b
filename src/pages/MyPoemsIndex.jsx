@@ -1,6 +1,9 @@
+import { motion } from "motion/react";
 import { Link } from "react-router";
 import poemsData from "../assets/poems.json";
 import { List, ListContent, ListItem, ListTitle } from "../components/list";
+
+const MotionListTitle = motion.create(ListTitle);
 
 function MyPoemsIndex() {
     return (
@@ -12,7 +15,9 @@ function MyPoemsIndex() {
                 {poemsData.map((poem) => (
                     <Link key={poem.id} to={`/my-poems/${poem.id}`} className={"cursor-pointer shrink-0 grow"}>
                         <ListItem>
-                            <ListTitle>{poem.title}</ListTitle>
+                            <MotionListTitle layoutId={`title-${poem.id}`} className="inline-block">
+                                {poem.title}
+                            </MotionListTitle>
                             {poem.preview ? (
                                 <ListContent>
                                     <pre>{poem.preview}</pre>

@@ -5,7 +5,9 @@ function MyPoems() {
     return (
         <div className="backgroundContainer min-h-screen">
             <Hero></Hero>
+            {/* <AnimatePresence mode="wait"> */}
             <Outlet></Outlet>
+            {/* </AnimatePresence> */}
         </div>
     );
 }
