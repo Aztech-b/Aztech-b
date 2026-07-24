@@ -1,30 +1,11 @@
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import carbonXScreenshot from "../assets/CarbonX.webp";
-import messagingAppScreenshot from "../assets/messagingApp.webp";
+import projectsData from "../assets/Projects.js";
 import styles from "../styles/featuredProjects.module.css";
 import { Divider } from "./Divider";
-import { Aseprite, FramerMotion, MantineUI, PostgreSQL, React, SocketIO, Unity } from "./globals";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
-
-const projectsData = [
-    {
-        title: "Messaging App",
-        screenshot: messagingAppScreenshot,
-        chips: [React, MantineUI, FramerMotion, PostgreSQL, SocketIO],
-        description:
-            "Just a simple messaging app with basic functionality(it is probably not working because of the free plan limitations in PaaS)",
-        links: { code: "https://github.com/Aztech-b/MessagingApp", live: "https://messaging-app-opal-one.vercel.app/" },
-    },
-    {
-        title: "CarbonX",
-        screenshot: carbonXScreenshot,
-        chips: [Unity, Aseprite],
-        description: "Game about saving the nature and Carbon Dioxide emission issues in the world",
-    },
-];
 
 /**
  * @typedef {Object} props
@@ -40,9 +21,7 @@ const projectsData = [
  */
 const MotionCard = motion.create(Card);
 function FeaturedProjects() {
-    /**
-     * @type {[data]} data
-     */
+    /** @type {[data]} data */
     const [data, setData] = useState(projectsData[0]);
     const [activeIndex, setActiveIndex] = useState();
     const container = useRef(null);
@@ -75,19 +54,16 @@ function FeaturedProjects() {
             <div className={styles.mainContainer} ref={container}>
                 <div className="sticky top-60 flex items-start">
                     <div className={styles.card}>
-                        <MotionCard
-                            layout
-                            transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.2 }}
-                            className={styles.motionCard}
-                        >
-                            <AnimatePresence mode="wait" initial={false}>
-                                <motion.div
-                                    key={`${data.title} title`}
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -10 }}
-                                    transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
-                                >
+                        <AnimatePresence mode="wait" initial={false}>
+                            <MotionCard
+                                key={`${data.title} - card`}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ y: -20, opacity: 0 }}
+                                transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.2 }}
+                                className={styles.motionCard}
+                            >
+                                <div>
                                     <CardHeader>
                                         <CardTitle className={styles.cardTitle}>{data.title}</CardTitle>
                                         <CardDescription>{data.description}</CardDescription>
@@ -114,9 +90,9 @@ function FeaturedProjects() {
                                             </>
                                         )}
                                     </CardFooter>
-                                </motion.div>
-                            </AnimatePresence>
-                        </MotionCard>
+                                </div>
+                            </MotionCard>
+                        </AnimatePresence>
                         <div className={styles.scrollBarContainer}>
                             <motion.div
                                 style={{ scaleY: scrollYProgress, originY: 0 }}

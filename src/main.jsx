@@ -22,6 +22,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/my-poems",
+                // TODO: to make my poems page
                 lazy: async () => {
                     const MyPoems = await import("./pages/MyPoems");
                     return { Component: MyPoems.default };

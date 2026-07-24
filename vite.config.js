@@ -7,6 +7,7 @@ import { defineConfig } from "vite";
 
 // https://vite.dev/config/
 export default defineConfig({
-	resolve: { alias: { "@": path.resolve(__dirname, "./") } },
-	plugins: [react(), babel({ presets: [reactCompilerPreset()] }), tailwindcss(), cloudflare()],
+    resolve: { alias: { "@": path.resolve(__dirname, "./") } },
+    plugins: [react(), babel({ presets: [reactCompilerPreset()] }), tailwindcss(), cloudflare()],
+    server: { port: 3000 },
 });
