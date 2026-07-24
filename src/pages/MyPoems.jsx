@@ -9,7 +9,7 @@ function MyPoems() {
     return (
         <div className="backgroundContainer min-h-screen">
             <Hero></Hero>
-            <AnimatePresence mode="wait">{outlet && cloneElement(outlet, { key: location.pathname })} </AnimatePresence>
+            <AnimatePresence>{outlet && cloneElement(outlet, { key: location.pathname })} </AnimatePresence>
         </div>
     );
 }
