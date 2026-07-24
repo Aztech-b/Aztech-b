@@ -27,15 +27,14 @@ function Curtain({ onComplete, to }) {
             animate={{ scaleX: 1 }}
             exit={{ scaleX: 0 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed z-40 top-0 left-0 w-full h-screen bg-my-accent origin-left pointer-events-none"
+            className="fixed z-60 top-0 left-0 w-full h-screen bg-my-accent origin-left pointer-events-auto touch-none"
             style={{ transformOrigin: phase === "covering" ? "left" : "right" }}
             onAnimationComplete={() => {
-                // Handle phase transitions strictly AFTER keyframe animations finish
                 if (phase === "covering") {
                     navigate(to);
                     setPhase("waiting");
                 } else if (phase === "uncovering") {
-                    onComplete(); // Safe to unmount now!
+                    onComplete();
                 }
             }}
         />
