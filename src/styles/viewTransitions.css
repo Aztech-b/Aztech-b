@@ -1,8 +1,3 @@
-html {
-    --poem-title-sm: 1.5rem;
-    --poem-title-lg: 3rem;
-}
-
 @view-transition {
     navigation: auto;
 }
@@ -28,4 +23,46 @@ html {
 ::view-transition-new(.poem-title-transition),
 ::view-transition-old(.poem-title-transition) {
     height: 100%;
+}
+
+::view-transition-new(.poem-content-class):only-child {
+    animation: 300ms cubic-bezier(0.075, 0.82, 0.165, 1) both slide-in;
+}
+
+::view-transition-old(.poem-content-class):only-child {
+    animation: 300ms cubic-bezier(0.075, 0.82, 0.165, 1) both slide-out;
+}
+
+::view-transition-new(.poem-title-transition):only-child {
+    animation: 300ms cubic-bezier(0.075, 0.82, 0.165, 1) both slide-in;
+}
+
+::view-transition-old(.poem-title-transition) {
+    animation: 300ms cubic-bezier(0.075, 0.82, 0.165, 1) both slide-out;
+}
+
+.slide-in-out {
+    view-transition-name: custom-slide-in-out;
+}
+
+::view-transition-new(custom-slide-in-out) {
+    animation: 300ms cubic-bezier(0.075, 0.82, 0.165, 1) both slide-in;
+}
+
+::view-transition-old(custom-slide-in-out) {
+    animation: 300ms cubic-bezier(0.075, 0.82, 0.165, 1) both slide-out;
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+}
+
+@keyframes slide-out {
+    to {
+        transform: translateY(20px);
+        opacity: 0;
+    }
 }

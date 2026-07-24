@@ -8,7 +8,7 @@ function MyPoemsIndex() {
             <div className="flex justify-center items-center h-[50vh]">
                 <h1 className="heroHeading">Poems written by me</h1>
             </div>
-            <List>
+            <List className={"slide-in-out"}>
                 {poemsData.map((poem, index) => (
                     <Link
                         viewTransition
