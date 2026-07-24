@@ -1,33 +1,20 @@
-import { StrictMode } from "react";
+import { StrictMode, lazy } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router";
 import App from "./components/App";
-import Index from "./pages/Index";
-// import MyPoems from "./pages/MyPoems";
 import "./styles/global.css";
 import "./styles/main.css";
+
+const MyPoems = lazy(() => import("./pages/MyPoems"));
+const Index = lazy(() => import("./pages/Index"));
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <App />,
         children: [
-            {
-                index: true,
-                element: <Index />,
-                lazy: async () => {
-                    const Index = await import("./pages/Index");
-                    return { Component: Index.default };
-                },
-            },
-            {
-                path: "/my-poems",
-                // TODO: to make my poems page
-                lazy: async () => {
-                    const MyPoems = await import("./pages/MyPoems");
-                    return { Component: MyPoems.default };
-                },
-            },
+            { index: true, element: <Index /> },
+            { path: "/my-poems", element: <MyPoems /> },
         ],
     },
 ]);

@@ -1,6 +1,9 @@
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useNavigation } from "react-router";
+import Spinner from "./Spinner";
+
+const MotionSpinner = motion.create(Spinner);
 
 function Curtain({ onComplete, to }) {
     const navigation = useNavigation();
@@ -37,7 +40,13 @@ function Curtain({ onComplete, to }) {
                     onComplete();
                 }
             }}
-        />
+        >
+            <MotionSpinner
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 1 }}
+            ></MotionSpinner>
+        </motion.div>
     );
 }
 

@@ -1,11 +1,10 @@
 import { AnimatePresence } from "motion/react";
 import { createContext, Suspense, useContext, useState } from "react";
-import { useLocation, useOutlet } from "react-router";
+import { Outlet, useLocation, useOutlet } from "react-router";
 import Curtain from "./Curtain";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 import ScrollToHash from "./ScrollToHash";
-import Spinner from "./Spinner";
 
 const TransitionContextProvider = createContext();
 export const useTransitionContext = () => useContext(TransitionContextProvider);
@@ -31,7 +30,9 @@ function App() {
                         ></Curtain>
                     ) : null}
                 </AnimatePresence>
-                <Suspense fallback={<Spinner></Spinner>}>{outlet}</Suspense>
+                <Suspense>
+                    <Outlet></Outlet>
+                </Suspense>
                 <Footer></Footer>
             </TransitionContextProvider>
         </main>
