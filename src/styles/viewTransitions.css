@@ -7,15 +7,20 @@ html {
     navigation: auto;
 }
 
-.poem-title-2 {
-    view-transition-name: title;
+.poem-title {
     width: fit-content;
 }
 
-#poem .poem-title {
-    font-size: 3rem;
+::view-transition-group(*) {
+    animation-duration: 0.8s;
 }
 
-#my-poems-index .poem-title {
-    font-size: 1.5rem;
+::view-transition-new(poem-content-1),
+::view-transition-old(poem-content-1) {
+    height: auto;
+    overflow: clip;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
 }

@@ -17,9 +17,14 @@ function MyPoemsIndex() {
                         className={"cursor-pointer shrink-0 grow"}
                     >
                         <ListItem>
-                            <ListTitle className={`poem-title poem-title-${poem.id}`}>{poem.title}</ListTitle>
+                            <ListTitle className={`poem-title`} style={{ viewTransitionName: `poem-title-${poem.id}` }}>
+                                {poem.title}
+                            </ListTitle>
                             {poem.preview ? (
-                                <ListContent className={"poem-content"}>
+                                <ListContent
+                                    className={"poem-content w-max border-2 border-red-500"}
+                                    style={{ viewTransitionName: `poem-content-${poem.id}` }}
+                                >
                                     <pre>{poem.preview}</pre>
                                 </ListContent>
                             ) : null}
