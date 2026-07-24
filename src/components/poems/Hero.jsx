@@ -2,7 +2,7 @@ import LightRays from "../LightRays";
 
 function Hero() {
     return (
-        <div className="absolute inset-0 -z-10 items-center">
+        <div className="absolute inset-0 bottom-0 -z-10 items-center">
             <LightRays
                 raysOrigin="top-center"
                 raysColor="#6633ee"

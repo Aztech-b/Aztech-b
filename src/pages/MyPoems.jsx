@@ -15,9 +15,9 @@ function MyPoems() {
                 <div className="flex justify-center items-center h-[50vh]">
                     <h1 className="heroHeading">Poems written by me</h1>
                 </div>
-                <List className="grid grid-flow-col wrap gap-4 items-baseline">
+                <List className="flex flex-wrap gap-4 content-stretch max-w-full">
                     {allPoems.map((poem, index) => (
-                        <Link key={index} to="#" className={"cursor-pointer"}>
+                        <Link key={index} to="#" className={"cursor-pointer shrink-0 grow"}>
                             <ListItem>
                                 <ListTitle>{poem.title}</ListTitle>
                                 {poem.preview ? (

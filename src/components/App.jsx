@@ -1,6 +1,6 @@
 import { AnimatePresence } from "motion/react";
 import { createContext, Suspense, useContext, useState } from "react";
-import { Outlet, useLocation, useOutlet } from "react-router";
+import { Outlet, useLocation } from "react-router";
 import Curtain from "./Curtain";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
@@ -10,7 +10,6 @@ const TransitionContextProvider = createContext();
 export const useTransitionContext = () => useContext(TransitionContextProvider);
 
 function App() {
-    const outlet = useOutlet();
     const [targetLocation, setTargetLocation] = useState(null);
     const location = useLocation();
 

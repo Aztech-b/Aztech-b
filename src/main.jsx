@@ -8,6 +8,8 @@ import "./styles/main.css";
 const MyPoems = lazy(() => import("./pages/MyPoems"));
 const Index = lazy(() => import("./pages/Index"));
 
+// magic ui highlighter
+
 const router = createBrowserRouter([
     {
         path: "/",
