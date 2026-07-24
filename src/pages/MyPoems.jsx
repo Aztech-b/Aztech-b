@@ -1,11 +1,8 @@
 import { Link } from "react-router";
+import poemsData from "../assets/poems.json";
 import { List, ListContent, ListItem, ListTitle } from "../components/list";
 import Hero from "../components/poems/Hero";
 
-const jsonModules = import.meta.glob("../assets/poems/*.json", { eager: true });
-const allPoems = Object.entries(jsonModules).map(([filepath, module]) => {
-    return { _filepath: filepath, ...module.default };
-});
 function MyPoems() {
     return (
         <div className="backgroundContainer min-h-screen">
@@ -16,7 +13,7 @@ function MyPoems() {
                     <h1 className="heroHeading">Poems written by me</h1>
                 </div>
                 <List className="flex flex-wrap gap-4 content-stretch max-w-full">
-                    {allPoems.map((poem, index) => (
+                    {poemsData.map((poem, index) => (
                         <Link key={index} to="#" className={"cursor-pointer shrink-0 grow"}>
                             <ListItem>
                                 <ListTitle>{poem.title}</ListTitle>
