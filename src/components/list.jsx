@@ -8,6 +8,8 @@ List
         ListContent
  */
 
+import { motion } from "motion/react";
+
 export function List({ children, ...props }) {
     return (
         <ul className="flex flex-col gap-1" {...props}>
@@ -40,3 +42,5 @@ export function ListContent({ children, ...props }) {
         </div>
     );
 }
+
+export const MotionListContent = motion.create(ListContent);

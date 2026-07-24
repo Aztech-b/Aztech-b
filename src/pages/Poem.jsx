@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { useParams } from "react-router";
 import poems from "../assets/poems.json";
-import { ListContent } from "../components/list";
+import { MotionListContent } from "../components/list";
 
 function Poem() {
     const params = useParams();
@@ -14,11 +14,9 @@ function Poem() {
             </motion.h2>
 
             <div>
-                <ListContent>
-                    <motion.pre layoutId={`content-${poem.id}`} layout="position">
-                        {poem.content}
-                    </motion.pre>
-                </ListContent>
+                <MotionListContent layoutId={`content-${poem.id}`}>
+                    <motion.pre layout>{poem.content}</motion.pre>
+                </MotionListContent>
             </div>
         </div>
     );

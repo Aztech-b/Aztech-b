@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { Link } from "react-router";
 import poemsData from "../assets/poems.json";
-import { List, ListContent, ListItem, ListTitle } from "../components/list";
+import { List, ListItem, ListTitle, MotionListContent } from "../components/list";
 
 const MotionListTitle = motion.create(ListTitle);
 
@@ -19,11 +19,9 @@ function MyPoemsIndex() {
                                 {poem.title}
                             </MotionListTitle>
                             {poem.preview ? (
-                                <ListContent>
-                                    <motion.pre layoutId={`content-${poem.id}`} layout="position">
-                                        {poem.preview}
-                                    </motion.pre>
-                                </ListContent>
+                                <MotionListContent layoutId={`content-${poem.id}`}>
+                                    <motion.pre layout>{poem.preview}</motion.pre>
+                                </MotionListContent>
                             ) : null}
                         </ListItem>
                     </Link>
