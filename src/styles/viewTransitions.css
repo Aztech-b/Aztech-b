@@ -24,3 +24,8 @@ html {
     left: 0;
     width: auto;
 }
+
+::view-transition-new(.poem-title-transition),
+::view-transition-old(.poem-title-transition) {
+    height: 100%;
+}

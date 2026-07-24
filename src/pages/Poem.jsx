@@ -9,14 +9,20 @@ function Poem() {
     return (
         <div id="poem">
             <div className="mb-10 mt-40">
-                <h2 className={`poem-title text-5xl`} style={{ viewTransitionName: `poem-title-${poem.id}` }}>
+                <h2
+                    className={`poem-title text-5xl border-2 border-blue-500`}
+                    style={{
+                        viewTransitionName: `poem-title-${poem.id}`,
+                        viewTransitionClass: "poem-title-transition",
+                    }}
+                >
                     {poem.title}
                 </h2>
             </div>
 
             <div>
                 <ListContent
-                    className={"poem-content border-2 border-blue-500"}
+                    className={"poem-content"}
                     style={{ viewTransitionName: `poem-content-${poem.id}`, viewTransitionClass: "poem-content-class" }}
                 >
                     <pre>{poem.content}</pre>
