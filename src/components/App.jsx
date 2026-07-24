@@ -15,7 +15,7 @@ function App() {
     const location = useLocation();
 
     return (
-        <main>
+        <main className="relative">
             <TransitionContextProvider value={{ setTargetLocation }}>
                 <ScrollToHash></ScrollToHash>
                 <NavBar></NavBar>
