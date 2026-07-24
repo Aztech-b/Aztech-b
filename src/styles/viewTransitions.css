@@ -1,0 +1,21 @@
+html {
+    --poem-title-sm: 1.5rem;
+    --poem-title-lg: 3rem;
+}
+
+@view-transition {
+    navigation: auto;
+}
+
+.poem-title-2 {
+    view-transition-name: title;
+    width: fit-content;
+}
+
+#poem .poem-title {
+    font-size: 3rem;
+}
+
+#my-poems-index .poem-title {
+    font-size: 1.5rem;
+}

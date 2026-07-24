@@ -1,22 +1,21 @@
-import { motion } from "motion/react";
 import { useParams } from "react-router";
 import poems from "../assets/poems.json";
-import { MotionListContent } from "../components/list";
+import { ListContent } from "../components/list";
 
 function Poem() {
     const params = useParams();
     const poem = poems.find((poem) => poem.id === Number(params.id));
 
     return (
-        <div>
-            <motion.h2 layoutId={`title-${poem.id}`} className="poemHeading mb-10 inline-block">
-                {poem.title}
-            </motion.h2>
+        <div id="poem">
+            <div className="mb-10 mt-40">
+                <h2 className={`poem-title poem-title-${poem.id}`}>{poem.title}</h2>
+            </div>
 
             <div>
-                <MotionListContent layoutId={`content-${poem.id}`}>
-                    <motion.pre layout>{poem.content}</motion.pre>
-                </MotionListContent>
+                <ListContent className={"poem-content"}>
+                    <pre>{poem.content}</pre>
+                </ListContent>
             </div>
         </div>
     );

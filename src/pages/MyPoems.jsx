@@ -1,15 +1,11 @@
-import { AnimatePresence } from "motion/react";
-import { cloneElement } from "react";
-import { useLocation, useOutlet } from "react-router";
+import { Outlet } from "react-router";
 import Hero from "../components/poems/Hero";
 
 function MyPoems() {
-    const outlet = useOutlet();
-    const location = useLocation();
     return (
         <div className="backgroundContainer min-h-screen">
             <Hero></Hero>
-            <AnimatePresence>{outlet && cloneElement(outlet, { key: location.pathname })} </AnimatePresence>
+            <Outlet></Outlet>
         </div>
     );
 }

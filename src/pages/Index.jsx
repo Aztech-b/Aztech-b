@@ -7,7 +7,7 @@ import ToolsAndSkills from "../components/ToolsAndSkills";
 function Index() {
     return (
         <>
-            <Main></Main>
+            <Main id="index"></Main>
             <About></About>
             <ToolsAndSkills></ToolsAndSkills>
             <FeaturedProjects></FeaturedProjects>

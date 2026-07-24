@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useMemo } from "react";
@@ -5,7 +6,7 @@ import styles from "../styles/main.module.css";
 import DecryptedText from "./DecryptedText";
 import SoftAurora from "./SoftAurora";
 
-function Main() {
+function Main({ className, ...props }) {
     const { scrollY } = useScroll();
     const bgY = useTransform(scrollY, [0, 1000], [0, 300], { clamp: true });
     const isWebGLon = useMemo(() => {
@@ -26,7 +27,7 @@ function Main() {
         }
     }, []);
     return (
-        <div className="relative backgroundContainer">
+        <div className={cn("relative backgroundContainer", className)} {...props}>
             {isWebGLon ? (
                 <motion.div className="absolute inset-0 -z-10 items-center" style={{ y: bgY }}>
                     <SoftAurora

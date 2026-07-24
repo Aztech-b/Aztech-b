@@ -8,35 +8,36 @@ List
         ListContent
  */
 
+import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
 
-export function List({ children, ...props }) {
+export function List({ children, className, ...props }) {
     return (
-        <ul className="flex flex-col gap-1" {...props}>
+        <ul className={cn("flex flex-wrap gap-4 content-stretch max-w-full", className)} {...props}>
             {children}
         </ul>
     );
 }
 
-export function ListItem({ children, ...props }) {
+export function ListItem({ children, className, ...props }) {
     return (
-        <li className="border-border border-2 h-full p-4 rounded-md" {...props}>
+        <li className={cn("border-border border-2 h-full p-4 rounded-md", className)} {...props}>
             {children}
         </li>
     );
 }
 
-export function ListTitle({ children, ...props }) {
+export function ListTitle({ children, className, ...props }) {
     return (
-        <div className="text-2xl" {...props}>
+        <h2 className={cn("text-2xl", className)} {...props}>
             {children}
-        </div>
+        </h2>
     );
 }
 
-export function ListContent({ children, ...props }) {
+export function ListContent({ children, className, ...props }) {
     return (
-        <div className="relative mt-5" {...props}>
+        <div className={cn("relative mt-5", className)} {...props}>
             <div className="w-1 absolute h-full min-h-full left-0 bg-blue-400"></div>
             <div className="ml-5">{children}</div>
         </div>

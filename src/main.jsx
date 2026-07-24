@@ -6,6 +6,7 @@ import MyPoemsIndex from "./pages/MyPoemsIndex";
 import Poem from "./pages/Poem";
 import "./styles/global.css";
 import "./styles/main.css";
+import "./styles/viewTransitions.css";
 
 const MyPoems = lazy(() => import("./pages/MyPoems"));
 const Index = lazy(() => import("./pages/Index"));
