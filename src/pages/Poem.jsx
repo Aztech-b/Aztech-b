@@ -15,7 +15,9 @@ function Poem() {
 
             <div>
                 <ListContent>
-                    <pre>{poem.content}</pre>
+                    <motion.pre layoutId={`content-${poem.id}`} layout="position">
+                        {poem.content}
+                    </motion.pre>
                 </ListContent>
             </div>
         </div>

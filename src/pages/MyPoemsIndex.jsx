@@ -20,7 +20,9 @@ function MyPoemsIndex() {
                             </MotionListTitle>
                             {poem.preview ? (
                                 <ListContent>
-                                    <pre>{poem.preview}</pre>
+                                    <motion.pre layoutId={`content-${poem.id}`} layout="position">
+                                        {poem.preview}
+                                    </motion.pre>
                                 </ListContent>
                             ) : null}
                         </ListItem>
