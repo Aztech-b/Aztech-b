@@ -17,7 +17,7 @@ function Poem() {
             <div>
                 <ListContent
                     className={"poem-content border-2 border-blue-500"}
-                    style={{ viewTransitionName: `poem-content-${poem.id}` }}
+                    style={{ viewTransitionName: `poem-content-${poem.id}`, viewTransitionClass: "poem-content-class" }}
                 >
                     <pre>{poem.content}</pre>
                 </ListContent>

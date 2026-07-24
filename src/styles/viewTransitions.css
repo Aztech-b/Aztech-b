@@ -15,8 +15,8 @@ html {
     animation-duration: 0.8s;
 }
 
-::view-transition-new(poem-content-1),
-::view-transition-old(poem-content-1) {
+::view-transition-new(.poem-content-class),
+::view-transition-old(.poem-content-class) {
     height: auto;
     overflow: clip;
     position: absolute;

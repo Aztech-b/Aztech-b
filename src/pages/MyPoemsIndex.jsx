@@ -23,7 +23,10 @@ function MyPoemsIndex() {
                             {poem.preview ? (
                                 <ListContent
                                     className={"poem-content w-max border-2 border-red-500"}
-                                    style={{ viewTransitionName: `poem-content-${poem.id}` }}
+                                    style={{
+                                        viewTransitionName: `poem-content-${poem.id}`,
+                                        viewTransitionClass: "poem-content-class",
+                                    }}
                                 >
                                     <pre>{poem.preview}</pre>
                                 </ListContent>
