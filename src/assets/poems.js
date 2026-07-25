@@ -69,10 +69,10 @@ export const data = [
 
 export const contentFormattedPoems = data.map((poem) => ({ ...poem, content: poem.content.split("\n") }));
 export const previewFormattedPoems = data.map((poem) => ({
+    ...poem,
     preview: poem.content
         .split("\n")
         .filter((poemContentLine, index) => index >= poem.preview.startLine && index <= poem.preview.endLine),
-    ...poem,
 }));
 
 export const poemsAllFormatted = data.map((poem) => ({
@@ -85,6 +85,10 @@ export const poemsAllFormatted = data.map((poem) => ({
 
 export function GetFormattedPoemById(id) {
     return poemsAllFormatted.find((poem) => poem.id === id);
+}
+
+export function GetFormattedPreviewById(id) {
+    return poemsAllFormatted.find((poem) => poem.id === id).preview;
 }
 
 export function GetSegmentedFormattedPoemById(id) {

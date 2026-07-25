@@ -3,6 +3,7 @@ import { poemsAllFormatted as poemsData } from "../assets/poems.js";
 import { List, ListContent, ListItem, ListTitle } from "../components/list";
 
 function MyPoemsIndex() {
+    console.log(poemsData[0]);
     return (
         <div className="content" id="my-poems-index">
             <div className="flex justify-center items-center h-[50vh]">
