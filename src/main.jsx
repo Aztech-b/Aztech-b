@@ -12,6 +12,7 @@ const MyPoems = lazy(() => import("./pages/MyPoems"));
 const Index = lazy(() => import("./pages/Index"));
 
 // magic ui highlighter
+// performance is terrible, need to optimize everything
 
 const router = createBrowserRouter([
     {
