@@ -1,10 +1,13 @@
 import { useParams } from "react-router";
-import { GetFormattedPoemById } from "../assets/poems.js";
+import { GetFormattedPoemById, GetSegmentedFormattedPoemById } from "../assets/poems.js";
 import { ListContent } from "../components/list";
+import { Highlighter } from "../components/ui/highlighter.jsx";
 
 function Poem() {
     const params = useParams();
     const poem = GetFormattedPoemById(Number(params.id));
+    const segments = GetSegmentedFormattedPoemById(Number(params.id));
+    console.log(segments);
 
     return (
         <div id="poem">
@@ -25,9 +28,23 @@ function Poem() {
                     className={"poem-content"}
                     style={{ viewTransitionName: `poem-content-${poem.id}`, viewTransitionClass: "poem-content-class" }}
                 >
-                    {poem.content.map((poemLine, index) => (
-                        <p key={index}>{poemLine}</p>
-                    ))}
+                    {segments.map((segment) =>
+                        segment.type === "plain" ? (
+                            segment.lines.map((line) => <p>{line}</p>)
+                        ) : segment.note.type === "draft" ? (
+                            <Highlighter action="box" multiline={false} iterations={4}>
+                                {segment.lines.map((line) => (
+                                    <p className="w-fit">{line}</p>
+                                ))}
+                            </Highlighter>
+                        ) : (
+                            segment.lines.map((line) => (
+                                <Highlighter>
+                                    <p className="w-fit">{line}</p>
+                                </Highlighter>
+                            ))
+                        ),
+                    )}
                 </ListContent>
             </div>
         </div>

@@ -22,10 +22,18 @@
  * @property {String[]} content formatted string
  * @property {Number} id
  * @property {string} title
+ * @property {note[]} notes
  */
 
 /**
- * @type {rawPoemData[]}
+ * @typedef {Object} note
+ * @property {"draft" | String} type
+ * @property {Number} startLine
+ * @property {Number} endLine
+ */
+
+/**
+ * @type {(rawPoemData && note)[] }
  */
 export const data = [
     {
@@ -59,10 +67,15 @@ export const data = [
     },
 ];
 
+export function GetFormattedPoemContentById(id) {
+    return data.content.split("\n");
+}
+
 export const poemsContentFormattedArray = data.map((poem) => ({
     content: poem.content.split("\n"),
     id: poem.id,
     title: poem.title,
+    notes: poem.notes ? poem.notes : null,
 }));
 export const poemsPreviewFormattedArray = data.map((poem) =>
     poem.content.split("\n").filter((poemContentLine, index) => {
@@ -94,6 +107,52 @@ export function GetPoemById(id) {
  */
 export function GetFormattedPoemById(id) {
     return poemsContentFormattedArray.find((poem) => poem.id === id);
+}
+
+export function GetSegmentedFormattedPoemById(id) {
+    const poem = GetFormattedPoemById(id);
+    const sortedNotes = poem.notes.sort((a, b) => a.startLine - b.startLine);
+    const segments = [];
+
+    let currentIndex = 0;
+
+    for (const note of sortedNotes) {
+        const start = Math.max(0, note.startLine);
+        const end = Math.min(poem.content.length - 1, note.endLine);
+
+        if (start > currentIndex) {
+            segments.push({
+                id: `plain-${currentIndex}`,
+                type: "plain",
+                lines: poem.content.slice(currentIndex, start),
+                startLine: currentIndex,
+            });
+        }
+
+        if (end >= start && start >= currentIndex) {
+            segments.push({
+                id: `note-${start}-${end}`,
+                type: note.type,
+                lines: poem.content.slice(start, end + 1),
+                startLine: start,
+                note,
+            });
+            console.log("pushed note");
+            currentIndex = end + 1;
+        }
+    }
+
+    if (currentIndex < poem.content.length) {
+        segments.push({
+            id: `plain-${currentIndex}`,
+            type: "plain",
+            lines: poem.content.slice(currentIndex),
+            startLine: currentIndex,
+        });
+        console.log("pushed plain");
+    }
+
+    return segments;
 }
 
 export const length = data.length;
