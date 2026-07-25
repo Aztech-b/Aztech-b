@@ -1,16 +1,16 @@
 import { useParams } from "react-router";
-import poems from "../assets/poems.json";
+import { GetFormattedPoemById } from "../assets/poems.js";
 import { ListContent } from "../components/list";
 
 function Poem() {
     const params = useParams();
-    const poem = poems.find((poem) => poem.id === Number(params.id));
+    const poem = GetFormattedPoemById(Number(params.id));
 
     return (
         <div id="poem">
             <div className="mb-10 mt-40">
                 <h2
-                    className={`poem-title text-5xl`}
+                    className={`poem-title text-5xl border-2 border-blue-500 m-0`}
                     style={{
                         viewTransitionName: `poem-title-${poem.id}`,
                         viewTransitionClass: "poem-title-transition",
@@ -25,7 +25,9 @@ function Poem() {
                     className={"poem-content"}
                     style={{ viewTransitionName: `poem-content-${poem.id}`, viewTransitionClass: "poem-content-class" }}
                 >
-                    <pre>{poem.content}</pre>
+                    {poem.content.map((poemLine, index) => (
+                        <p key={index}>{poemLine}</p>
+                    ))}
                 </ListContent>
             </div>
         </div>

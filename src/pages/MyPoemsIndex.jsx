@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import poemsData from "../assets/poems.json";
+import { poemsAllFormatted as poemsData } from "../assets/poems.js";
 import { List, ListContent, ListItem, ListTitle } from "../components/list";
 
 function MyPoemsIndex() {
@@ -18,7 +18,7 @@ function MyPoemsIndex() {
                     >
                         <ListItem>
                             <ListTitle
-                                className={`poem-title text-2xl/[1]`}
+                                className={`poem-title text-2xl/[1] border-2 border-red-500 m-0`}
                                 style={{
                                     viewTransitionName: `poem-title-${poem.id}`,
                                     viewTransitionClass: "poem-title-transition",
@@ -34,7 +34,9 @@ function MyPoemsIndex() {
                                         viewTransitionClass: "poem-content-class",
                                     }}
                                 >
-                                    <pre>{poem.preview}</pre>
+                                    {poem.preview.map((poemPreviewLine) => (
+                                        <p>{poemPreviewLine}</p>
+                                    ))}
                                 </ListContent>
                             ) : null}
                         </ListItem>
