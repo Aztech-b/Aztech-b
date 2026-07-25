@@ -32,9 +32,6 @@
  * @property {Number} endLine
  */
 
-/**
- * @type {(rawPoemData & note)[] }
- */
 export const data = [
     {
         id: 1,
@@ -93,6 +90,9 @@ export function GetFormattedPreviewById(id) {
 
 export function GetSegmentedFormattedPoemById(id) {
     const poem = GetFormattedPoemById(id);
+    if (!poem.notes) {
+        return null;
+    }
     const sortedNotes = poem.notes.sort((a, b) => a.startLine - b.startLine);
     const segments = [];
 

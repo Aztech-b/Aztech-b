@@ -7,7 +7,6 @@ function Poem() {
     const params = useParams();
     const poem = GetFormattedPoemById(Number(params.id));
     const segments = GetSegmentedFormattedPoemById(Number(params.id));
-
     return (
         <div id="poem">
             <div className="mb-10 mt-40">
@@ -27,25 +26,31 @@ function Poem() {
                     className={"poem-content"}
                     style={{ viewTransitionName: `poem-content-${poem.id}`, viewTransitionClass: "poem-content-class" }}
                 >
-                    {segments.map((segment, index) =>
-                        segment.type === "plain" ? (
-                            segment.lines.map((line, index) => <p key={index}>{line}</p>)
-                        ) : segment.note.type === "draft" ? (
-                            <Highlighter key={index} action="box" multiline={false} iterations={4}>
-                                {segment.lines.map((line, index) => (
-                                    <p key={index} className="w-fit">
-                                        {line}
-                                    </p>
-                                ))}
-                            </Highlighter>
-                        ) : (
-                            segment.lines.map((line, index) => (
-                                <Highlighter key={index}>
-                                    <p className="w-fit">{line}</p>
-                                </Highlighter>
-                            ))
-                        ),
-                    )}
+                    {segments
+                        ? segments.map((segment, index) =>
+                              !segment.type || segment.type === "plain" ? (
+                                  segment.lines.map((line, index) => <p key={index}>{line}</p>)
+                              ) : segment.note.type === "draft" ? (
+                                  <Highlighter key={index} action="box" multiline={false} iterations={4}>
+                                      {segment.lines.map((line, index) => (
+                                          <p key={index} className="w-fit">
+                                              {line}
+                                          </p>
+                                      ))}
+                                  </Highlighter>
+                              ) : (
+                                  segment.lines.map((line, index) => (
+                                      <Highlighter key={index}>
+                                          <p className="w-fit">{line}</p>
+                                      </Highlighter>
+                                  ))
+                              ),
+                          )
+                        : poem.content.map((line, index) => (
+                              <p key={index} className="w-fit">
+                                  {line}
+                              </p>
+                          ))}
                 </ListContent>
             </div>
         </div>
