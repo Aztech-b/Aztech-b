@@ -7,7 +7,6 @@ function Poem() {
     const params = useParams();
     const poem = GetFormattedPoemById(Number(params.id));
     const segments = GetSegmentedFormattedPoemById(Number(params.id));
-    console.log(segments);
 
     return (
         <div id="poem">
@@ -28,18 +27,20 @@ function Poem() {
                     className={"poem-content"}
                     style={{ viewTransitionName: `poem-content-${poem.id}`, viewTransitionClass: "poem-content-class" }}
                 >
-                    {segments.map((segment) =>
+                    {segments.map((segment, index) =>
                         segment.type === "plain" ? (
-                            segment.lines.map((line) => <p>{line}</p>)
+                            segment.lines.map((line, index) => <p key={index}>{line}</p>)
                         ) : segment.note.type === "draft" ? (
-                            <Highlighter action="box" multiline={false} iterations={4}>
-                                {segment.lines.map((line) => (
-                                    <p className="w-fit">{line}</p>
+                            <Highlighter key={index} action="box" multiline={false} iterations={4}>
+                                {segment.lines.map((line, index) => (
+                                    <p key={index} className="w-fit">
+                                        {line}
+                                    </p>
                                 ))}
                             </Highlighter>
                         ) : (
-                            segment.lines.map((line) => (
-                                <Highlighter>
+                            segment.lines.map((line, index) => (
+                                <Highlighter key={index}>
                                     <p className="w-fit">{line}</p>
                                 </Highlighter>
                             ))

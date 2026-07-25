@@ -33,7 +33,7 @@
  */
 
 /**
- * @type {(rawPoemData && note)[] }
+ * @type {(rawPoemData & note)[] }
  */
 export const data = [
     {
@@ -67,46 +67,24 @@ export const data = [
     },
 ];
 
-export function GetFormattedPoemContentById(id) {
-    return data.content.split("\n");
-}
-
-export const poemsContentFormattedArray = data.map((poem) => ({
-    content: poem.content.split("\n"),
-    id: poem.id,
-    title: poem.title,
-    notes: poem.notes ? poem.notes : null,
+export const contentFormattedPoems = data.map((poem) => ({ ...poem, content: poem.content.split("\n") }));
+export const previewFormattedPoems = data.map((poem) => ({
+    preview: poem.content
+        .split("\n")
+        .filter((poemContentLine, index) => index >= poem.preview.startLine && index <= poem.preview.endLine),
+    ...poem,
 }));
-export const poemsPreviewFormattedArray = data.map((poem) =>
-    poem.content.split("\n").filter((poemContentLine, index) => {
-        return index >= poem.preview.startLine && index <= poem.preview.endLine;
-    }),
-);
 
 export const poemsAllFormatted = data.map((poem) => ({
     id: poem.id,
     title: poem.title,
-    content: poem.content.split("\n"),
-    preview: poem.content.split("\n").filter((_, index) => {
-        return index >= poem.preview.startLine && index <= poem.preview.endLine;
-    }),
+    content: contentFormattedPoems.find((contentFormattedPoem) => contentFormattedPoem.id === poem.id).content,
+    preview: previewFormattedPoems.find((previewFormattedPoem) => previewFormattedPoem.id === poem.id).preview,
     notes: poem.notes ? poem.notes : null,
 }));
 
-/**
- * @param {Number} id
- * @returns {rawPoemData} with the raw srting in content
- */
-export function GetPoemById(id) {
-    return data.find((poem) => poem.id === id);
-}
-
-/**
- * @param {Number} id
- * @returns {primitiveFormattedPoemData} with the formatted content to array of strings
- */
 export function GetFormattedPoemById(id) {
-    return poemsContentFormattedArray.find((poem) => poem.id === id);
+    return poemsAllFormatted.find((poem) => poem.id === id);
 }
 
 export function GetSegmentedFormattedPoemById(id) {
@@ -137,7 +115,6 @@ export function GetSegmentedFormattedPoemById(id) {
                 startLine: start,
                 note,
             });
-            console.log("pushed note");
             currentIndex = end + 1;
         }
     }
@@ -149,7 +126,6 @@ export function GetSegmentedFormattedPoemById(id) {
             lines: poem.content.slice(currentIndex),
             startLine: currentIndex,
         });
-        console.log("pushed plain");
     }
 
     return segments;
