@@ -10,7 +10,7 @@ function Poem() {
         <div id="poem">
             <div className="mb-10 mt-40">
                 <h2
-                    className={`poem-title text-5xl border-2 border-blue-500 m-0`}
+                    className={`poem-title text-5xl`}
                     style={{
                         viewTransitionName: `poem-title-${poem.id}`,
                         viewTransitionClass: "poem-title-transition",

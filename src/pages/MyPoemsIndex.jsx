@@ -9,7 +9,7 @@ function MyPoemsIndex() {
                 <h1 className="heroHeading">Poems written by me</h1>
             </div>
             <List className={"slide-in-out"}>
-                {poemsData.map((poem, index) => (
+                {poemsData.map((poem) => (
                     <Link
                         viewTransition
                         key={poem.id}
@@ -18,7 +18,7 @@ function MyPoemsIndex() {
                     >
                         <ListItem>
                             <ListTitle
-                                className={`poem-title text-2xl/[1] border-2 border-red-500 m-0`}
+                                className={`poem-title text-2xl/[1]`}
                                 style={{
                                     viewTransitionName: `poem-title-${poem.id}`,
                                     viewTransitionClass: "poem-title-transition",
@@ -34,8 +34,8 @@ function MyPoemsIndex() {
                                         viewTransitionClass: "poem-content-class",
                                     }}
                                 >
-                                    {poem.preview.map((poemPreviewLine) => (
-                                        <p>{poemPreviewLine}</p>
+                                    {poem.preview.map((poemPreviewLine, index) => (
+                                        <p key={index}>{poemPreviewLine}</p>
                                     ))}
                                 </ListContent>
                             ) : null}

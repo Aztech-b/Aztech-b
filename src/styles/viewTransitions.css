@@ -52,7 +52,7 @@
     animation-delay: 100ms;
 }
 
-::view-transition-old(.poem-title-transition) {
+::view-transition-old(.poem-title-transition):only-child {
     animation: 300ms cubic-bezier(0.075, 0.82, 0.165, 1) both slide-out;
 }
 
