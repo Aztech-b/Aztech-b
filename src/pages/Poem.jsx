@@ -53,7 +53,7 @@ function Poem() {
                                   ) : (
                                       <Popover key={index}>
                                           <PopoverTrigger asChild>
-                                              <div className={"highlighted"}>
+                                              <div className={"highlighted w-fit"}>
                                                   <Highlighter
                                                       padding={[2, 4]}
                                                       action={segment.type === "draft" ? "box" : "highlight"}
