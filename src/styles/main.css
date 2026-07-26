@@ -101,6 +101,10 @@ p:empty {
     min-height: 1.2rem;
 }
 
+.highlighted {
+    transition: background-color 100ms linear;
+}
+
 .highlighted:hover {
     cursor: help;
     background-color: color-mix(in oklab, var(--color-muted) 50%, transparent 50%);

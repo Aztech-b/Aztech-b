@@ -2,6 +2,7 @@ import { useParams } from "react-router";
 import { GetFormattedPoemById, GetSegmentedFormattedPoemById } from "../assets/poems.js";
 import { ListContent } from "../components/list";
 import { Highlighter } from "../components/ui/highlighter.jsx";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../components/ui/tooltip.jsx";
 
 function Poem() {
     const params = useParams();
@@ -35,20 +36,24 @@ function Poem() {
                                       </p>
                                   ))
                               ) : (
-                                  <div className={"highlighted w-fit"}>
-                                      <Highlighter
-                                          key={index}
-                                          action={segment.type === "draft" ? "box" : "highlight"}
-                                          multiline={false}
-                                          iterations={4}
-                                      >
-                                          {segment.lines.map((line, index) => (
-                                              <p key={index} className="w-fit">
-                                                  {line}
-                                              </p>
-                                          ))}
-                                      </Highlighter>
-                                  </div>
+                                  <Tooltip key={index}>
+                                      <TooltipTrigger asChild>
+                                          <div className={"highlighted w-fit"}>
+                                              <Highlighter
+                                                  action={segment.type === "draft" ? "box" : "highlight"}
+                                                  multiline={false}
+                                                  iterations={4}
+                                              >
+                                                  {segment.lines.map((line, index) => (
+                                                      <p key={index} className="w-fit">
+                                                          {line}
+                                                      </p>
+                                                  ))}
+                                              </Highlighter>
+                                          </div>
+                                      </TooltipTrigger>
+                                      <TooltipContent side="right">{segment.type}</TooltipContent>
+                                  </Tooltip>
                               ),
                           )
                         : poem.content.map((line, index) => (

@@ -5,6 +5,7 @@ import Curtain from "./Curtain";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 import ScrollToHash from "./ScrollToHash";
+import { TooltipProvider } from "./ui/tooltip";
 
 const TransitionContextProvider = createContext();
 export const useTransitionContext = () => useContext(TransitionContextProvider);
@@ -18,6 +19,7 @@ function App() {
     // as target location state is not null, any link change(even if the link is not transition link) triggers the curtain animation
     useEffect(() => {
         if (location.pathname === targetLocation) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setTargetLocation(null);
         }
     }, [location.pathname, targetLocation]);
@@ -25,23 +27,25 @@ function App() {
     return (
         <main className="relative">
             <TransitionContextProvider value={{ setTargetLocation }}>
-                <ScrollToHash></ScrollToHash>
-                <NavBar></NavBar>
+                <TooltipProvider>
+                    <ScrollToHash></ScrollToHash>
+                    <NavBar></NavBar>
 
-                <AnimatePresence mode="wait">
-                    {targetLocation && location.pathname !== targetLocation ? (
-                        <Curtain
-                            to={targetLocation}
-                            onComplete={() => {
-                                setTargetLocation(null);
-                            }}
-                        ></Curtain>
-                    ) : null}
-                </AnimatePresence>
-                <Suspense>
-                    <Outlet></Outlet>
-                </Suspense>
-                <Footer></Footer>
+                    <AnimatePresence mode="wait">
+                        {targetLocation && location.pathname !== targetLocation ? (
+                            <Curtain
+                                to={targetLocation}
+                                onComplete={() => {
+                                    setTargetLocation(null);
+                                }}
+                            ></Curtain>
+                        ) : null}
+                    </AnimatePresence>
+                    <Suspense>
+                        <Outlet></Outlet>
+                    </Suspense>
+                    <Footer></Footer>
+                </TooltipProvider>
             </TransitionContextProvider>
         </main>
     );
