@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils.js";
 import { useState } from "react";
 import { useParams } from "react-router";
 import { GetFormattedPoemById, GetSegmentedFormattedPoemById } from "../assets/poems.js";
@@ -27,9 +28,15 @@ function Poem() {
                     </h2>
                 </div>
 
-                <div className="w-full flex justify-center relative">
+                <div
+                    className={cn(
+                        "w-full relative grid-cols-3 grid gap-4",
+                        noteContent ? "justify-end" : "justify-center",
+                    )}
+                >
+                    <div></div>
                     <ListContent
-                        className={"poem-content"}
+                        className={"poem-content justify-self-center"}
                         style={{
                             viewTransitionName: `poem-content-${poem.id}`,
                             viewTransitionClass: "poem-content-class",
@@ -77,7 +84,7 @@ function Poem() {
                                   </p>
                               ))}
                     </ListContent>
-                    <PoemNoteContent content={noteContent}></PoemNoteContent>
+                    <PoemNoteContent content={noteContent} hide={() => setNoteContent(null)}></PoemNoteContent>
                 </div>
             </div>
         </div>
