@@ -24,10 +24,9 @@ function Poem() {
                     </h2>
                 </div>
 
-                <div className={"w-full relative grid-cols-3 grid gap-4"}>
-                    <div></div>
+                <div className={"w-full relative grid grid-cols-[1fr_3fr]"}>
                     <ListContent
-                        className={"poem-content justify-self-center"}
+                        className={"poem-content col-start-2 justify-self-start"}
                         style={{
                             viewTransitionName: `poem-content-${poem.id}`,
                             viewTransitionClass: "poem-content-class",
