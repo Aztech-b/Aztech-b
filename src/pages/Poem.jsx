@@ -35,18 +35,20 @@ function Poem() {
                                       </p>
                                   ))
                               ) : (
-                                  <Highlighter
-                                      key={index}
-                                      action={segment.type === "draft" ? "box" : "highlight"}
-                                      multiline={false}
-                                      iterations={4}
-                                  >
-                                      {segment.lines.map((line, index) => (
-                                          <p key={index} className="w-fit">
-                                              {line}
-                                          </p>
-                                      ))}
-                                  </Highlighter>
+                                  <div className={"highlighted w-fit"}>
+                                      <Highlighter
+                                          key={index}
+                                          action={segment.type === "draft" ? "box" : "highlight"}
+                                          multiline={false}
+                                          iterations={4}
+                                      >
+                                          {segment.lines.map((line, index) => (
+                                              <p key={index} className="w-fit">
+                                                  {line}
+                                              </p>
+                                          ))}
+                                      </Highlighter>
+                                  </div>
                               ),
                           )
                         : poem.content.map((line, index) => (

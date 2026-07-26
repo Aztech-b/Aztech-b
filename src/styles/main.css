@@ -100,3 +100,8 @@ h2 {
 p:empty {
     min-height: 1.2rem;
 }
+
+.highlighted:hover {
+    cursor: help;
+    background-color: color-mix(in oklab, var(--color-muted) 50%, transparent 50%);
+}
