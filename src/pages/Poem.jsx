@@ -1,17 +1,13 @@
-import { cn } from "@/lib/utils.js";
-import { useState } from "react";
 import { useParams } from "react-router";
 import { GetFormattedPoemById, GetSegmentedFormattedPoemById } from "../assets/poems.js";
 import { ListContent } from "../components/list";
 import { Highlighter } from "../components/ui/highlighter.jsx";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../components/ui/tooltip.jsx";
-import PoemNoteContent from "./PoemNoteContent.jsx";
+import { Popover, PopoverContent, PopoverTrigger } from "../components/ui/popover.jsx";
 
 function Poem() {
     const params = useParams();
     const poem = GetFormattedPoemById(Number(params.id));
     const segments = GetSegmentedFormattedPoemById(Number(params.id));
-    const [noteContent, setNoteContent] = useState(null);
 
     return (
         <div id="poem" className="relative content">
@@ -28,12 +24,7 @@ function Poem() {
                     </h2>
                 </div>
 
-                <div
-                    className={cn(
-                        "w-full relative grid-cols-3 grid gap-4",
-                        noteContent ? "justify-end" : "justify-center",
-                    )}
-                >
+                <div className={"w-full relative grid-cols-3 grid gap-4"}>
                     <div></div>
                     <ListContent
                         className={"poem-content justify-self-center"}
@@ -51,17 +42,11 @@ function Poem() {
                                           </p>
                                       ))
                                   ) : (
-                                      <Tooltip key={index}>
-                                          <TooltipTrigger asChild>
-                                              <div
-                                                  className={"highlighted w-fit"}
-                                                  onClick={() => {
-                                                      setNoteContent((prev) =>
-                                                          prev === null ? segment.note.text : null,
-                                                      );
-                                                  }}
-                                              >
+                                      <Popover key={index}>
+                                          <PopoverTrigger asChild>
+                                              <div className={"highlighted"}>
                                                   <Highlighter
+                                                      padding={[2, 4]}
                                                       action={segment.type === "draft" ? "box" : "highlight"}
                                                       multiline={false}
                                                       iterations={4}
@@ -73,9 +58,11 @@ function Poem() {
                                                       ))}
                                                   </Highlighter>
                                               </div>
-                                          </TooltipTrigger>
-                                          <TooltipContent side="right">{segment.type}</TooltipContent>
-                                      </Tooltip>
+                                          </PopoverTrigger>
+                                          <PopoverContent sideOffset={10} side="right">
+                                              {segment.type}
+                                          </PopoverContent>
+                                      </Popover>
                                   ),
                               )
                             : poem.content.map((line, index) => (
@@ -84,7 +71,6 @@ function Poem() {
                                   </p>
                               ))}
                     </ListContent>
-                    <PoemNoteContent content={noteContent} hide={() => setNoteContent(null)}></PoemNoteContent>
                 </div>
             </div>
         </div>

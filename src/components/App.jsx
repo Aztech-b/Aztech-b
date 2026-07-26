@@ -5,7 +5,6 @@ import Curtain from "./Curtain";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 import ScrollToHash from "./ScrollToHash";
-import { TooltipProvider } from "./ui/tooltip";
 
 const TransitionContextProvider = createContext();
 export const useTransitionContext = () => useContext(TransitionContextProvider);
@@ -27,25 +26,23 @@ function App() {
     return (
         <main className="relative">
             <TransitionContextProvider value={{ setTargetLocation }}>
-                <TooltipProvider>
-                    <ScrollToHash></ScrollToHash>
-                    <NavBar></NavBar>
+                <ScrollToHash></ScrollToHash>
+                <NavBar></NavBar>
 
-                    <AnimatePresence mode="wait">
-                        {targetLocation && location.pathname !== targetLocation ? (
-                            <Curtain
-                                to={targetLocation}
-                                onComplete={() => {
-                                    setTargetLocation(null);
-                                }}
-                            ></Curtain>
-                        ) : null}
-                    </AnimatePresence>
-                    <Suspense>
-                        <Outlet></Outlet>
-                    </Suspense>
-                    <Footer></Footer>
-                </TooltipProvider>
+                <AnimatePresence mode="wait">
+                    {targetLocation && location.pathname !== targetLocation ? (
+                        <Curtain
+                            to={targetLocation}
+                            onComplete={() => {
+                                setTargetLocation(null);
+                            }}
+                        ></Curtain>
+                    ) : null}
+                </AnimatePresence>
+                <Suspense>
+                    <Outlet></Outlet>
+                </Suspense>
+                <Footer></Footer>
             </TransitionContextProvider>
         </main>
     );
