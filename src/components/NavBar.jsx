@@ -7,11 +7,14 @@ import {
 } from "@/src/components/ui/navigation-menu";
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useState } from "react";
+import { useLocation, useMatch } from "react-router";
 import TransitionLink from "./TransitionLink";
 
 function NavBar() {
     const { scrollY } = useScroll();
     const [hidden, setHidden] = useState(false);
+    const location = useLocation();
+    const match = Boolean(useMatch("/my-poems/:id"));
 
     useMotionValueEvent(scrollY, "change", (current) => {
         const diff = current - scrollY.getPrevious();
@@ -19,7 +22,7 @@ function NavBar() {
     });
     return (
         <motion.div
-            className="navBar"
+            className="navBar relative"
             animate={{ y: hidden ? "calc(-1 * var(--navbar-height))" : 0, opacity: hidden ? 0 : 1 }}
         >
             <NavigationMenu>

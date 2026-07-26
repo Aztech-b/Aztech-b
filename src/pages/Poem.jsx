@@ -1,6 +1,8 @@
-import { useParams } from "react-router";
+import { ArrowLeft } from "lucide-react";
+import { Link, useParams } from "react-router";
 import { GetFormattedPoemById, GetSegmentedFormattedPoemById } from "../assets/poems.js";
 import { ListContent } from "../components/list";
+import { Button } from "../components/ui/button.jsx";
 import { Highlighter } from "../components/ui/highlighter.jsx";
 import { Popover, PopoverContent, PopoverTrigger } from "../components/ui/popover.jsx";
 
@@ -11,10 +13,18 @@ function Poem() {
 
     return (
         <div id="poem" className="relative content">
-            <div className="main relative">
-                <div className="mb-10 mt-40">
+            <div
+                className="main relative"
+                style={{ display: "grid", gridTemplateColumns: "1fr 3fr", gridTemplateRows: "1fr auto" }}
+            >
+                <div className="mb-10 mt-40 flex justify-between w-max items-center col-start-2">
+                    <Link to={"/my-poems"} viewTransition>
+                        <Button variant="ghost" size="icon-xl" className={"rounded-full justify-self-start mr-3"}>
+                            <ArrowLeft size={90}></ArrowLeft>
+                        </Button>
+                    </Link>
                     <h2
-                        className={`poem-title text-5xl`}
+                        className={`poem-title text-5xl w-full`}
                         style={{
                             viewTransitionName: `poem-title-${poem.id}`,
                             viewTransitionClass: "poem-title-transition",
@@ -24,9 +34,9 @@ function Poem() {
                     </h2>
                 </div>
 
-                <div className={"w-full relative grid grid-cols-[1fr_3fr]"}>
+                <div className={"w-full relative col-start-2 justify-self-start"}>
                     <ListContent
-                        className={"poem-content col-start-2 justify-self-start"}
+                        className={"poem-content"}
                         style={{
                             viewTransitionName: `poem-content-${poem.id}`,
                             viewTransitionClass: "poem-content-class",
