@@ -1,10 +1,10 @@
 import { AnimatePresence } from "motion/react";
 import { createContext, Suspense, useContext, useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router";
-import Curtain from "./Curtain";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 import ScrollToHash from "./ScrollToHash";
+import Curtain from "./ui/Curtain";
 
 const TransitionContextProvider = createContext();
 export const useTransitionContext = () => useContext(TransitionContextProvider);

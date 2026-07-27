@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { useMemo } from "react";
 import styles from "../styles/main.module.css";
 import DecryptedText from "./DecryptedText";
-import SoftAurora from "./SoftAurora";
+import SoftAurora from "./ui/SoftAurora";
 
 function Main({ className, ...props }) {
     const { scrollY } = useScroll();
@@ -17,7 +17,7 @@ function Main({ className, ...props }) {
                 window.WebGLRenderingContext &&
                 (canvas.getContext("webgl") || canvas.getContext("experimental-webgl"))
             );
-        } catch (e) {
+        } catch {
             return false;
         } finally {
             const canvas = document.querySelector("#webglTestCanvas");

@@ -1,4 +1,4 @@
-import LightRays from "../LightRays";
+import LightRays from "../ui/LightRays";
 
 function Hero() {
     return (
