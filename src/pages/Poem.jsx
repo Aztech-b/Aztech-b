@@ -1,5 +1,5 @@
 import { ArrowLeft } from "lucide-react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Link, useParams } from "react-router";
 import { GetFormattedPoemById, GetSegmentedFormattedPoemById } from "../assets/poems.js";
 import { ListContent } from "../components/list";
@@ -13,6 +13,11 @@ function Poem() {
     const segments = GetSegmentedFormattedPoemById(Number(params.id));
     /** @type {[String | null]} */
     const [note, setNote] = useState(null);
+    // Without useMemo the Highlighter keeps being repainted
+    // The useLayoutEffect of Highlighter Component has this padding as a dependency and without useMemo, the array point to the
+    // another chunk in memory, and the Highlighter gets repainted. With useMemo on any state update, al boxes remain intact without any repaints
+
+    const paddingOfBox = useMemo(() => [2, 4], []);
 
     return (
         <div id="poem" className="relative content">
@@ -46,8 +51,9 @@ function Poem() {
                         }}
                     >
                         {segments
-                            ? segments.map((segment, index) =>
-                                  segment.type === "plain" ? (
+                            ? segments.map((segment, index) => {
+                                  const isBox = segment?.note?.type?.includes("box");
+                                  return segment.type === "plain" ? (
                                       segment.lines.map((line, index) => (
                                           <p key={index} className="w-fit">
                                               {line}
@@ -60,8 +66,8 @@ function Poem() {
                                           onClick={() => setNote(segment?.note?.text)}
                                       >
                                           <Highlighter
-                                              padding={segment.type.includes("box") ? [(2, 4)] : 0}
-                                              action={segment.type.includes("box") ? "box" : "highlight"}
+                                              padding={isBox ? paddingOfBox : 0}
+                                              action={isBox ? "box" : "highlight"}
                                               multiline={false}
                                               iterations={4}
                                               color={
@@ -77,8 +83,8 @@ function Poem() {
                                               ))}
                                           </Highlighter>
                                       </div>
-                                  ),
-                              )
+                                  );
+                              })
                             : poem.content.map((line, index) => (
                                   <p key={index} className="w-fit">
                                       {line}
