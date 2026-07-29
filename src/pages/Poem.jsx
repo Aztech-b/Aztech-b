@@ -18,6 +18,7 @@ function Poem() {
     // another chunk in memory, and the Highlighter gets repainted. With useMemo on any state update, al boxes remain intact without any repaints
 
     const paddingOfBox = useMemo(() => [2, 4], []);
+    const [distanceFromTop, setDistanceFromTop] = useState();
 
     return (
         <div id="poem" className="relative content">
@@ -63,7 +64,11 @@ function Poem() {
                                       <div
                                           key={index}
                                           className={"w-fit highlighted"}
-                                          onClick={() => setNote(segment?.note?.text)}
+                                          onClick={(e) => {
+                                              setNote(segment?.note?.text);
+                                              setDistanceFromTop(e.currentTarget.offsetTop);
+                                              console.log(e.currentTarget.offsetTop);
+                                          }}
                                       >
                                           <Highlighter
                                               padding={isBox ? paddingOfBox : 0}
@@ -94,7 +99,9 @@ function Poem() {
                     {note ? (
                         <>
                             <Separator orientation="vertical"></Separator>
-                            <div className="p-5">{note}</div>
+                            <div className="p-5">
+                                <p style={{ marginTop: distanceFromTop }}>{note}</p>
+                            </div>
                         </>
                     ) : null}
                 </div>

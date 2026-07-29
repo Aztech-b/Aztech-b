@@ -118,3 +118,7 @@ p:empty {
 .highlighted:hover {
     --highlighterHighlightColor: color-mix(in oklab, cornflowerblue, white 20%);
 }
+
+.note {
+    margin-top: calc(var(--distance-from-top) * 1px);
+}
