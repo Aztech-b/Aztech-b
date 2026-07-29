@@ -5,8 +5,9 @@ import { List, ListContent, ListItem, ListTitle } from "../components/list";
 function MyPoemsIndex() {
     return (
         <div className="content" id="my-poems-index">
-            <div className="flex justify-center items-center h-[50vh]">
+            <div className="flex justify-center items-center h-[50vh] flex-col">
                 <h1 className="heroHeading">Poems written by me</h1>
+                <p className="description heroDescription">Poems are written in Kazakh language</p>
             </div>
             <List className={"slide-in-out"}>
                 {poemsData.map((poem) => (
