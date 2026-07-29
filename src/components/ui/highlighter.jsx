@@ -3,8 +3,6 @@ import { useInView } from "motion/react";
 import { useLayoutEffect, useRef } from "react";
 import { annotate } from "rough-notation";
 
-export function HighlighterGroup({ children }) {}
-
 export function Highlighter({
     children,
     action = "highlight",

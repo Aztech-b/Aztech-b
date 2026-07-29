@@ -60,12 +60,12 @@ function Poem() {
                                           onClick={() => setNote(segment?.note?.text)}
                                       >
                                           <Highlighter
-                                              padding={segment.type === "draft" ? [(2, 4)] : 0}
-                                              action={segment.type === "draft" ? "box" : "highlight"}
+                                              padding={segment.type.includes("box") ? [(2, 4)] : 0}
+                                              action={segment.type.includes("box") ? "box" : "highlight"}
                                               multiline={false}
                                               iterations={4}
                                               color={
-                                                  segment.type === "draft"
+                                                  segment.type.includes("box")
                                                       ? "var(--highlighterBoxColor)"
                                                       : "var(--highlighterHighlightColor)"
                                               }
