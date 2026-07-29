@@ -59,10 +59,11 @@ function Main({ className, ...props }) {
                         <DecryptedText
                             text="Bakdaulet"
                             speed={60}
-                            maxIterations={20}
+                            maxIterations={2000}
                             animateOn="view"
                             clickMode="toggle"
                             parentClassName="heading"
+                            sequential
                         />
                     </div>
                     <ChevronDown size={60}></ChevronDown>

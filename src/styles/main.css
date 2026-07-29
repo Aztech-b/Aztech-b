@@ -3,6 +3,8 @@
     --text-description: gray;
     --navbar-max-width: 800px;
     --navbar-height: 54px;
+
+    --highlighterBoxColor: #6633ee;
 }
 
 #root,
@@ -101,11 +103,18 @@ p:empty {
     min-height: 1.2rem;
 }
 
+@property --highlighterHighlightColor {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: cornflowerblue;
+}
+
 .highlighted {
-    transition: background-color 100ms linear;
+    --highlighterHighlightColor: cornflowerblue;
+    cursor: help;
+    transition: --highlighterHighlightColor 200ms linear;
 }
 
 .highlighted:hover {
-    cursor: help;
-    background-color: color-mix(in oklab, var(--color-muted) 50%, transparent 50%);
+    --highlighterHighlightColor: color-mix(in oklab, cornflowerblue, white 20%);
 }

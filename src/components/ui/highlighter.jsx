@@ -3,6 +3,8 @@ import { useInView } from "motion/react";
 import { useLayoutEffect, useRef } from "react";
 import { annotate } from "rough-notation";
 
+export function HighlighterGroup({ children }) {}
+
 export function Highlighter({
     children,
     action = "highlight",
@@ -25,7 +27,6 @@ export function Highlighter({
     useLayoutEffect(() => {
         const element = elementRef.current;
         let annotation = null;
-        let resizeObserver = null;
 
         if (shouldShow && element) {
             const annotationConfig = {
@@ -41,21 +42,10 @@ export function Highlighter({
             const currentAnnotation = annotate(element, annotationConfig);
             annotation = currentAnnotation;
             currentAnnotation.show();
-
-            resizeObserver = new ResizeObserver(() => {
-                currentAnnotation.hide();
-                currentAnnotation.show();
-            });
-
-            resizeObserver.observe(element);
-            resizeObserver.observe(document.body);
         }
 
         return () => {
             annotation?.remove();
-            if (resizeObserver) {
-                resizeObserver.disconnect();
-            }
         };
     }, [shouldShow, action, color, strokeWidth, animationDuration, iterations, padding, multiline]);
 

@@ -1,15 +1,18 @@
 import { ArrowLeft } from "lucide-react";
+import { useState } from "react";
 import { Link, useParams } from "react-router";
 import { GetFormattedPoemById, GetSegmentedFormattedPoemById } from "../assets/poems.js";
 import { ListContent } from "../components/list";
 import { Button } from "../components/ui/button.jsx";
 import { Highlighter } from "../components/ui/highlighter.jsx";
-import { Popover, PopoverContent, PopoverTrigger } from "../components/ui/popover.jsx";
+import { Separator } from "../components/ui/separator.jsx";
 
 function Poem() {
     const params = useParams();
     const poem = GetFormattedPoemById(Number(params.id));
     const segments = GetSegmentedFormattedPoemById(Number(params.id));
+    /** @type {[String | null]} */
+    const [note, setNote] = useState(null);
 
     return (
         <div id="poem" className="relative content">
@@ -34,9 +37,9 @@ function Poem() {
                     </h2>
                 </div>
 
-                <div className={"w-full relative col-start-2 justify-self-start"}>
+                <div className={"w-full relative col-start-2 justify-self-start grid grid-cols-[1fr_auto_1fr]"}>
                     <ListContent
-                        className={"poem-content"}
+                        className={"poem-content flex-1"}
                         style={{
                             viewTransitionName: `poem-content-${poem.id}`,
                             viewTransitionClass: "poem-content-class",
@@ -51,27 +54,29 @@ function Poem() {
                                           </p>
                                       ))
                                   ) : (
-                                      <Popover key={index}>
-                                          <PopoverTrigger asChild>
-                                              <div className={"highlighted w-fit"}>
-                                                  <Highlighter
-                                                      padding={[2, 4]}
-                                                      action={segment.type === "draft" ? "box" : "highlight"}
-                                                      multiline={false}
-                                                      iterations={4}
-                                                  >
-                                                      {segment.lines.map((line, index) => (
-                                                          <p key={index} className="w-fit">
-                                                              {line}
-                                                          </p>
-                                                      ))}
-                                                  </Highlighter>
-                                              </div>
-                                          </PopoverTrigger>
-                                          <PopoverContent sideOffset={10} side="right">
-                                              {segment.type}
-                                          </PopoverContent>
-                                      </Popover>
+                                      <div
+                                          key={index}
+                                          className={"w-fit highlighted"}
+                                          onClick={() => setNote(segment?.note?.text)}
+                                      >
+                                          <Highlighter
+                                              padding={segment.type === "draft" ? [(2, 4)] : 0}
+                                              action={segment.type === "draft" ? "box" : "highlight"}
+                                              multiline={false}
+                                              iterations={4}
+                                              color={
+                                                  segment.type === "draft"
+                                                      ? "var(--highlighterBoxColor)"
+                                                      : "var(--highlighterHighlightColor)"
+                                              }
+                                          >
+                                              {segment.lines.map((line, index) => (
+                                                  <p key={index} className="w-fit">
+                                                      {line}
+                                                  </p>
+                                              ))}
+                                          </Highlighter>
+                                      </div>
                                   ),
                               )
                             : poem.content.map((line, index) => (
@@ -80,6 +85,12 @@ function Poem() {
                                   </p>
                               ))}
                     </ListContent>
+                    {note ? (
+                        <>
+                            <Separator orientation="vertical"></Separator>
+                            <div className="p-5">{note}</div>
+                        </>
+                    ) : null}
                 </div>
             </div>
         </div>
