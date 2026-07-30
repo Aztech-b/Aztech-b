@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils.js";
 import { ArrowLeft } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Link, useParams } from "react-router";
@@ -20,20 +21,19 @@ function Poem() {
     const paddingOfBox = useMemo(() => [2, 4], []);
     const [distanceFromTop, setDistanceFromTop] = useState();
 
+    const [selectedNote, setSelectedNote] = useState(null);
+
     return (
         <div id="poem" className="relative content">
-            <div
-                className="main relative"
-                style={{ display: "grid", gridTemplateColumns: "1fr 3fr", gridTemplateRows: "1fr auto" }}
-            >
-                <div className="mb-10 mt-40 flex justify-between w-max items-center col-start-2">
+            <div className="relative grid grid-rows-[1fr_auto] justify-center items-center px-4">
+                <div className="mb-10 mt-40 flex justify-between w-max items-center col-start-2 justify-self-center">
                     <Link to={"/my-poems"} viewTransition>
-                        <Button variant="ghost" size="icon-xl" className={"rounded-full justify-self-start mr-3"}>
+                        <Button variant="ghost" size="icon-xl" className={"rounded-full mr-3"}>
                             <ArrowLeft size={90}></ArrowLeft>
                         </Button>
                     </Link>
                     <h2
-                        className={`poem-title text-5xl w-full`}
+                        className={`poem-title max-w-full text-[clamp(0.5rem,6vw,4rem)] wrap-break-word`}
                         style={{
                             viewTransitionName: `poem-title-${poem.id}`,
                             viewTransitionClass: "poem-title-transition",
@@ -43,9 +43,13 @@ function Poem() {
                     </h2>
                 </div>
 
-                <div className={"w-full relative col-start-2 justify-self-start grid grid-cols-[1fr_auto_1fr]"}>
+                <div
+                    className={
+                        "w-full relative col-start-2 justify-self-start grid grid-cols-[minmax(0,3fr)_auto_minmax(0,2fr)] max-w-230"
+                    }
+                >
                     <ListContent
-                        className={"poem-content flex-1"}
+                        className={cn("poem-content", note ? "col-span-1" : "col-span-3")}
                         style={{
                             viewTransitionName: `poem-content-${poem.id}`,
                             viewTransitionClass: "poem-content-class",
@@ -54,20 +58,24 @@ function Poem() {
                         {segments
                             ? segments.map((segment, index) => {
                                   const isBox = segment?.note?.type?.includes("box");
+                                  const ParagraphElement = ({ children }) => (
+                                      <p key={index} className="w-fit text-[clamp(0.5rem,1vw+0.5rem,9rem)]">
+                                          {children}
+                                      </p>
+                                  );
                                   return segment.type === "plain" ? (
                                       segment.lines.map((line, index) => (
-                                          <p key={index} className="w-fit">
-                                              {line}
-                                          </p>
+                                          <ParagraphElement key={index}>{line}</ParagraphElement>
                                       ))
                                   ) : (
                                       <div
                                           key={index}
-                                          className={"w-fit highlighted"}
+                                          className={cn("w-fit highlighted", selectedNote === index ? "selected" : "")}
                                           onClick={(e) => {
-                                              setNote(segment?.note?.text);
+                                              const isSelected = selectedNote === index;
+                                              setNote(isSelected ? null : segment?.note?.text);
                                               setDistanceFromTop(e.currentTarget.offsetTop);
-                                              console.log(e.currentTarget.offsetTop);
+                                              setSelectedNote(isSelected ? null : index);
                                           }}
                                       >
                                           <Highlighter
@@ -82,9 +90,7 @@ function Poem() {
                                               }
                                           >
                                               {segment.lines.map((line, index) => (
-                                                  <p key={index} className="w-fit">
-                                                      {line}
-                                                  </p>
+                                                  <ParagraphElement key={index}>{line}</ParagraphElement>
                                               ))}
                                           </Highlighter>
                                       </div>

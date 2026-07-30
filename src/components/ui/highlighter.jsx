@@ -26,6 +26,8 @@ export function Highlighter({
         const element = elementRef.current;
         let annotation = null;
 
+        let resizeObserver = null;
+
         if (shouldShow && element) {
             const annotationConfig = {
                 type: action,
@@ -40,10 +42,21 @@ export function Highlighter({
             const currentAnnotation = annotate(element, annotationConfig);
             annotation = currentAnnotation;
             currentAnnotation.show();
+
+            resizeObserver = new ResizeObserver(() => {
+                currentAnnotation.hide();
+                currentAnnotation.show();
+            });
         }
+
+        resizeObserver.observe(element);
+        resizeObserver.observe(document.body);
 
         return () => {
             annotation?.remove();
+            if (resizeObserver) {
+                resizeObserver.disconnect();
+            }
         };
     }, [shouldShow, action, color, strokeWidth, animationDuration, iterations, padding, multiline]);
 
