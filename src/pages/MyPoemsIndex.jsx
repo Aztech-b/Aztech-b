@@ -11,13 +11,13 @@ function MyPoemsIndex() {
                 <h1 className="heroHeading text-center"> {t("heading")} </h1>
                 <p className="description heroDescription"> {t("headingDescription")} </p>
             </div>
-            <List className={"slide-in-out"}>
+            <List className={"slide-in-out px-2"}>
                 {poemsData.map((poem) => (
                     <Link
                         viewTransition
                         key={poem.id}
                         to={`/my-poems/${poem.id}`}
-                        className={"cursor-pointer shrink-0 grow"}
+                        className={"cursor-pointer shrink grow"}
                     >
                         <ListItem>
                             <ListTitle
@@ -31,14 +31,16 @@ function MyPoemsIndex() {
                             </ListTitle>
                             {poem.preview ? (
                                 <ListContent
-                                    className={"poem-content w-max"}
+                                    className={"poem-content max-w-full w-full"}
                                     style={{
                                         viewTransitionName: `poem-content-${poem.id}`,
                                         viewTransitionClass: "poem-content-class",
                                     }}
                                 >
                                     {poem.preview.map((poemPreviewLine, index) => (
-                                        <p key={index}>{poemPreviewLine}</p>
+                                        <p className="wrap-break-word max-w-full" key={index}>
+                                            {poemPreviewLine}
+                                        </p>
                                     ))}
                                 </ListContent>
                             ) : null}

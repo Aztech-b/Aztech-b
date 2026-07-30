@@ -9,7 +9,6 @@ List
  */
 
 import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
 
 export function List({ children, className, ...props }) {
     return (
@@ -39,9 +38,7 @@ export function ListContent({ children, className, ...props }) {
     return (
         <div className={cn("relative mt-5", className)} {...props}>
             <div className="w-1 absolute h-full min-h-full left-0 bg-blue-400"></div>
-            <div className="ml-5">{children}</div>
+            <div className="ml-5 max-w-full">{children}</div>
         </div>
     );
 }
-
-export const MotionListContent = motion.create(ListContent);
