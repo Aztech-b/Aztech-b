@@ -38,7 +38,10 @@ function MyPoemsIndex() {
                                     }}
                                 >
                                     {poem.preview.map((poemPreviewLine, index) => (
-                                        <p className="wrap-break-word max-w-full" key={index}>
+                                        <p
+                                            className="wrap-break-word max-w-full text-[clamp(0.5rem,1vw+0.5rem,9rem)]"
+                                            key={index}
+                                        >
                                             {poemPreviewLine}
                                         </p>
                                     ))}
