@@ -31,7 +31,7 @@ function FeaturedProjects() {
         <div className="content">
             <Divider className={"mt-20"}>{t("header")}</Divider>
             <div className={styles.mainContainer} ref={container}>
-                <div className="sticky top-60 flex items-start">
+                <div className="sticky top-60 flex flex-wrap max-w-max w-fit items-start">
                     <div className={styles.card}>
                         <AnimatePresence mode="wait" initial={false}>
                             <MotionCard
@@ -96,7 +96,7 @@ function FeaturedProjects() {
                             transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
                             className="p-3 flex-3 w-full h-auto"
                         >
-                            <img src={data.screenshot} alt="" />
+                            <img src={data.screenshot} alt="" className="min-w-60" />
                         </motion.div>
                     </AnimatePresence>
                 </div>
