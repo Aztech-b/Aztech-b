@@ -1,17 +1,17 @@
 import i18n from "i18next";
+import HttpBackend from "i18next-http-backend";
 import { initReactI18next } from "react-i18next";
-import en from "./locales/en.json";
-import ru from "./locales/ru.json";
 
-i18n.use(initReactI18next).init({
-    fallbackLng: "en",
-    lng: "en",
-    defaultNS: "translation",
-    ns: ["translation"],
-    debug: true,
-    resources: { en: { translation: en }, ru: { translation: ru } },
-    interpolation: { escapeValue: false },
-});
+i18n.use(HttpBackend)
+    .use(initReactI18next)
+    .init({
+        fallbackLng: "en",
+        lng: "en",
+        defaultNS: "translation",
+        ns: ["translation"],
+        backend: { loadPath: "/locales/{{lng}}.json" },
+        interpolation: { escapeValue: false },
+    });
 
 i18n.languages = ["en", "ru"];
 
