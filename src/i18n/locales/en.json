@@ -36,7 +36,7 @@
                 },
                 "MessagingApp": {
                     "title": "Messaging App",
-                    "description": "Just a simple messaging app with basic functionality(it is probably not working because of the free plan limitations in PaaS)"
+                    "description": "Just a simple messaging app with basic functionality (it is probably not working because of the free plan limitations in PaaS)"
                 },
                 "comingSoon": "Coming Soon...",
                 "seeItLive": "See It Live"

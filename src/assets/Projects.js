@@ -4,18 +4,17 @@ import messagingAppScreenshot from "./messagingApp.webp";
 
 const data = [
     {
-        title: "Messaging App",
+        title: "indexPage.featuredProjects.projects.MessagingApp.title",
         screenshot: messagingAppScreenshot,
         chips: [React, MantineUI, FramerMotion, PostgreSQL, SocketIO],
-        description:
-            "Just a simple messaging app with basic functionality(it is probably not working because of the free plan limitations in PaaS)",
+        description: "indexPage.featuredProjects.projects.MessagingApp.description",
         links: { code: "https://github.com/Aztech-b/MessagingApp", live: "https://messaging-app-opal-one.vercel.app/" },
     },
     {
-        title: "CarbonX",
+        title: "indexPage.featuredProjects.projects.CarbonX.title",
         screenshot: carbonXScreenshot,
         chips: [Unity, Aseprite],
-        description: "Game about saving the nature and Carbon Dioxide emission issues in the world",
+        description: "indexPage.featuredProjects.projects.CarbonX.description",
     },
 ];
 

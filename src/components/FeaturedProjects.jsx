@@ -1,5 +1,6 @@
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import projectsData from "../assets/Projects.js";
 import styles from "../styles/featuredProjects.module.css";
 import { Divider } from "./Divider";
@@ -27,6 +28,7 @@ function FeaturedProjects() {
     const container = useRef(null);
     // 240 is top-60 of tailwind
     const { scrollYProgress } = useScroll({ target: container, offset: ["start 240px", "end 500px"] });
+    const { t } = useTranslation();
 
     useMotionValueEvent(scrollYProgress, "change", (latest) => {
         const clampedProgress = Math.min(Math.max(latest, 0), 0.999);
@@ -50,7 +52,7 @@ function FeaturedProjects() {
 
     return (
         <div className="content">
-            <Divider className={"mt-20"}>Featured Projects</Divider>
+            <Divider className={"mt-20"}>{t("indexPage.featuredProjects.header")}</Divider>
             <div className={styles.mainContainer} ref={container}>
                 <div className="sticky top-60 flex items-start">
                     <div className={styles.card}>
@@ -65,8 +67,8 @@ function FeaturedProjects() {
                             >
                                 <div>
                                     <CardHeader>
-                                        <CardTitle className={styles.cardTitle}>{data.title}</CardTitle>
-                                        <CardDescription>{data.description}</CardDescription>
+                                        <CardTitle className={styles.cardTitle}>{t(data.title)}</CardTitle>
+                                        <CardDescription>{t(data.description)}</CardDescription>
                                     </CardHeader>
                                     <CardContent>
                                         <div className={styles.cardContent}>
@@ -80,13 +82,17 @@ function FeaturedProjects() {
                                     </CardContent>
                                     <CardFooter className={styles.cardFooter}>
                                         {!data.links ? (
-                                            <h2 className="text-center">Coming Soon...</h2>
+                                            <h2 className="text-center">
+                                                {t("indexPage.featuredProjects.projects.comingSoon")}
+                                            </h2>
                                         ) : (
                                             <>
                                                 <Button variant="outline" href={data.links.code}>
                                                     GitHub
                                                 </Button>
-                                                <Button href={data.links.live}>See It Live</Button>
+                                                <Button href={data.links.live}>
+                                                    {t("indexPage.featuredProjects.projects.seeItLive")}
+                                                </Button>
                                             </>
                                         )}
                                     </CardFooter>
