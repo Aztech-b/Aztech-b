@@ -19,7 +19,7 @@
             }
         },
         "toolsAndSkills": {
-            "header": "ToolsAndSkills",
+            "header": "Tools & Skills",
             "skillCardLabel": {
                 "frontEnd": "Front-end",
                 "backEnd": "Back-end",

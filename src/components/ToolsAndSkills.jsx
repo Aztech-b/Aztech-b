@@ -1,5 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/src/components/ui/avatar";
 import { KZ, RU, US } from "country-flag-icons/react/1x1";
+import { useTranslation } from "react-i18next";
 import { Divider } from "./Divider";
 import SkillCard from "./SkillCard";
 import {
@@ -30,10 +31,19 @@ import {
 import { Card, CardContent } from "./ui/card";
 
 const data = [
-    { items: [HTML, JS, CSS, React, Vite, Astro, MantineUI, FramerMotion, TailwindCSS], label: "Front-end" },
-    { items: [NodeJS, ExpressJS, JS, Prisma, PostgreSQL, SocketIO], label: "Back-end" },
-    { items: [git, GitHub, Webpack, Supabase, Railway, Vercel, Cloudflare], label: "Miscellaneous" },
-    { items: [Unity, Aseprite], label: "Game Development" },
+    {
+        items: [HTML, JS, CSS, React, Vite, Astro, MantineUI, FramerMotion, TailwindCSS],
+        labelKey: "indexPage.toolsAndSkills.skillCardLabel.frontEnd", // this is for l10n
+    },
+    {
+        items: [NodeJS, ExpressJS, JS, Prisma, PostgreSQL, SocketIO],
+        labelKey: "indexPage.toolsAndSkills.skillCardLabel.backEnd",
+    },
+    {
+        items: [git, GitHub, Webpack, Supabase, Railway, Vercel, Cloudflare],
+        labelKey: "indexPage.toolsAndSkills.skillCardLabel.miscellaneous",
+    },
+    { items: [Unity, Aseprite], labelKey: "indexPage.toolsAndSkills.skillCardLabel.gameDev" },
 ];
 
 const languages = [
@@ -43,14 +53,15 @@ const languages = [
 ];
 
 function ToolsAndSkills() {
+    const { t } = useTranslation();
     return (
         <div className={"main content"}>
             <Divider className={"mb-8 mt-16"} textAlign="left">
-                <h2>Tools & Skills</h2>
+                <h2>{t("indexPage.toolsAndSkills.header")}</h2>
             </Divider>
             <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] justify-center align-baseline justify-items-center w-full gap-8 px-2">
                 {data.map((data, index) => (
-                    <SkillCard label={data.label} items={data.items} key={index}></SkillCard>
+                    <SkillCard labelKey={data.labelKey} items={data.items} key={index}></SkillCard>
                 ))}
             </div>
             <div style={{ display: "flex", justifyContent: "center" }}>

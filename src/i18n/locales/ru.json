@@ -18,8 +18,8 @@
                 "gameDev": "Разработчик Игр на Unity"
             }
         },
-        "ToolsAndSkills": {
-            "header": "Инструменты и Навыки",
+        "toolsAndSkills": {
+            "header": "Инструменты & Навыки",
             "skillCardLabel": {
                 "frontEnd": "Front-end",
                 "backEnd": "Back-end",
