@@ -1,31 +1,13 @@
 import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
-import { motion, useScroll, useTransform } from "motion/react";
-import { useMemo } from "react";
+import { motion } from "motion/react";
+import useParallaxBackground from "../hooks/useParallaxBackground";
 import styles from "../styles/main.module.css";
 import DecryptedText from "./DecryptedText";
 import SoftAurora from "./ui/SoftAurora";
 
 function Main({ className, ...props }) {
-    const { scrollY } = useScroll();
-    const bgY = useTransform(scrollY, [0, 1000], [0, 300], { clamp: true });
-    const isWebGLon = useMemo(() => {
-        try {
-            const canvas = document.createElement("canvas");
-            canvas.id = "webglTestCanvas";
-            return !!(
-                window.WebGLRenderingContext &&
-                (canvas.getContext("webgl") || canvas.getContext("experimental-webgl"))
-            );
-        } catch {
-            return false;
-        } finally {
-            const canvas = document.querySelector("#webglTestCanvas");
-            if (canvas) {
-                document.removeChild(canvas);
-            }
-        }
-    }, []);
+    const { isWebGLon, bgY } = useParallaxBackground();
     return (
         <div className={cn("relative backgroundContainer", className)} {...props}>
             {isWebGLon ? (

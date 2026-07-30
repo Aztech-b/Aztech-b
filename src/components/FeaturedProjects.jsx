@@ -1,7 +1,8 @@
-import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
+import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import projectsData from "../assets/Projects.js";
+import useFixedScroll from "../hooks/useFixedScroll.jsx";
 import styles from "../styles/featuredProjects.module.css";
 import { Divider } from "./Divider";
 import { Badge } from "./ui/badge";
@@ -22,33 +23,9 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
  */
 const MotionCard = motion.create(Card);
 function FeaturedProjects() {
-    /** @type {[data]} data */
-    const [data, setData] = useState(projectsData[0]);
-    const [activeIndex, setActiveIndex] = useState();
     const container = useRef(null);
-    // 240 is top-60 of tailwind
-    const { scrollYProgress } = useScroll({ target: container, offset: ["start 240px", "end 500px"] });
     const { t } = useTranslation("translation", { keyPrefix: "indexPage.featuredProjects" });
-
-    useMotionValueEvent(scrollYProgress, "change", (latest) => {
-        const clampedProgress = Math.min(Math.max(latest, 0), 0.999);
-        // At latest = 1.0 (100% scroll): 1.0 * projectsData.length would produce
-        // index 2 for a length-2 array, which is out of bounds.
-        // Clamping latest to 0.999 keeps the max index at 1.
-        const index = Math.floor(clampedProgress * projectsData.length);
-
-        if (projectsData[index] && data !== projectsData[index]) {
-            setData(projectsData[index]);
-            setActiveIndex(index);
-        }
-    });
-
-    useEffect(() => {
-        projectsData.forEach((project) => {
-            const img = new Image();
-            img.src = project.screenshot;
-        });
-    }, []);
+    const { data, scrollYProgress, activeIndex } = useFixedScroll(container);
 
     return (
         <div className="content">

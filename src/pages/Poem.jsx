@@ -13,10 +13,10 @@ function Poem() {
     const segments = GetSegmentedFormattedPoemById(Number(params.id));
     /** @type {[String | null]} */
     const [note, setNote] = useState(null);
+
     // Without useMemo the Highlighter keeps being repainted
     // The useLayoutEffect of Highlighter Component has this padding as a dependency and without useMemo, the array point to the
     // another chunk in memory, and the Highlighter gets repainted. With useMemo on any state update, al boxes remain intact without any repaints
-
     const paddingOfBox = useMemo(() => [2, 4], []);
     const [distanceFromTop, setDistanceFromTop] = useState();
 

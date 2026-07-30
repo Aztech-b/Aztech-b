@@ -8,8 +8,8 @@ import "./styles/global.css";
 import "./styles/main.css";
 import "./styles/viewTransitions.css";
 
-const MyPoems = lazy(() => import("./pages/MyPoems"));
 const Index = lazy(() => import("./pages/Index"));
+const MyPoems = lazy(() => import("./pages/MyPoems"));
 const MyPoemsIndex = lazy(() => import("./pages/MyPoemsIndex"));
 const Poem = lazy(() => import("./pages/Poem"));
 

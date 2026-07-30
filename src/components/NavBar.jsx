@@ -6,9 +6,9 @@ import {
     navigationMenuTriggerStyle,
     NavigationMenuViewport,
 } from "@/src/components/ui/navigation-menu";
-import { motion, useMotionValueEvent, useScroll } from "motion/react";
-import { useState } from "react";
+import { motion } from "motion/react";
 import { useTranslation } from "react-i18next";
+import useNavBarAnimationSetup from "../hooks/useNavBarAnimationSetup";
 import TransitionLink from "./TransitionLink";
 import {
     DropdownMenu,
@@ -19,14 +19,9 @@ import {
 } from "./ui/dropdown-menu";
 
 function NavBar() {
-    const { scrollY } = useScroll();
-    const [hidden, setHidden] = useState(false);
     const { t, i18n } = useTranslation("translation", { keyPrefix: "navBar" });
+    const { hidden } = useNavBarAnimationSetup();
 
-    useMotionValueEvent(scrollY, "change", (current) => {
-        const diff = current - scrollY.getPrevious();
-        setHidden(diff > 0);
-    });
     return (
         <motion.div
             className="navBar relative"
