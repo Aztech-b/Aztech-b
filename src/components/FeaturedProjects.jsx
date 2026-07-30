@@ -28,7 +28,7 @@ function FeaturedProjects() {
     const container = useRef(null);
     // 240 is top-60 of tailwind
     const { scrollYProgress } = useScroll({ target: container, offset: ["start 240px", "end 500px"] });
-    const { t } = useTranslation();
+    const { t } = useTranslation("translation", { keyPrefix: "indexPage.featuredProjects" });
 
     useMotionValueEvent(scrollYProgress, "change", (latest) => {
         const clampedProgress = Math.min(Math.max(latest, 0), 0.999);
@@ -52,7 +52,7 @@ function FeaturedProjects() {
 
     return (
         <div className="content">
-            <Divider className={"mt-20"}>{t("indexPage.featuredProjects.header")}</Divider>
+            <Divider className={"mt-20"}>{t("header")}</Divider>
             <div className={styles.mainContainer} ref={container}>
                 <div className="sticky top-60 flex items-start">
                     <div className={styles.card}>
@@ -82,17 +82,13 @@ function FeaturedProjects() {
                                     </CardContent>
                                     <CardFooter className={styles.cardFooter}>
                                         {!data.links ? (
-                                            <h2 className="text-center">
-                                                {t("indexPage.featuredProjects.projects.comingSoon")}
-                                            </h2>
+                                            <h2 className="text-center">{t("projects.comingSoon")}</h2>
                                         ) : (
                                             <>
                                                 <Button variant="outline" href={data.links.code}>
                                                     GitHub
                                                 </Button>
-                                                <Button href={data.links.live}>
-                                                    {t("indexPage.featuredProjects.projects.seeItLive")}
-                                                </Button>
+                                                <Button href={data.links.live}>{t("projects.seeItLive")}</Button>
                                             </>
                                         )}
                                     </CardFooter>

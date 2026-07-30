@@ -21,7 +21,7 @@ import {
 function NavBar() {
     const { scrollY } = useScroll();
     const [hidden, setHidden] = useState(false);
-    const { t, i18n } = useTranslation();
+    const { t, i18n } = useTranslation("translation", { keyPrefix: "navBar" });
 
     useMotionValueEvent(scrollY, "change", (current) => {
         const diff = current - scrollY.getPrevious();
@@ -36,18 +36,18 @@ function NavBar() {
                 <NavigationMenuList>
                     <NavigationMenuItem>
                         <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                            <TransitionLink to="/">{t("navBar.home")}</TransitionLink>
+                            <TransitionLink to="/">{t("home")}</TransitionLink>
                         </NavigationMenuLink>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
                         <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                            <TransitionLink to="/my-poems">{t("navBar.myPoems")}</TransitionLink>
+                            <TransitionLink to="/my-poems">{t("myPoems")}</TransitionLink>
                         </NavigationMenuLink>
                     </NavigationMenuItem>
 
                     <DropdownMenu>
                         <DropdownMenuTrigger className={navigationMenuTriggerStyle()}>
-                            {t("navBar.language.header")}
+                            {t("language.header")}
                         </DropdownMenuTrigger>
                         <DropdownMenuContent>
                             <DropdownMenuGroup>
@@ -56,14 +56,14 @@ function NavBar() {
                                         i18n.changeLanguage("en");
                                     }}
                                 >
-                                    {t("navBar.language.en")}
+                                    {t("language.en")}
                                 </DropdownMenuItem>
                                 <DropdownMenuItem
                                     onClick={() => {
                                         i18n.changeLanguage("ru");
                                     }}
                                 >
-                                    {t("navBar.language.ru")}
+                                    {t("language.ru")}
                                 </DropdownMenuItem>
                             </DropdownMenuGroup>
                         </DropdownMenuContent>

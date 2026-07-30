@@ -4,17 +4,17 @@ import messagingAppScreenshot from "./messagingApp.webp";
 
 const data = [
     {
-        title: "indexPage.featuredProjects.projects.MessagingApp.title",
+        title: "projects.MessagingApp.title",
         screenshot: messagingAppScreenshot,
         chips: [React, MantineUI, FramerMotion, PostgreSQL, SocketIO],
-        description: "indexPage.featuredProjects.projects.MessagingApp.description",
+        description: "projects.MessagingApp.description",
         links: { code: "https://github.com/Aztech-b/MessagingApp", live: "https://messaging-app-opal-one.vercel.app/" },
     },
     {
-        title: "indexPage.featuredProjects.projects.CarbonX.title",
+        title: "projects.CarbonX.title",
         screenshot: carbonXScreenshot,
         chips: [Unity, Aseprite],
-        description: "indexPage.featuredProjects.projects.CarbonX.description",
+        description: "projects.CarbonX.description",
     },
 ];
 
