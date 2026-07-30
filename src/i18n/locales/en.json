@@ -1,0 +1,50 @@
+{
+    "navBar": { "home": "Home", "contact": "Contact", "about": "About", "myPoems": "My Poems" },
+    "indexPage": {
+        "about": {
+            "header": "About",
+            "main": "I am a developer specializing in full stack development with a strong proficiency in C#, React, etc. If you’re looking for a passionate developer who brings both technical skills and a unique perspective to your projects, I’m ready to collaborate and help bring your vision to life. Let's explore how I can contribute to your next exciting project.",
+            "chips": {
+                "fullStack": "Full-stack Developer",
+                "frontEnd": "Front-end JavaScript Developer",
+                "backEnd": "Back-end NodeJS Developer",
+                "gameDev": "Unity Game Developer"
+            }
+        },
+        "toolsAndSkills": {
+            "header": "ToolsAndSkills",
+            "skillCardLabel": {
+                "frontEnd": "Front-end",
+                "backEnd": "Back-end",
+                "miscellaneous": "Miscellaneous",
+                "gameDev": "Game Development"
+            }
+        },
+        "featuredProjects": {
+            "header": "Featured Projects",
+            "projects": {
+                "CarbonX": {
+                    "title": "CarbonX",
+                    "description": "Game about saving the nature and Carbon Dioxide emission issues in the world"
+                },
+                "MessagingApp": {
+                    "title": "Messaging App",
+                    "description": "Just a simple messaging app with basic functionality(it is probably not working because of the free plan limitations in PaaS)"
+                },
+                "comingSoon": "Coming Soon...",
+                "seeItLive": "See It Live"
+            }
+        },
+        "contact": {
+            "header": "Contact",
+            "myEmail": "My email: ",
+            "or": "OR",
+            "reachMe": "Reach me through social media: "
+        }
+    },
+    "myPoemsIndexPage": {
+        "heading": "Poems written by me",
+        "headingDescription": "Poems are written in Kazakh language"
+    },
+    "footer": "100% human made, No AI"
+}

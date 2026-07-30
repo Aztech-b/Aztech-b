@@ -1,20 +1,32 @@
 import {
     NavigationMenu,
+    NavigationMenuContent,
+    NavigationMenuIndicator,
     NavigationMenuItem,
     NavigationMenuLink,
     NavigationMenuList,
+    NavigationMenuTrigger,
     navigationMenuTriggerStyle,
+    NavigationMenuViewport,
 } from "@/src/components/ui/navigation-menu";
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useState } from "react";
-import { useLocation, useMatch } from "react-router";
+import { useTranslation } from "react-i18next";
 import TransitionLink from "./TransitionLink";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuGroup,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
+import { Button } from "./ui/button";
 
 function NavBar() {
     const { scrollY } = useScroll();
     const [hidden, setHidden] = useState(false);
-    const location = useLocation();
-    const match = Boolean(useMatch("/my-poems/:id"));
+    const { t, i18n } = useTranslation();
 
     useMotionValueEvent(scrollY, "change", (current) => {
         const diff = current - scrollY.getPrevious();
@@ -29,25 +41,40 @@ function NavBar() {
                 <NavigationMenuList>
                     <NavigationMenuItem>
                         <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                            <TransitionLink to="/">Home</TransitionLink>
+                            <TransitionLink to="/">{t("navBar.home")}</TransitionLink>
                         </NavigationMenuLink>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
                         <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                            <TransitionLink to="/">Contact</TransitionLink>
+                            <TransitionLink to="/my-poems">{t("navBar.myPoems")}</TransitionLink>
                         </NavigationMenuLink>
                     </NavigationMenuItem>
-                    <NavigationMenuItem>
-                        <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                            <TransitionLink to="/">About</TransitionLink>
-                        </NavigationMenuLink>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                        <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                            <TransitionLink to="/my-poems">My Poems</TransitionLink>
-                        </NavigationMenuLink>
-                    </NavigationMenuItem>
+
+                    <DropdownMenu>
+                        <DropdownMenuTrigger className={navigationMenuTriggerStyle()}>
+                            Change Language
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent>
+                            <DropdownMenuGroup>
+                                <DropdownMenuItem
+                                    onClick={() => {
+                                        i18n.changeLanguage("en");
+                                    }}
+                                >
+                                    Change Language to EN
+                                </DropdownMenuItem>
+                                <DropdownMenuItem
+                                    onClick={() => {
+                                        i18n.changeLanguage("ru");
+                                    }}
+                                >
+                                    Change Language to RU
+                                </DropdownMenuItem>
+                            </DropdownMenuGroup>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
                 </NavigationMenuList>
+                <NavigationMenuViewport></NavigationMenuViewport>
             </NavigationMenu>
         </motion.div>
     );

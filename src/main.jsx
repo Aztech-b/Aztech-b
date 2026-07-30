@@ -1,6 +1,7 @@
 import { StrictMode, lazy } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router";
+import "./i18n/config";
 import App from "./components/App";
 import MyPoemsIndex from "./pages/MyPoemsIndex";
 import Poem from "./pages/Poem";
