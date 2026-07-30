@@ -1,5 +1,11 @@
 {
-    "navBar": { "home": "Home", "contact": "Contact", "about": "About", "myPoems": "My Poems" },
+    "navBar": {
+        "home": "Home",
+        "contact": "Contact",
+        "about": "About",
+        "myPoems": "My Poems",
+        "language": { "header": "Change Language", "en": "Change Language to EN", "ru": "Change Language to RU" }
+    },
     "indexPage": {
         "about": {
             "header": "About",

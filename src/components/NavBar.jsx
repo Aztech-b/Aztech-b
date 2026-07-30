@@ -1,11 +1,8 @@
 import {
     NavigationMenu,
-    NavigationMenuContent,
-    NavigationMenuIndicator,
     NavigationMenuItem,
     NavigationMenuLink,
     NavigationMenuList,
-    NavigationMenuTrigger,
     navigationMenuTriggerStyle,
     NavigationMenuViewport,
 } from "@/src/components/ui/navigation-menu";
@@ -18,10 +15,8 @@ import {
     DropdownMenuContent,
     DropdownMenuGroup,
     DropdownMenuItem,
-    DropdownMenuLabel,
     DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import { Button } from "./ui/button";
 
 function NavBar() {
     const { scrollY } = useScroll();
@@ -52,7 +47,7 @@ function NavBar() {
 
                     <DropdownMenu>
                         <DropdownMenuTrigger className={navigationMenuTriggerStyle()}>
-                            Change Language
+                            {t("navBar.language.header")}
                         </DropdownMenuTrigger>
                         <DropdownMenuContent>
                             <DropdownMenuGroup>
@@ -61,14 +56,14 @@ function NavBar() {
                                         i18n.changeLanguage("en");
                                     }}
                                 >
-                                    Change Language to EN
+                                    {t("navBar.language.en")}
                                 </DropdownMenuItem>
                                 <DropdownMenuItem
                                     onClick={() => {
                                         i18n.changeLanguage("ru");
                                     }}
                                 >
-                                    Change Language to RU
+                                    {t("navBar.language.ru")}
                                 </DropdownMenuItem>
                             </DropdownMenuGroup>
                         </DropdownMenuContent>
