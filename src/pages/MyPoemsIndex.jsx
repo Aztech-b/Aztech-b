@@ -1,13 +1,15 @@
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 import { poemsAllFormatted as poemsData } from "../assets/poems.js";
 import { List, ListContent, ListItem, ListTitle } from "../components/list";
 
 function MyPoemsIndex() {
+    const { t } = useTranslation("translation", { keyPrefix: "myPoemsIndexPage" });
     return (
         <div className="content" id="my-poems-index">
             <div className="flex justify-center items-center h-[50vh] flex-col">
-                <h1 className="heroHeading">Poems written by me</h1>
-                <p className="description heroDescription">Poems are written in Kazakh language</p>
+                <h1 className="heroHeading text-center"> {t("heading")} </h1>
+                <p className="description heroDescription"> {t("headingDescription")} </p>
             </div>
             <List className={"slide-in-out"}>
                 {poemsData.map((poem) => (

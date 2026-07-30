@@ -49,9 +49,6 @@
             "reachMe": "Найти меня в соц. сетях: "
         }
     },
-    "myPoemsIndexPage": {
-        "heading": "Проемы написанные мной",
-        "headingDescription": "Все написано на казахском языке"
-    },
+    "myPoemsIndexPage": { "heading": "Мои Поемы", "headingDescription": "Все написано на казахском языке" },
     "footer": "100% сделано человеком, без ИИ"
 }
