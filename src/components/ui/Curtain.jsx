@@ -1,6 +1,6 @@
-import { motion } from "motion/react";
-import { useEffect, useState } from "react";
-import { useBlocker, useLocation, useNavigate, useNavigation } from "react-router";
+import { AnimatePresence, motion } from "motion/react";
+import { useEffect } from "react";
+import { useBlocker, useNavigation } from "react-router";
 import Spinner from "./Spinner";
 
 const MotionSpinner = motion.create(Spinner);
@@ -9,7 +9,7 @@ const MotionSpinner = motion.create(Spinner);
  *
  * @param {{from: String, to: String}[]} config
  */
-export function useCurtainManager(config) {
+export function CurtainManager({ config, showCurtain, curtainPhase, setCurtainPhase }) {
     const blocker = useBlocker(({ currentLocation, nextLocation }) => {
         const currentLocationPath = currentLocation.pathname.split("/");
         const nextLocationPath = nextLocation.pathname.split("/");
@@ -21,17 +21,41 @@ export function useCurtainManager(config) {
         }
         return false;
     });
-}
 
-function Curtain({ onComplete, to }) {
-    const navigation = useNavigation();
-    const navigate = useNavigate();
-    const location = useLocation();
+    const proceed = () => {
+        if (blocker.state === "blocked") {
+            blocker.proceed();
+        }
+    };
 
-    /** @type {["covering" | "waiting" | "uncovering"]} */
-    const [phase, setPhase] = useState("covering");
     useEffect(() => {
-        const isRouterIdle = navigation.state === "idle";
+        if (blocker.state === "blocked") {
+            showCurtain();
+        }
+    }, [blocker, blocker.state, showCurtain]);
+    // return {blockerState: blocker.state, proceed}
+    return (
+        <AnimatePresence mode="wait">
+            {curtainPhase === "uncovering" || curtainPhase === null ? null : (
+                <Curtain
+                    phase={curtainPhase}
+                    setPhase={setCurtainPhase}
+                    proceed={proceed}
+                    blockerState={blocker.state}
+                ></Curtain>
+            )}
+        </AnimatePresence>
+    );
+}
+/**
+ *
+ * @param {{phase: "covering" | "waiting" | "uncovering"}} param0
+ */
+function Curtain({ phase, setPhase, proceed, blockerState }) {
+    const navigation = useNavigation();
+
+    useEffect(() => {
+        const isRouterIdle = blockerState === "unblocked";
 
         if (phase === "waiting" && isRouterIdle) {
             requestAnimationFrame(() => {
@@ -40,7 +64,7 @@ function Curtain({ onComplete, to }) {
                 });
             });
         }
-    }, [phase, location.pathname, navigation.state, to]);
+    }, [blockerState, navigation.state, phase, setPhase]);
 
     return (
         <motion.div
@@ -52,14 +76,17 @@ function Curtain({ onComplete, to }) {
             style={{ transformOrigin: phase === "covering" ? "left" : "right" }}
             onAnimationComplete={() => {
                 if (phase === "covering") {
-                    navigate(to);
+                    proceed();
+
                     setPhase("waiting");
-                } else if (phase === "uncovering") {
-                    onComplete();
                 }
             }}
         >
-            <MotionSpinner initial={{ opacity: 0 }} animate={{ opacity: 1 }}></MotionSpinner>
+            <MotionSpinner
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+            ></MotionSpinner>
         </motion.div>
     );
 }

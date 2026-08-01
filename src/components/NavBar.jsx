@@ -8,8 +8,8 @@ import {
 } from "@/src/components/ui/navigation-menu";
 import { motion } from "motion/react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router";
 import useNavBarAnimationSetup from "../hooks/useNavBarAnimationSetup";
-import TransitionLink from "./TransitionLink";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -31,12 +31,12 @@ function NavBar() {
                 <NavigationMenuList>
                     <NavigationMenuItem>
                         <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                            <TransitionLink to="/">{t("home")}</TransitionLink>
+                            <Link to="/">{t("home")}</Link>
                         </NavigationMenuLink>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
                         <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                            <TransitionLink to="/my-poems">{t("myPoems")}</TransitionLink>
+                            <Link to="/my-poems">{t("myPoems")}</Link>
                         </NavigationMenuLink>
                     </NavigationMenuItem>
 
