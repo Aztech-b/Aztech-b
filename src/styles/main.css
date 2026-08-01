@@ -127,3 +127,9 @@ p:empty {
 .note {
     margin-top: calc(var(--distance-from-top) * 1px);
 }
+
+nav .highlight {
+    --highlight-bg: color-mix(in oklab, var(--my-accent), transparent 70%);
+    background: linear-gradient(to top, color-mix(in oklab, var(--highlight-bg), white 10%), var(--highlight-bg));
+    border-radius: var(--radius-lg);
+}

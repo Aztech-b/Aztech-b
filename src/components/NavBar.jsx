@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
 import { useTranslation } from "react-i18next";
 import useNavBarAnimationSetup from "../hooks/useNavBarAnimationSetup";
+import NavBarLinkDescription from "./NavBarLinkDescription";
 import { Button } from "./ui/button";
 import {
     MotionNavigationMenu,
@@ -28,7 +29,9 @@ function NavBar() {
 
 function DesktopNavBar({ className }) {
     const { t, i18n } = useTranslation();
-    const contentClassName = "bg-my-accent/10 rounded-lg my-accent-1 my-accent-primary/15";
+    const contentClassName = "highlight";
+    // "bg-[linear-gradient(to_bottom,color-mix(in_oklab,var(--highlight-bg),rgb(white/0.5) 90%),var(--highlight-bg))]";
+    // "bg-my-accent/10 rounded-lg my-accent-1 my-accent-primary/15";
 
     return (
         <MotionNavigationMenu
@@ -37,23 +40,33 @@ function DesktopNavBar({ className }) {
             springStiffness={350}
             springDamping={32}
         >
-            <MotionNavigationMenuList highlightClassName={"bg-my-accent/50 rounded-lg"}>
+            <MotionNavigationMenuList highlightClassName={"bg-my-accent/10 rounded-lg"}>
                 <MotionNavigationMenuItem value={"home"}>
                     <MotionNavigationMenuTrigger>{t("navBar.home")}</MotionNavigationMenuTrigger>
                     <MotionNavigationMenuContent highlightClassName={contentClassName}>
                         <div className="grid grid-cols-3">
-                            <MotionNavigationMenuLink to="/">{t("navBar.home")}</MotionNavigationMenuLink>
+                            <MotionNavigationMenuLink to="/">
+                                <NavBarLinkDescription title={t("navBar.home")}>Home page</NavBarLinkDescription>
+                            </MotionNavigationMenuLink>
                             <MotionNavigationMenuLink to="/#about">
-                                {t("indexPage.about.header")}
+                                <NavBarLinkDescription title={t("indexPage.about.header")}>
+                                    About me section in home page
+                                </NavBarLinkDescription>
                             </MotionNavigationMenuLink>
                             <MotionNavigationMenuLink className={"whitespace-nowrap"} to="/#toolsAndSkills">
-                                {t("indexPage.toolsAndSkills.header")}
+                                <NavBarLinkDescription title={t("indexPage.toolsAndSkills.header")}>
+                                    Tools that I use
+                                </NavBarLinkDescription>
                             </MotionNavigationMenuLink>
                             <MotionNavigationMenuLink className={"whitespace-nowrap"} to="/#featured-projects">
-                                {t("indexPage.featuredProjects.header")}
+                                <NavBarLinkDescription title={t("indexPage.featuredProjects.header")}>
+                                    Projects I worked on
+                                </NavBarLinkDescription>
                             </MotionNavigationMenuLink>
                             <MotionNavigationMenuLink to="/#contact">
-                                {t("indexPage.contact.header")}
+                                <NavBarLinkDescription title={t("indexPage.contact.header")}>
+                                    How to contact me
+                                </NavBarLinkDescription>
                             </MotionNavigationMenuLink>
                         </div>
                     </MotionNavigationMenuContent>
