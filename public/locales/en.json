@@ -1,8 +1,13 @@
 {
     "navBar": {
-        "home": "Home",
-        "contact": "Contact",
-        "about": "About",
+        "home": {
+            "header": "Home",
+            "home": { "header": "Home", "description": "Home page" },
+            "about": { "header": "About", "description": "About me section in home page" },
+            "toolsAndSkills": { "header": "Tools & Skills", "description": "Tools that I use" },
+            "featuredProjects": { "header": "Featured Projects", "description": "Projects I worked on" },
+            "contact": { "header": "Contact", "description": "How to contact me" }
+        },
         "myPoems": "My Poems",
         "language": { "header": "Change Language", "en": "Change Language to EN", "ru": "Change Language to RU" }
     },

@@ -28,7 +28,7 @@ function NavBar() {
 }
 
 function DesktopNavBar({ className }) {
-    const { t, i18n } = useTranslation();
+    const { t, i18n } = useTranslation("translation", { keyPrefix: "navBar" });
     const contentClassName = "highlight";
     // "bg-[linear-gradient(to_bottom,color-mix(in_oklab,var(--highlight-bg),rgb(white/0.5) 90%),var(--highlight-bg))]";
     // "bg-my-accent/10 rounded-lg my-accent-1 my-accent-primary/15";
@@ -42,30 +42,30 @@ function DesktopNavBar({ className }) {
         >
             <MotionNavigationMenuList highlightClassName={"bg-my-accent/10 rounded-lg"}>
                 <MotionNavigationMenuItem value={"home"}>
-                    <MotionNavigationMenuTrigger>{t("navBar.home")}</MotionNavigationMenuTrigger>
+                    <MotionNavigationMenuTrigger>{t("home.header")}</MotionNavigationMenuTrigger>
                     <MotionNavigationMenuContent highlightClassName={contentClassName}>
                         <div className="grid grid-cols-3">
                             <MotionNavigationMenuLink to="/">
-                                <NavBarLinkDescription title={t("navBar.home")}>Home page</NavBarLinkDescription>
+                                <NavBarLinkDescription title={t("home.home.header")}>{t("")}</NavBarLinkDescription>
                             </MotionNavigationMenuLink>
                             <MotionNavigationMenuLink to="/#about">
-                                <NavBarLinkDescription title={t("indexPage.about.header")}>
-                                    About me section in home page
+                                <NavBarLinkDescription title={t("home.about.header")}>
+                                    {t("home.about.description")}
                                 </NavBarLinkDescription>
                             </MotionNavigationMenuLink>
                             <MotionNavigationMenuLink className={"whitespace-nowrap"} to="/#toolsAndSkills">
-                                <NavBarLinkDescription title={t("indexPage.toolsAndSkills.header")}>
-                                    Tools that I use
+                                <NavBarLinkDescription title={t("home.toolsAndSkills.header")}>
+                                    {t("home.toolsAndSkills.description")}
                                 </NavBarLinkDescription>
                             </MotionNavigationMenuLink>
                             <MotionNavigationMenuLink className={"whitespace-nowrap"} to="/#featured-projects">
-                                <NavBarLinkDescription title={t("indexPage.featuredProjects.header")}>
-                                    Projects I worked on
+                                <NavBarLinkDescription title={t("home.featuredProjects.header")}>
+                                    {t("home.featuredProjects.description")}
                                 </NavBarLinkDescription>
                             </MotionNavigationMenuLink>
                             <MotionNavigationMenuLink to="/#contact">
-                                <NavBarLinkDescription title={t("indexPage.contact.header")}>
-                                    How to contact me
+                                <NavBarLinkDescription title={t("home.contact.header")}>
+                                    {t("home.contact.description")}
                                 </NavBarLinkDescription>
                             </MotionNavigationMenuLink>
                         </div>
@@ -76,12 +76,12 @@ function DesktopNavBar({ className }) {
                         className={cn("whitespace-nowrap", motionNavigationMenuTriggerStyle())}
                         to={"/my-poems"}
                     >
-                        {t("navBar.myPoems")}
+                        {t("myPoems")}
                     </MotionNavigationMenuLink>
                 </MotionNavigationMenuItem>
 
                 <MotionNavigationMenuItem value={"change-language"}>
-                    <MotionNavigationMenuTrigger>{t("navBar.language.header")}</MotionNavigationMenuTrigger>
+                    <MotionNavigationMenuTrigger>{t("language.header")}</MotionNavigationMenuTrigger>
                     <MotionNavigationMenuContent highlightClassName={contentClassName}>
                         <div className="flex">
                             <MotionNavigationMenuLink asChild={true}>
@@ -91,7 +91,7 @@ function DesktopNavBar({ className }) {
                                         i18n.changeLanguage("en");
                                     }}
                                 >
-                                    {t("navBar.language.en")}
+                                    {t("language.en")}
                                 </Button>
                             </MotionNavigationMenuLink>
                             <MotionNavigationMenuLink asChild={true}>
@@ -101,7 +101,7 @@ function DesktopNavBar({ className }) {
                                         i18n.changeLanguage("ru");
                                     }}
                                 >
-                                    {t("navBar.language.ru")}
+                                    {t("language.ru")}
                                 </Button>
                             </MotionNavigationMenuLink>
                         </div>
