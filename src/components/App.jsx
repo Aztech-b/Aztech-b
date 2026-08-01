@@ -5,7 +5,7 @@ import useCurtainSetup from "../hooks/useCurtainSetup";
 import useTranslationSetup from "../hooks/useTranslationSetup";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
-import Curtain from "./ui/Curtain";
+import Curtain, { useCurtainManager } from "./ui/Curtain";
 
 const TransitionContextProvider = createContext();
 export const useTransitionContext = () => useContext(TransitionContextProvider);
@@ -13,6 +13,10 @@ export const useTransitionContext = () => useContext(TransitionContextProvider);
 function App() {
     const { targetLocation, setTargetLocation } = useCurtainSetup();
     useTranslationSetup();
+    useCurtainManager([
+        { from: "/", to: "/my-poems" },
+        { to: "/", from: "/my-poems" },
+    ]);
 
     return (
         <main className="relative">

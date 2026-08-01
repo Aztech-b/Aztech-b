@@ -1,9 +1,27 @@
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate, useNavigation } from "react-router";
+import { useBlocker, useLocation, useNavigate, useNavigation } from "react-router";
 import Spinner from "./Spinner";
 
 const MotionSpinner = motion.create(Spinner);
+
+/**
+ *
+ * @param {{from: String, to: String}[]} config
+ */
+export function useCurtainManager(config) {
+    const blocker = useBlocker(({ currentLocation, nextLocation }) => {
+        const currentLocationPath = currentLocation.pathname.split("/");
+        const nextLocationPath = nextLocation.pathname.split("/");
+        const isFrom = config.find((cfg) => cfg.from.split("/")[1] === currentLocationPath[1]);
+        const isTo = config.find((cfg) => cfg.to.split("/")[1] === nextLocationPath[1]);
+        const isSame = currentLocationPath[1] === nextLocationPath[1];
+        if (isFrom && isTo && !isSame) {
+            return true;
+        }
+        return false;
+    });
+}
 
 function Curtain({ onComplete, to }) {
     const navigation = useNavigation();
