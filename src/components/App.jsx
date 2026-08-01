@@ -1,6 +1,7 @@
 import { Suspense, useState } from "react";
 import { Outlet } from "react-router";
 import useTranslationSetup from "../hooks/useTranslationSetup";
+import useScrollToHash from "../styles/useScrollToHash";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 import { CurtainManager } from "./ui/Curtain";
@@ -10,6 +11,7 @@ function App() {
     const [curtainPhase, setCurtainPhase] = useState(null);
     const showCurtain = () => setCurtainPhase("covering");
     useTranslationSetup();
+    useScrollToHash();
 
     return (
         <main className="relative">
