@@ -59,7 +59,7 @@ function Poem() {
                             ? segments.map((segment, index) => {
                                   const isBox = segment?.note?.type?.includes("box");
                                   const ParagraphElement = ({ children }) => (
-                                      <p key={index} className="w-fit text-[clamp(0.5rem,1vw+0.5rem,9rem)]">
+                                      <p key={index} className="w-fit text-[clamp(0.5rem,1vw+0.5rem,1.1rem)]">
                                           {children}
                                       </p>
                                   );
