@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
 import { useTranslation } from "react-i18next";
 import useNavBarAnimationSetup from "../hooks/useNavBarAnimationSetup";
@@ -9,6 +10,7 @@ import {
     MotionNavigationMenuLink,
     MotionNavigationMenuList,
     MotionNavigationMenuTrigger,
+    motionNavigationMenuTriggerStyle,
 } from "./unlumen-ui/motion-navigation-menu";
 
 function NavBar() {
@@ -57,12 +59,12 @@ function DesktopNavBar({ className }) {
                     </MotionNavigationMenuContent>
                 </MotionNavigationMenuItem>
                 <MotionNavigationMenuItem value={"my-poems"}>
-                    <MotionNavigationMenuTrigger>{t("navBar.myPoems")}</MotionNavigationMenuTrigger>
-                    <MotionNavigationMenuContent highlightClassName={contentClassName}>
-                        <MotionNavigationMenuLink className={"whitespace-nowrap"} to={"/my-poems"}>
-                            {t("navBar.myPoems")}
-                        </MotionNavigationMenuLink>
-                    </MotionNavigationMenuContent>
+                    <MotionNavigationMenuLink
+                        className={cn("whitespace-nowrap", motionNavigationMenuTriggerStyle())}
+                        to={"/my-poems"}
+                    >
+                        {t("navBar.myPoems")}
+                    </MotionNavigationMenuLink>
                 </MotionNavigationMenuItem>
 
                 <MotionNavigationMenuItem value={"change-language"}>
