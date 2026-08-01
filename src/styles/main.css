@@ -84,8 +84,7 @@ h2 {
     max-width: var(--navbar-max-width);
     height: var(--navbar-height);
     width: 90%;
-    --muted: rgb(from var(--my-accent) r g b / 0.5);
-    border: 1px var(--muted) solid;
+    border: 1px rgb(from var(--my-accent) r g b / 0.5) solid;
     background-color: rgb(from var(--background) r g b / 0.5);
     border-radius: 100vw;
     backdrop-filter: blur(12px);
