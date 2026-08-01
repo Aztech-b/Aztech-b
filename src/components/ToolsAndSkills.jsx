@@ -55,7 +55,7 @@ const languages = [
 function ToolsAndSkills() {
     const { t } = useTranslation();
     return (
-        <div className={"main content px-2"}>
+        <div className={"main content px-2"} id="toolsAndSkills">
             <Divider className={"mb-8 mt-16"} textAlign="left">
                 <h2>{t("indexPage.toolsAndSkills.header")}</h2>
             </Divider>

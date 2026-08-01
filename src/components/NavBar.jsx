@@ -50,7 +50,7 @@ function DesktopNavBar({ className }) {
                             <MotionNavigationMenuLink className={"whitespace-nowrap"} to="/#featured-projects">
                                 {t("indexPage.featuredProjects.header")}
                             </MotionNavigationMenuLink>
-                            <MotionNavigationMenuLink to="/#Contact">
+                            <MotionNavigationMenuLink to="/#contact">
                                 {t("indexPage.contact.header")}
                             </MotionNavigationMenuLink>
                         </div>

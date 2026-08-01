@@ -28,7 +28,7 @@ function FeaturedProjects() {
     const { data, scrollYProgress, activeIndex } = useFixedScroll(container);
 
     return (
-        <div className="content">
+        <div className="content" id="featured-projects">
             <Divider className={"mt-20"}>{t("header")}</Divider>
             <div className={styles.mainContainer} ref={container}>
                 <div className="sticky top-50 flex flex-wrap max-w-max w-fit items-start">
