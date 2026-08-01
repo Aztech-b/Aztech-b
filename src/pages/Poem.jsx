@@ -8,6 +8,8 @@ import { Button } from "../components/ui/button.jsx";
 import { Highlighter } from "../components/ui/highlighter.jsx";
 import { Separator } from "../components/ui/separator.jsx";
 
+export const poemFontClass = "text-[clamp(0.5rem,1vw+0.5rem,1.1rem)]";
+
 function Poem() {
     const params = useParams();
     const poem = GetFormattedPoemById(Number(params.id));
@@ -73,7 +75,7 @@ function Poem() {
                                           className={cn("w-fit highlighted", selectedNote === index ? "selected" : "")}
                                           onClick={(e) => {
                                               const isSelected = selectedNote === index;
-                                              setNote(isSelected ? null : segment?.note?.text);
+                                              setNote(isSelected ? null : segment?.note?.text.split("\n"));
                                               setDistanceFromTop(e.currentTarget.offsetTop);
                                               setSelectedNote(isSelected ? null : index);
                                           }}
@@ -106,7 +108,11 @@ function Poem() {
                         <>
                             <Separator orientation="vertical"></Separator>
                             <div className="p-5">
-                                <p style={{ marginTop: distanceFromTop }}>{note}</p>
+                                {note.map((line, index) => (
+                                    <p key={index} style={{ marginTop: distanceFromTop }} className={poemFontClass}>
+                                        {line} <br />
+                                    </p>
+                                ))}
                             </div>
                         </>
                     ) : null}

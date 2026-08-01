@@ -1,5 +1,5 @@
 import { Suspense, useState } from "react";
-import { Outlet } from "react-router";
+import { Outlet, ScrollRestoration } from "react-router";
 import useTranslationSetup from "../hooks/useTranslationSetup";
 import useScrollToHash from "../styles/useScrollToHash";
 import Footer from "./Footer";
@@ -16,6 +16,14 @@ function App() {
     return (
         <main className="relative">
             <NavBar></NavBar>
+            <ScrollRestoration
+                getKey={(location) => {
+                    if (location.pathname.startsWith("/my-poems")) {
+                        return "my-poems";
+                    }
+                    return location.key;
+                }}
+            ></ScrollRestoration>
             <CurtainManager
                 config={[
                     { from: "/", to: "/my-poems" },
