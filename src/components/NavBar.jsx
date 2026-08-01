@@ -44,7 +44,7 @@ function DesktopNavBar({ className }) {
                 <MotionNavigationMenuItem value={"home"}>
                     <MotionNavigationMenuTrigger>{t("home.header")}</MotionNavigationMenuTrigger>
                     <MotionNavigationMenuContent highlightClassName={contentClassName}>
-                        <div className="grid grid-cols-3">
+                        <div className="grid grid-cols-1">
                             <MotionNavigationMenuLink to="/">
                                 <NavBarLinkDescription title={t("home.home.header")}>{t("")}</NavBarLinkDescription>
                             </MotionNavigationMenuLink>
