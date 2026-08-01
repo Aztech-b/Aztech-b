@@ -43,22 +43,24 @@ function DesktopNavBar({ className }) {
             <MotionNavigationMenuList highlightClassName={"bg-my-accent/10 rounded-lg"}>
                 <MotionNavigationMenuItem value={"home"}>
                     <MotionNavigationMenuTrigger>{t("home.header")}</MotionNavigationMenuTrigger>
-                    <MotionNavigationMenuContent highlightClassName={contentClassName}>
-                        <div className="grid grid-cols-1">
+                    <MotionNavigationMenuContent highlightClassName={contentClassName} className={"w-[40vw]"}>
+                        <div className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-2">
                             <MotionNavigationMenuLink to="/">
-                                <NavBarLinkDescription title={t("home.home.header")}>{t("")}</NavBarLinkDescription>
+                                <NavBarLinkDescription title={t("home.home.header")}>
+                                    {t("home.home.description")}
+                                </NavBarLinkDescription>
                             </MotionNavigationMenuLink>
                             <MotionNavigationMenuLink to="/#about">
                                 <NavBarLinkDescription title={t("home.about.header")}>
                                     {t("home.about.description")}
                                 </NavBarLinkDescription>
                             </MotionNavigationMenuLink>
-                            <MotionNavigationMenuLink className={"whitespace-nowrap"} to="/#toolsAndSkills">
+                            <MotionNavigationMenuLink to="/#toolsAndSkills">
                                 <NavBarLinkDescription title={t("home.toolsAndSkills.header")}>
                                     {t("home.toolsAndSkills.description")}
                                 </NavBarLinkDescription>
                             </MotionNavigationMenuLink>
-                            <MotionNavigationMenuLink className={"whitespace-nowrap"} to="/#featured-projects">
+                            <MotionNavigationMenuLink to="/#featured-projects">
                                 <NavBarLinkDescription title={t("home.featuredProjects.header")}>
                                     {t("home.featuredProjects.description")}
                                 </NavBarLinkDescription>
@@ -71,7 +73,7 @@ function DesktopNavBar({ className }) {
                         </div>
                     </MotionNavigationMenuContent>
                 </MotionNavigationMenuItem>
-                <MotionNavigationMenuItem value={"my-poems"}>
+                <MotionNavigationMenuItem>
                     <MotionNavigationMenuLink
                         className={cn("whitespace-nowrap", motionNavigationMenuTriggerStyle())}
                         to={"/my-poems"}
