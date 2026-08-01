@@ -19,13 +19,9 @@ function NavBar() {
             className="navBar relative"
             animate={{ y: hidden ? "calc(-1 * var(--navbar-height))" : 0, opacity: hidden ? 0 : 1 }}
         >
-            <DesktopNavBar className={"md:block hidden"}></DesktopNavBar>
+            <DesktopNavBar></DesktopNavBar>
         </motion.div>
     );
-}
-
-function MobileNavBar({ className }) {
-    return <></>;
 }
 
 function DesktopNavBar({ className }) {
