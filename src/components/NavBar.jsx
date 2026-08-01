@@ -25,7 +25,7 @@ function NavBar() {
 }
 
 function DesktopNavBar({ className }) {
-    const { t, i18n } = useTranslation("translation", { keyPrefix: "navBar" });
+    const { t, i18n } = useTranslation();
     const contentClassName = "bg-my-accent/10 rounded-lg my-accent-1 my-accent-primary/15";
 
     return (
@@ -37,32 +37,36 @@ function DesktopNavBar({ className }) {
         >
             <MotionNavigationMenuList highlightClassName={"bg-my-accent/50 rounded-lg"}>
                 <MotionNavigationMenuItem value={"home"}>
-                    <MotionNavigationMenuTrigger>{t("home")}</MotionNavigationMenuTrigger>
+                    <MotionNavigationMenuTrigger>{t("navBar.home")}</MotionNavigationMenuTrigger>
                     <MotionNavigationMenuContent highlightClassName={contentClassName}>
                         <div className="grid grid-cols-3">
-                            <MotionNavigationMenuLink to="/">{t("home")}</MotionNavigationMenuLink>
-                            <MotionNavigationMenuLink to="/#about">About</MotionNavigationMenuLink>
+                            <MotionNavigationMenuLink to="/">{t("navBar.home")}</MotionNavigationMenuLink>
+                            <MotionNavigationMenuLink to="/#about">
+                                {t("indexPage.about.header")}
+                            </MotionNavigationMenuLink>
                             <MotionNavigationMenuLink className={"whitespace-nowrap"} to="/#toolsAndSkills">
-                                Tools & Skills
+                                {t("indexPage.toolsAndSkills.header")}
                             </MotionNavigationMenuLink>
                             <MotionNavigationMenuLink className={"whitespace-nowrap"} to="/#featured-projects">
-                                Featured Projects
+                                {t("indexPage.featuredProjects.header")}
                             </MotionNavigationMenuLink>
-                            <MotionNavigationMenuLink to="/#Contact">Contact</MotionNavigationMenuLink>
+                            <MotionNavigationMenuLink to="/#Contact">
+                                {t("indexPage.contact.header")}
+                            </MotionNavigationMenuLink>
                         </div>
                     </MotionNavigationMenuContent>
                 </MotionNavigationMenuItem>
                 <MotionNavigationMenuItem value={"my-poems"}>
-                    <MotionNavigationMenuTrigger>{t("myPoems")}</MotionNavigationMenuTrigger>
+                    <MotionNavigationMenuTrigger>{t("navBar.myPoems")}</MotionNavigationMenuTrigger>
                     <MotionNavigationMenuContent highlightClassName={contentClassName}>
                         <MotionNavigationMenuLink className={"whitespace-nowrap"} to={"/my-poems"}>
-                            {t("myPoems")}
+                            {t("navBar.myPoems")}
                         </MotionNavigationMenuLink>
                     </MotionNavigationMenuContent>
                 </MotionNavigationMenuItem>
 
                 <MotionNavigationMenuItem value={"change-language"}>
-                    <MotionNavigationMenuTrigger>Change Language</MotionNavigationMenuTrigger>
+                    <MotionNavigationMenuTrigger>{t("navBar.language.header")}</MotionNavigationMenuTrigger>
                     <MotionNavigationMenuContent highlightClassName={contentClassName}>
                         <div className="flex">
                             <MotionNavigationMenuLink asChild={true}>
@@ -72,7 +76,7 @@ function DesktopNavBar({ className }) {
                                         i18n.changeLanguage("en");
                                     }}
                                 >
-                                    {t("language.en")}
+                                    {t("navBar.language.en")}
                                 </Button>
                             </MotionNavigationMenuLink>
                             <MotionNavigationMenuLink asChild={true}>
@@ -82,7 +86,7 @@ function DesktopNavBar({ className }) {
                                         i18n.changeLanguage("ru");
                                     }}
                                 >
-                                    {t("language.ru")}
+                                    {t("navBar.language.ru")}
                                 </Button>
                             </MotionNavigationMenuLink>
                         </div>
