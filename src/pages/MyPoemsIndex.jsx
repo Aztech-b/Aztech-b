@@ -32,10 +32,7 @@ function MyPoemsIndex() {
                             {poem.preview ? (
                                 <ListContent
                                     className={"poem-content max-w-full w-full"}
-                                    style={{
-                                        viewTransitionName: `poem-content-${poem.id}`,
-                                        viewTransitionClass: "poem-content-class",
-                                    }}
+                                    style={{ viewTransitionName: `poem-content-${poem.id}` }}
                                 >
                                     {poem.preview.map((poemPreviewLine, index) => (
                                         <p

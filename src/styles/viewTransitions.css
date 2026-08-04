@@ -6,6 +6,11 @@
     width: fit-content;
 }
 
+.poem-content {
+    view-transition-class: poem-content-class;
+    width: fit-content;
+}
+
 .heroHeading {
     view-transition-name: heading;
 }
@@ -36,13 +41,13 @@
 
 ::view-transition-new(.poem-content-class) {
     z-index: 10;
-    animation: reveal 300ms both;
+    /* animation: reveal 300ms both; */
 }
 
 ::view-transition-old(.poem-content-class) {
     z-index: 10;
-    animation: hide 300ms both;
-    animation-delay: 100ms;
+    /* animation: hide 300ms both; */
+    /* animation-delay: 100ms; */
 }
 
 @keyframes hide {
@@ -56,15 +61,25 @@
     }
 }
 
+::view-transition-group(.poem-content-class) {
+    overflow: clip;
+}
+
 ::view-transition-new(.poem-content-class),
 ::view-transition-old(.poem-content-class) {
     z-index: 10;
-    height: auto;
-    width: auto;
-    overflow: hidden;
-    mix-blend-mode: lighten;
-    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    overflow: clip;
+
+    max-width: none;
+    max-height: none;
+
+    object-fit: none;
     object-position: top left;
+
+    animation: none;
+    mix-blend-mode: soft-light;
 }
 
 ::view-transition-new(.poem-title-transition),

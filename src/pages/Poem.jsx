@@ -52,10 +52,7 @@ function Poem() {
                 >
                     <ListContent
                         className={cn("poem-content", note ? "col-span-1" : "col-span-3")}
-                        style={{
-                            viewTransitionName: `poem-content-${poem.id}`,
-                            viewTransitionClass: "poem-content-class",
-                        }}
+                        style={{ viewTransitionName: `poem-content-${poem.id}` }}
                     >
                         {segments
                             ? segments.map((segment, index) => {
