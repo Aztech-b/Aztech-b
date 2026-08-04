@@ -28,39 +28,6 @@
     z-index: 90;
 }
 
-@keyframes reveal {
-    from {
-        /* clip-path: inset(0 0 100% 0); */
-        opacity: 0;
-    }
-    to {
-        /* clip-path: inset(0); */
-        opacity: 1;
-    }
-}
-
-::view-transition-new(.poem-content-class) {
-    z-index: 10;
-    /* animation: reveal 300ms both; */
-}
-
-::view-transition-old(.poem-content-class) {
-    z-index: 10;
-    /* animation: hide 300ms both; */
-    /* animation-delay: 100ms; */
-}
-
-@keyframes hide {
-    from {
-        /* clip-path: inset(0); */
-        opacity: 1;
-    }
-    to {
-        /* clip-path: inset(0 0 100% 0); */
-        opacity: 0;
-    }
-}
-
 ::view-transition-group(.poem-content-class) {
     overflow: clip;
 }
@@ -78,7 +45,6 @@
     object-fit: none;
     object-position: top left;
 
-    animation: none;
     mix-blend-mode: soft-light;
 }
 

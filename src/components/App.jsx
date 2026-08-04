@@ -1,7 +1,7 @@
 import { Suspense, useState } from "react";
 import { Outlet, ScrollRestoration } from "react-router";
+import useScrollToHash from "../hooks/useScrollToHash";
 import useTranslationSetup from "../hooks/useTranslationSetup";
-import useScrollToHash from "../styles/useScrollToHash";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 import { CurtainManager } from "./ui/Curtain";
