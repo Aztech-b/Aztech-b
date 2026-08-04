@@ -35,7 +35,7 @@ function Poem() {
                         </Button>
                     </Link>
                     <h2
-                        className={`poem-title max-w-full text-[clamp(0.5rem,6vw,4rem)] wrap-break-word`}
+                        className={`poem-title max-w-full text-[clamp(0.5rem,6vw,4rem)] wrap-break-word leading-[normal]`}
                         style={{
                             viewTransitionName: `poem-title-${poem.id}`,
                             viewTransitionClass: "poem-title-transition",
